@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 800" width="360" height="800">
+    <rect width="360" height="800" fill="#F8F9FA"/>
+    <rect width="360" height="64" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="20" y="42" fill="#1A1A1A" font-family="Arial" font-size="18" font-weight="bold">Lịch trình Sự kiện của Tôi</text>
+    
+    <!-- Tab bar -->
+    <rect x="16" y="75" width="105" height="34" rx="17" fill="#F27024"/>
+    <text x="32" y="97" fill="#FFFFFF" font-family="Arial" font-size="13" font-weight="bold">Sắp tới (1)</text>
+    <rect x="127" y="75" width="110" height="34" rx="17" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="140" y="97" fill="#595959" font-family="Arial" font-size="13">Waitlist (1)</text>
+    <rect x="243" y="75" width="100" height="34" rx="17" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="257" y="97" fill="#595959" font-family="Arial" font-size="13">Lịch sử (3)</text>
+
+    <!-- Schedule Card 1 -->
+    <rect x="16" y="130" width="328" height="110" rx="12" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <rect x="16" y="130" width="6" height="110" rx="3" fill="#F27024"/>
+    <text x="32" y="155" fill="#F27024" font-family="Arial" font-size="12" font-weight="bold">DIỄN RA SAU 2 NGÀY NỮA</text>
+    <text x="32" y="180" fill="#1A1A1A" font-family="Arial" font-size="16" font-weight="bold">GenAI with Flutter &amp; Dart</text>
+    <text x="32" y="202" fill="#595959" font-family="Arial" font-size="13">15/10/2026 • 13:30 • Hội trường Alpha</text>
+    <rect x="230" y="195" width="100" height="32" rx="6" fill="#F27024"/>
+    <text x="245" y="216" fill="#FFFFFF" font-family="Arial" font-size="12" font-weight="bold">Mở vé QR</text>
+
+    <!-- Bottom Nav -->
+    <rect y="736" width="360" height="64" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="32" y="764" fill="#595959" font-family="Arial" font-size="12">Khám phá</text>
+    <rect x="105" y="744" width="75" height="32" rx="16" fill="#FFF0E6"/>
+    <text x="115" y="764" fill="#F27024" font-family="Arial" font-size="12" font-weight="bold">Lịch của tôi</text>
+    <text x="205" y="764" fill="#595959" font-family="Arial" font-size="12">Thông báo</text>
+    <text x="300" y="764" fill="#595959" font-family="Arial" font-size="12">Hồ sơ</text>
+  </svg>
