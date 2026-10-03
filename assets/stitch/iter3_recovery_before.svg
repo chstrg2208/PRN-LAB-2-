@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 300" width="360" height="300">
+    <rect width="360" height="300" fill="#FFFFFF"/>
+    <text x="20" y="30" fill="#D93025" font-family="Arial" font-size="14" font-weight="bold">BEFORE: Không có phản hồi khi mất mạng & trắng trơn</text>
+    <rect x="20" y="60" width="320" height="150" fill="#FAFAFA" stroke="#E0E0E0"/>
+    <text x="80" y="140" fill="#888888" font-family="Arial" font-size="14">(Màn hình trắng không có thông báo gì)</text>
+    <text x="20" y="250" fill="#D93025" font-family="Arial" font-size="12">⚠️ Người dùng tưởng app bị treo, mất dữ liệu đã nhập</text>
+  </svg>

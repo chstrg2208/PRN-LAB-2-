@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 800" width="360" height="800">
+    <rect width="360" height="800" fill="#F8F9FA"/>
+    <rect width="360" height="70" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="20" y="45" fill="#1A1A1A" font-family="Arial" font-size="18" font-weight="bold">Xác nhận Đăng ký</text>
+    
+    <rect x="16" y="90" width="328" height="80" rx="8" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="32" y="115" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">GenAI with Flutter & Dart</text>
+    <text x="32" y="135" fill="#595959" font-family="Arial" font-size="12">15/10/2026 • Hội trường Alpha</text>
+    
+    <text x="16" y="200" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">Họ và tên sinh viên</text>
+    <rect x="16" y="210" width="328" height="44" rx="8" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="30" y="238" fill="#1A1A1A" font-family="Arial" font-size="14">Nguyễn Minh Tú</text>
+    
+    <text x="16" y="280" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">Mã số sinh viên (MSSV)</text>
+    <rect x="16" y="290" width="328" height="44" rx="8" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="30" y="318" fill="#1A1A1A" font-family="Arial" font-size="14">SE193059</text>
+    
+    <text x="16" y="360" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">Email FPT Edu</text>
+    <rect x="16" y="370" width="328" height="44" rx="8" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="30" y="398" fill="#1A1A1A" font-family="Arial" font-size="14">tuntse193059@fpt.edu.vn</text>
+    
+    <text x="16" y="440" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">Câu hỏi cho diễn giả (không bắt buộc)</text>
+    <rect x="16" y="450" width="328" height="80" rx="8" fill="#FFFFFF" stroke="#E0E0E0"/>
+    <text x="30" y="480" fill="#8C8C8C" font-family="Arial" font-size="13">Nhập câu hỏi của bạn...</text>
+    
+    <rect x="16" y="710" width="328" height="48" rx="10" fill="#F27024"/>
+    <text x="100" y="740" fill="#FFFFFF" font-family="Arial" font-size="15" font-weight="bold">XÁC NHẬN VÉ (MIỄN PHÍ)</text>
+  </svg>
