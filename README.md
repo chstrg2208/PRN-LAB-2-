@@ -66,8 +66,7 @@ PRN-LAB-2-/
 ├── design/
 │   ├── DESIGN.md                  ← Bản mô tả thiết kế & Design Tokens (Do TV3 Nguyễn Phương Khải biên soạn)
 │   ├── screen-spec.md             ← Đặc tả chi tiết ý đồ và trạng thái 8 màn hình (Do TV3 Nguyễn Phương Khải biên soạn)
-│   ├── design-decisions.md        ← Top 10 quyết định thiết kế + Checklist A11y & Responsive (Do TV3 biên soạn)
-│   └── tv3-presentation-guide.md  ← Cẩm nang thuyết trình Slide 8-10, Live Demo & Vấn đáp cho TV3
+│   └── design-decisions.md        ← Top 10 quyết định thiết kế + Checklist A11y & Responsive (Do TV3 biên soạn)
 ├── ai/
 │   └── ai-design-log.md           ← Prompt Stitch nguyên văn, 3 vòng lặp Before/After, phản biện 10 Heuristics
 ├── assets/
