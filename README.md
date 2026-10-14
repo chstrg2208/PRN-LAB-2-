@@ -5,22 +5,22 @@
 > **Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP. Hồ Chí Minh  
 > **Danh sách thành viên & Phân công Vai trò:**  
 > 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2: Google Stitch & AI Lead) → Branch: [`tv2`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv2)  
-> 2. **Võ Quang Tâm** — MSSV: **SE192621** (TV1: UX Research, Persona & User Flow) → Branch: [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1)  
-> 3. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV3: UI Design System & Screen Spec) → Branch: [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3)  
-> 4. **Đỗ Trọng Tín** — MSSV: *(Đang cập nhật)* (TV4: Flutter Handoff & Architecture) → Branch: [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4)  
+> 2. **Võ Quang Tâm** — MSSV: **SE192621** (TV1: UX Research, Persona & User Flow Lead) → Branch: [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1)  
+> 3. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV3: UI Design System & Screen Specifications Lead) → Branch: [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3)  
+> 4. **Đỗ Trọng Tín** — MSSV: *(Đang cập nhật)* (TV4: Flutter Handoff & Architecture Lead) → Branch: [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4)  
 
 ---
 
-## 👥 Phân công Vai trò & Git Branches
+## 👥 Bảng Phân công Thành viên & Git Branches Mới nhất
 
 Dự án được phân chia thành 4 nhánh Git độc lập tương ứng với 4 thành viên theo đúng quy định làm việc nhóm và lưu vết đóng góp:
 
-| Thành viên | MSSV | Vai trò bài Lab 2 | Git Branch | Trách nhiệm Deliverables chính |
-| :--- | :--- | :--- | :---: | :--- |
-| **Trương Chí Trung** | **SE193059** | **Trưởng nhóm / TV2** | [`tv2`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv2) | **AI & Prompting:** Thực thi Google Stitch, lưu trữ nguyên văn Prompts, thực hiện 3 vòng lặp Before/After, biên soạn phản biện 10 Heuristics & bảng quyết định |
-| **Võ Quang Tâm** | **SE192621** | **TV1** | [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1) | **UX & Luồng người dùng:** Biên soạn Persona, Problem Statement, Information Architecture (IA) 8 màn hình, 3 sơ đồ User Flow Mermaid (có luồng phục hồi lỗi) |
-| **Nguyễn Phương Khải** | **SE183590** | **TV3** | [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3) | **Design System & Đặc tả:** Thiết lập Design Tokens (Colors, Typography, 8dp Spacing), đặc tả chi tiết 8 màn hình, Top 10 quyết định thiết kế cốt lõi & Checklist A11y |
-| **Đỗ Trọng Tín** | *(Chờ cập nhật)* | **TV4** | [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4) | **Developer Handoff:** Biên soạn Flutter Developer Handoff 6 mục cho 8 màn hình, 2 bảng mapping dữ liệu/widget và kiến trúc backend Firebase chuẩn bị cho Lab 3 |
+| Thành viên | MSSV | Vai trò bài Lab 2 | Git Branch | Trách nhiệm chính trong bài Lab |
+| :--- | :--- | :---: | :---: | :--- |
+| **Trương Chí Trung** | **SE193059** | **Trưởng nhóm / TV2** | [`tv2`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv2) | **AI & Prompting:** Thực thi Google Stitch, lưu trữ nguyên văn Prompts, 3 vòng lặp Before/After, phản biện 10 Heuristics & bảng lập luận. |
+| **Võ Quang Tâm** | **SE192621** | **TV1** | [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1) | **UX & User Flow:** Persona, Problem Statement, Information Architecture 8 màn hình, 3 sơ đồ User Flow Mermaid (có luồng phục hồi lỗi). |
+| **Nguyễn Phương Khải** | **SE183590** | **TV3** | [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3) | **Design System & Specs:** Design Tokens (Colors, Typography, 8dp Spacing), đặc tả chi tiết 8 màn hình, Top 10 quyết định thiết kế & Checklist A11y. |
+| **Đỗ Trọng Tín** | *(Chờ cập nhật)* | **TV4** | [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4) | **Developer Handoff:** Đặc tả Flutter Handoff 6 mục cho 8 màn hình, 2 bảng mapping dữ liệu/widget, định hướng Lab 3 Firebase. |
 
 ---
 
@@ -39,7 +39,7 @@ Dự án được phân chia thành 4 nhánh Git độc lập tương ứng vớ
 | :--- | :--- | :---: |
 | **GitHub Repository Chính thức** | [https://github.com/chstrg2208/PRN-LAB-2-.git](https://github.com/chstrg2208/PRN-LAB-2-.git) | 🌐 **Public** |
 | **Figma Design & Prototype** | [Figma File: PRM323 - Lab 2 - F-Alumni - Nhom 4](https://www.figma.com/files/team/1552602956705614495/recents-and-sharing/recently-viewed?fuid=1552602953945079261) | 🌐 **Public View** *(Anyone with the link can view)* |
-| **Google Stitch Workspace** | [https://stitch.withgoogle.com/?pli=1](https://stitch.withgoogle.com/?pli=1) | Không gian tạo UI AI ban đầu |
+| **Google Stitch Workspace Thực tế** | [https://stitch.withgoogle.com/projects/1771935993966075517](https://stitch.withgoogle.com/projects/1771935993966075517) | 🌐 **Public Project** *(F-Alumni Mentorship App Design)* |
 
 ---
 
@@ -64,9 +64,10 @@ PRN-LAB-2-/
 │   ├── persona.md                 ← Persona chi tiết Trương Chí Trung, bối cảnh OJT, problem statement, success metric
 │   └── user-flow.md               ← Information Architecture (IA) 8 màn hình + 3 sơ đồ Mermaid + Ma trận ánh xạ
 ├── design/
-│   ├── DESIGN.md                  ← Bản mô tả thiết kế cho Stitch (Tokens: Color, Typography, Spacing, Radius)
-│   ├── screen-spec.md             ← Ý đồ thiết kế và nội dung chi tiết của 8 màn hình riêng biệt
-│   └── design-decisions.md        ← Top 10 quyết định thiết kế cốt lõi + Bảng Checklist Accessibility & Responsive
+│   ├── DESIGN.md                  ← Bản mô tả thiết kế & Design Tokens (Do TV3 Nguyễn Phương Khải biên soạn)
+│   ├── screen-spec.md             ← Đặc tả chi tiết ý đồ và trạng thái 8 màn hình (Do TV3 Nguyễn Phương Khải biên soạn)
+│   ├── design-decisions.md        ← Top 10 quyết định thiết kế + Checklist A11y & Responsive (Do TV3 biên soạn)
+│   └── tv3-presentation-guide.md  ← Cẩm nang thuyết trình Slide 8-10, Live Demo & Vấn đáp cho TV3
 ├── ai/
 │   └── ai-design-log.md           ← Prompt Stitch nguyên văn, 3 vòng lặp Before/After, phản biện 10 Heuristics
 ├── assets/
@@ -76,21 +77,21 @@ PRN-LAB-2-/
     └── flutter-handoff.md         ← Đặc tả 6 mục cho 8 màn hình + 2 bảng mapping + Định hướng Lab 3 Firebase
 ```
 
-| Sản phẩm Yêu cầu trong Đề bài | Vị trí File Tương ứng trong Repository | Điểm Trọng số Rubric |
-| :--- | :--- | :---: |
-| **1. Vấn đề và Persona** | [`ux/persona.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/ux/persona.md) | **5 điểm** |
-| **2. Phân tích UX & Information Architecture** | [`ux/user-flow.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/ux/user-flow.md) (Mục 1) | **5 điểm** |
-| **3. Ba User Flows hoàn chỉnh (có nhánh lỗi/phục hồi)** | [`ux/user-flow.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/ux/user-flow.md) (Mục 2 & 3) | **5 điểm** |
-| **4. Bản mô tả thiết kế (Design Brief trước khi dùng AI)** | [`design/DESIGN.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/design/DESIGN.md) | **Cơ sở prompt** |
-| **5. Prompt Google Stitch nguyên văn & Ảnh UI ban đầu** | [`ai/ai-design-log.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/ai/ai-design-log.md) (Mục 2) | **10 điểm** |
-| **6. Ba vòng lặp có ý nghĩa (Before / After)** | [`ai/ai-design-log.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/ai/ai-design-log.md) (Mục 3) | **5 điểm** |
-| **7. Bản phản biện AI theo 10 Usability Heuristics** | [`ai/ai-design-log.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/ai/ai-design-log.md) (Mục 4) | **5 điểm** |
-| **8. Bảng lập luận và quyết định của sinh viên** | [`ai/ai-design-log.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/ai/ai-design-log.md) (Mục 5) | **5 điểm** |
-| **9. Thiết kế UI/UX cuối cùng & Đặc tả màn hình** | [Figma Page 03] & [`design/screen-spec.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/design/screen-spec.md) | **20 điểm** |
-| **10. Design System Tokens & 9 Components đủ variants** | [Figma Page 04 & 05] | **15 điểm** |
-| **11. Interactive Prototype (3 flows, dialog overlay)** | [Figma Page 06] | **10 điểm** |
-| **12. Đặc tả Flutter Handoff & 2 bảng ánh xạ** | [`handoff/flutter-handoff.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/handoff/flutter-handoff.md) | **10 điểm** |
-| **13. Tính hoàn chỉnh của Tài liệu & Git Repository** | Toàn bộ Repository & [`README.md`](file:///e:/FPT/Ki%208/PRM/LAB%202%20-%20PRM%20Nhom%204/README.md) | **5 điểm** |
+| Sản phẩm Yêu cầu trong Đề bài | Vị trí File Tương ứng trong Repository | Người phụ trách chính | Điểm Trọng số Rubric |
+| :--- | :--- | :---: | :---: |
+| **1. Vấn đề và Persona** | [`ux/persona.md`](ux/persona.md) | TV1: Võ Quang Tâm | **5 điểm** |
+| **2. Phân tích UX & Information Architecture** | [`ux/user-flow.md`](ux/user-flow.md) (Mục 1) | TV1: Võ Quang Tâm | **5 điểm** |
+| **3. Ba User Flows hoàn chỉnh (có nhánh lỗi/phục hồi)** | [`ux/user-flow.md`](ux/user-flow.md) (Mục 2 & 3) | TV1: Võ Quang Tâm | **5 điểm** |
+| **4. Bản mô tả thiết kế (Design Brief trước khi dùng AI)** | [`design/DESIGN.md`](design/DESIGN.md) | **TV3: Nguyễn Phương Khải** | **Cơ sở prompt** |
+| **5. Prompt Google Stitch nguyên văn & Ảnh UI ban đầu** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 2) | TV2: Trương Chí Trung | **10 điểm** |
+| **6. Ba vòng lặp có ý nghĩa (Before / After)** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 3) | TV2: Trương Chí Trung | **5 điểm** |
+| **7. Bản phản biện AI theo 10 Usability Heuristics** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 4) | TV2: Trương Chí Trung | **5 điểm** |
+| **8. Bảng lập luận và quyết định của sinh viên (Có Reject AI)** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 5) | TV2 & TV3 | **5 điểm** |
+| **9. Thiết kế UI/UX cuối cùng & Đặc tả màn hình** | [Figma Page 03] & [`design/screen-spec.md`](design/screen-spec.md) | **TV3: Nguyễn Phương Khải** | **20 điểm** |
+| **10. Design System Tokens & 9 Components đủ variants** | [Figma Page 04 & 05] & [`design/DESIGN.md`](design/DESIGN.md) | **TV3: Nguyễn Phương Khải** | **15 điểm** |
+| **11. Interactive Prototype (3 flows, dialog overlay)** | [Figma Page 06] | Cả nhóm | **10 điểm** |
+| **12. Đặc tả Flutter Handoff & 2 bảng ánh xạ** | [`handoff/flutter-handoff.md`](handoff/flutter-handoff.md) | TV4: Đỗ Trọng Tín | **10 điểm** |
+| **13. Tính hoàn chỉnh của Tài liệu & Git Repository** | Toàn bộ Repository & [`README.md`](README.md) | Cả nhóm | **5 điểm** |
 
 ---
 
