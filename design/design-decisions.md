@@ -2,7 +2,7 @@
 **Dự án:** F-Alumni — FPT Alumni Mentorship & Opportunity Network  
 **Môn học:** PRM323 — Cross-Platform Application Development  
 **Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP.HCM  
-**Thành viên:** Trương Chí Trung (SE193059), Nguyễn Phương Khải (SE183590), Đỗ Trọng Tín, Võ Quang Tâm  
+**Thành viên:** Trương Chí Trung (SE193059), Nguyễn Phương Khải (SE183590), Đỗ Trọng Tín, Võ Quang Tâm (SE192621)  
 
 ---
 

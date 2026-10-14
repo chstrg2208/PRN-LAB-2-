@@ -6,7 +6,7 @@
 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm)  
 2. **Nguyễn Phương Khải** — MSSV: **SE183590**  
 3. **Đỗ Trọng Tín** — MSSV: Đang cập nhật  
-4. **Võ Quang Tâm** — MSSV: Đang cập nhật  
+4. **Võ Quang Tâm** — MSSV: **SE192621**  
 
 ---
 
