@@ -2,19 +2,21 @@
 
 > **Môn học:** PRM323 — Cross-Platform Application Development  
 > **Giảng viên hướng dẫn:** ThS. Lê Hoàng Phương (@Lam Phuong / PhuonglhK)  
-> **Sinh viên thực hiện:** Nguyễn Minh Tú  
-> **Mã số sinh viên (MSSV):** SE193059  
-> **Nhóm thực hiện:** PRM Nhóm 4  
-> **Phân hiệu:** Đại học FPT TP. Hồ Chí Minh  
+> **Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP. Hồ Chí Minh  
+> **Danh sách thành viên:**  
+> 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2)  
+> 2. **Nguyễn Phương Khải** — MSSV: **SE183590**  
+> 3. **Đỗ Trọng Tín** — MSSV: *(Đang cập nhật)*  
+> 4. **Võ Quang Tâm** — MSSV: *(Đang cập nhật)*  
 
 ---
 
 ## 📌 1. Giới thiệu Dự án
 
-- **Tên Ứng dụng:** **F-Event — FPT Campus Event Hub**
-- **Chủ đề Đề tài:** *Ứng dụng khám phá, đăng ký vé trực tuyến và điểm danh sự kiện câu lạc bộ / workshop học thuật tích hợp điểm rèn luyện PDP dành cho sinh viên Đại học FPT.*
+- **Tên Ứng dụng:** **F-Alumni — FPT Alumni Mentorship & Opportunity Network**
+- **Chủ đề Đề tài:** *Nền tảng kết nối mạng lưới cựu sinh viên Đại học FPT với sinh viên đang theo học, chia sẻ kinh nghiệm phỏng vấn/đồ án, cơ hội việc làm thực tập OJT và học bổng. Ứng dụng phân chia mạch lạc giữa không gian chung toàn trường và không gian chuyên sâu theo từng nhóm ngành nghề.*
 - **Persona một dòng (One-Line Persona):**  
-  > *"Nguyễn Minh Tú — Sinh viên năm 3 ngành SE tại Đại học FPT cần một kênh tập trung, trực quan để đăng ký workshop công nghệ trong dưới 25 giây và xuất trình mã QR điểm danh nhận điểm rèn luyện PDP tự động trong dưới 5 giây."*
+  > *"Trương Chí Trung — Sinh viên năm 3 ngành Kỹ thuật Phần mềm (SE) tại Đại học FPT cần một kênh chính thống để học hỏi kinh nghiệm từ cựu sinh viên đi trước, nộp CV xin bảo lãnh Referral việc làm OJT trong dưới 20 giây và đặt lịch tư vấn 1-1 qua Google Meet trong dưới 30 giây."*
 
 ---
 
@@ -22,22 +24,19 @@
 
 | Hạng mục | Đường dẫn Liên kết Trực tiếp | Trạng thái Quyền Truy cập |
 | :--- | :--- | :---: |
-| **Figma Design & Prototype (Bắt buộc)** | [Figma File: PRM323 - Lab 2 - F-Event - SE193059](https://www.figma.com/files/team/1552602956705614495/recents-and-sharing/recently-viewed?fuid=1552602953945079261) | 🌐 **Public View** *(Anyone with the link can view)* |
-| **Google Stitch Workspace** | [Google Stitch Project Workspace](https://stitch.withgoogle.com/?pli=1) | Đã xuất UI ban đầu |
-| **GitHub Repository** | `https://github.com/<username>/prm323-lab2-se193059` | Chế độ Public |
-
-> [!NOTE]
-> Link Figma đã được kiểm tra tính khả dụng trong cửa sổ ẩn danh (Incognito/Private Window) theo đúng **Quy tắc truy cập tại Trang 12 của Đề bài**, bảo đảm người chấm không cần đăng nhập vẫn xem được toàn bộ 6 trang và chạy Prototype tương tác.
+| **GitHub Repository Chính thức** | [https://github.com/chstrg2208/PRN-LAB-2-.git](https://github.com/chstrg2208/PRN-LAB-2-.git) | 🌐 **Public** |
+| **Figma Design & Prototype** | [Figma File: PRM323 - Lab 2 - F-Alumni - Nhom 4](https://www.figma.com/files/team/1552602956705614495/recents-and-sharing/recently-viewed?fuid=1552602953945079261) | 🌐 **Public View** *(Anyone with the link can view)* |
+| **Google Stitch Workspace** | [https://stitch.withgoogle.com/?pli=1](https://stitch.withgoogle.com/?pli=1) | Không gian tạo UI AI ban đầu |
 
 ---
 
-## 🤖 3. Danh sách Công cụ AI Đã Sử dụng
+## 🤖 3. Danh sách Công cụ AI Sử dụng
 
 Tuân thủ quy định Liêm chính Học thuật (Academic Integrity), mọi công cụ AI được sử dụng đều được khai báo rõ ràng mục đích:
 
-1. **Google Stitch (stitch.withgoogle.com):** Sử dụng để tạo phiên bản UI ban đầu từ text prompt cho các màn hình chính (Home, Detail, Register, Ticket Pass).
-2. **Claude 3.5 Sonnet / Antigravity AI:** Đóng vai trò chuyên gia phản biện UX (UX Auditor) đánh giá thiết kế theo 10 Usability Heuristics của Jakob Nielsen và tiêu chuẩn tiếp cận W3C WCAG 2.1.
-3. **Figma AI Assistant:** Hỗ trợ kiểm tra độ tương phản màu sắc (Contrast Ratio) và gợi ý cấu trúc Auto Layout.
+1. **Google Stitch (stitch.withgoogle.com):** Sử dụng để tạo phiên bản UI ban đầu từ text prompt cho các màn hình chính (Home Feed, Post Detail, Career Board, Mentor Booking).
+2. **Gemini 2.5 / Claude / Antigravity AI:** Đóng vai trò chuyên gia phản biện UX (UX Auditor) đánh giá thiết kế theo 10 Usability Heuristics của Jakob Nielsen và tiêu chuẩn tiếp cận W3C WCAG 2.1.
+3. **Figma AI Assistant:** Hỗ trợ kiểm tra độ tương phản màu sắc (Contrast Ratio) và hỗ trợ Auto Layout.
 
 ---
 
@@ -46,17 +45,17 @@ Tuân thủ quy định Liêm chính Học thuật (Academic Integrity), mọi c
 Toàn bộ tài liệu và sản phẩm của bài Lab 2 được tổ chức khoa học theo cấu trúc cây thư mục chuẩn:
 
 ```
-prm323-lab2-se193059/
-├── README.md                      ← Bản đồ tổng quan dự án và thông tin sinh viên
+PRN-LAB-2-/
+├── README.md                      ← Bản đồ tổng quan dự án và thông tin thành viên
 ├── ux/
-│   ├── persona.md                 ← Persona chi tiết, bối cảnh FPT, problem statement, success metric
-│   └── user-flow.md               ← Information Architecture (IA) + 3 sơ đồ Mermaid + Bảng ánh xạ
+│   ├── persona.md                 ← Persona chi tiết Trương Chí Trung, bối cảnh OJT, problem statement, success metric
+│   └── user-flow.md               ← Information Architecture (IA) 8 màn hình + 3 sơ đồ Mermaid + Ma trận ánh xạ
 ├── design/
-│   ├── DESIGN.md                  ← Bản mô tả thiết kế cho Stitch (Colors, Typography, Spacing, Radius)
+│   ├── DESIGN.md                  ← Bản mô tả thiết kế cho Stitch (Tokens: Color, Typography, Spacing, Radius)
 │   ├── screen-spec.md             ← Ý đồ thiết kế và nội dung chi tiết của 8 màn hình riêng biệt
-│   └── design-decisions.md        ← Top 10 quyết định thiết kế cốt lõi + Checklist Accessibility & Responsive
+│   └── design-decisions.md        ← Top 10 quyết định thiết kế cốt lõi + Bảng Checklist Accessibility & Responsive
 ├── ai/
-│   └── ai-design-log.md           ← Prompt Stitch nguyên văn, 3 vòng lặp có ý nghĩa, phản biện Nielsen 10 Heuristics
+│   └── ai-design-log.md           ← Prompt Stitch nguyên văn, 3 vòng lặp Before/After, phản biện 10 Heuristics
 ├── assets/
 │   ├── stitch/                    ← Ảnh chụp bằng chứng kết quả Google Stitch và Before/After 3 vòng lặp
 │   └── figma/                     ← Ảnh export kết quả 8 màn hình hoàn thiện từ Figma
@@ -86,20 +85,21 @@ prm323-lab2-se193059/
 
 File Figma được thiết lập theo đúng thứ tự 6 trang theo yêu cầu của Đề bài:
 
-- **Page 01: User Flow:** Sơ đồ luồng trực quan 3 flows (Đăng ký, Điểm danh QR, Hủy vé & Xử lý lỗi), có liên kết trực tiếp tới các khung màn hình.
+- **Page 01: User Flow:** Sơ đồ luồng trực quan 3 flows (Đọc bài & Đặt lịch tư vấn, Nộp CV xin Referral, Xử lý lỗi trùng lịch/mất mạng), có liên kết trực tiếp tới các khung màn hình.
 - **Page 02: Wireframe:** Bản vẽ bố cục Low-Fidelity (thang xám) của toàn bộ 8 màn hình chuẩn kích thước 360 × 800 dp.
 - **Page 03: Final UI:** Toàn bộ 8 màn hình High-Fidelity 360 × 800 dp, đặt cạnh các biến thể trạng thái (Loading Shimmer, Empty State, Error State, Confirmation Dialog).
 - **Page 04: Design System:** Khai báo toàn bộ Design Tokens bằng Figma Variables (Color, Typography, Spacing, Radius, Elevation). Tuyệt đối không gán cứng mã màu.
-- **Page 05: Components:** Thư viện 9 components tái sử dụng dựng bằng Auto Layout 100% và Variants đầy đủ trạng thái (Default, Pressed, Disabled, Loading/Error).
+- **Page 05: Components:** Thư viện 9 components tái sử dụng dựng bằng Auto Layout 100% và Variants đầy đủ trạng thái.
 - **Page 06: Prototype:** Kết nối tương tác hoàn chỉnh cho 3 flows, thiết lập Flow Starting Point, Overlay Modal Dialog và chuyển cảnh mượt mà.
 
 ---
 
 ## ⚡ 6. Sẵn sàng cho Lab 3 (Flutter + Firebase Backend)
 
-Kiến trúc màn hình và mô hình dữ liệu của **F-Event** đã được chuẩn bị sẵn sàng để cài đặt trực tiếp bằng Flutter trong bài **Lab 3**:
+Kiến trúc màn hình và mô hình dữ liệu của **F-Alumni** đã được chuẩn bị sẵn sàng để cài đặt trực tiếp bằng Flutter trong bài **Lab 3**:
 - **Firebase Auth:** Đăng nhập một chạm Google FPT Edu (`@fpt.edu.vn`).
-- **Cloud Firestore:** Quản lý collections `events`, `tickets`, `users`.
-- **Firebase Cloud Messaging (FCM):** Đẩy thông báo nhắc lịch và kích hoạt slot trống từ danh sách chờ Waitlist.
-- **Firebase Remote Config:** Bật/tắt tính năng đăng ký sớm và thông báo khẩn cấp từ xa.
+- **Cloud Firestore:** Quản lý collections `posts`, `jobs`, `mentors`, `bookings`, `users`.
+- **Firebase Storage:** Lưu trữ file CV PDF của sinh viên khi nộp hồ sơ xin Referral.
+- **Firebase Cloud Messaging (FCM):** Đẩy thông báo khi có tin tuyển dụng/học bổng mới theo ngành và nhắc lịch hẹn tư vấn 1-1.
+- **Firebase Remote Config:** Bật/tắt tính năng Referral và thông báo khẩn cấp từ xa.
 - **Firebase Crashlytics:** Giám sát lỗi ứng dụng thời gian thực.

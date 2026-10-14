@@ -1,7 +1,12 @@
 # 👤 UX Analysis: Persona & Problem Statement
-**Dự án:** F-Event — FPT Campus Event Hub  
+**Dự án:** F-Alumni — FPT Alumni Mentorship & Opportunity Network  
 **Môn học:** PRM323 — Cross-Platform Application Development  
-**Sinh viên thực hiện:** Nguyễn Minh Tú (MSSV: SE193059)  
+**Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP.HCM  
+**Thành viên nhóm:**  
+1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm)  
+2. **Nguyễn Phương Khải** — MSSV: **SE183590**  
+3. **Đỗ Trọng Tín** — MSSV: Đang cập nhật  
+4. **Võ Quang Tâm** — MSSV: Đang cập nhật  
 
 ---
 
@@ -9,59 +14,56 @@
 
 | Thuộc tính | Chi tiết |
 | :--- | :--- |
-| **Ảnh đại diện** | ![Nguyen Minh Tu Avatar](https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=250&q=80) |
-| **Họ và tên** | **Nguyễn Minh Tú** |
-| **Độ tuổi** | 20 tuổi (Sinh viên năm 3) |
-| **Vai trò** | Sinh viên chuyên ngành Kỹ thuật Phần mềm (Software Engineering - SE), Đại học FPT; Thành viên Ban Chuyên môn Câu lạc bộ Lập trình F-Code |
+| **Họ và tên** | **Trương Chí Trung** |
+| **Độ tuổi** | 20 tuổi (Sinh viên năm 3, Khóa K19) |
+| **Vai trò** | Sinh viên chuyên ngành Kỹ thuật Phần mềm (Software Engineering - SE), Đại học FPT TP.HCM; Chuẩn bị bước vào kỳ thực tập doanh nghiệp (OJT - On the Job Training) |
 | **Thiết bị sử dụng** | Samsung Galaxy A54 (Android 14, độ phân giải màn hình 360 × 800 dp logic, màn hình 120Hz) |
-| **Khuôn viên học tập** | Phân hiệu Đại học FPT (Campus Quận 9, TP.HCM / Hòa Lạc, Hà Nội) |
+| **Khuôn viên học tập** | Đại học FPT TP.HCM (Khu Công nghệ cao, TP. Thủ Đức) |
 
 ---
 
 ### 1.1. Bối cảnh Hằng ngày (Daily Context)
-- **Lịch học theo block:** Tú học các môn chuyên ngành (như PRM323, PRN231, SWD392) theo từng ca cố định kéo dài 3.5 giờ (ca sáng 07:30 – 11:45 hoặc ca chiều 12:30 – 16:45). Xen kẽ giữa các buổi học là các bài tập đồ án nhóm và tự học khóa học online trên Coursera/EdX.
-- **Áp lực tích lũy điểm PDP:** Để đủ điều kiện tốt nghiệp và duy trì học bổng khuyến khích, Tú bắt buộc phải tích lũy tối thiểu 100 điểm rèn luyện PDP (Personal Development Program) thông qua các hoạt động hội thảo học thuật, workshop kỹ năng mềm và sự kiện ngoại khóa do trường hoặc các CLB tổ chức.
-- **Môi trường hoạt động:** Tú thường xuyên di chuyển giữa các tòa nhà giảng đường, thư viện, sảnh Alpha và hội trường lớn. Tú tranh thủ kiểm tra thông báo và lướt điện thoại trong khoảng 15 phút giải lao giữa các tiết học hoặc khi đang chờ xe buýt/xe công nghệ.
+- **Chuẩn bị đi OJT và tìm định hướng nghề nghiệp:** Trung đang học kỳ 5-6 chuyên ngành SE, chuẩn bị bước vào giai đoạn thực tập OJT tại doanh nghiệp. Trung có nền tảng lập trình tốt nhưng còn bỡ ngỡ về quy trình phỏng vấn thực tế, cách viết CV chuẩn ngành, và lộ trình phát triển lên vị trí Middle/Senior.
+- **Nhu cầu kết nối với cựu sinh viên (Alumni):** Trung rất muốn xin lời khuyên từ các anh chị cựu sinh viên FPT (những người đi trước đã từng học đúng chương trình, hiểu văn hóa trường và hiện đang làm Software Engineer tại các công ty lớn như FPT Software, VNG, Shopee, Google...).
+- **Tìm kiếm cơ hội học bổng & việc làm nội bộ:** Trung muốn tiếp cận các cơ hội tuyển dụng OJT hoặc học bổng thạc sĩ/du học được cựu sinh viên chia sẻ độc quyền hoặc sẵn sàng viết thư bảo lãnh giới thiệu (Referral).
 
 ---
 
 ### 1.2. Mục tiêu (Goals)
-1. **Khám phá sự kiện nhanh chóng:** Nắm bắt tức thời các buổi Tech Talk, Workshop AI/Mobile, cuộc thi Hackathon và sự kiện giao lưu văn hóa phù hợp với thời khóa biểu và sở thích chuyên ngành.
-2. **Đăng ký vé (RSVP) chỉ trong vài giây:** Giành được suất tham dự các workshop hot có giới hạn slot (thường chỉ 50 – 100 chỗ) trước khi form đóng.
-3. **Check-in điểm danh tự động:** Có mã QR điện tử tiện lợi trên điện thoại để quét tại cửa hội trường trong 3 – 5 giây, bảo đảm chắc chắn được ghi nhận điểm PDP mà không cần xếp hàng ký tên giấy.
-4. **Nhắc nhở lịch trình thông minh:** Nhận thông báo đẩy (push notification) nhắc hẹn trước 24 giờ và trước 30 phút để sắp xếp thời gian có mặt đúng giờ.
+1. **Theo dõi kinh nghiệm thực chiến theo chuyên ngành:** Đọc các bài chia sẻ kinh nghiệm phỏng vấn, ôn luyện kỹ thuật, kinh nghiệm làm đồ án tốt nghiệp Capstone và bí quyết săn học bổng được phân loại riêng theo nhóm ngành (Kỹ thuật phần mềm, Trí tuệ nhân tạo, Kinh doanh, Thiết kế đồ họa...).
+2. **Tiếp cận không gian chung toàn trường:** Nắm bắt các thông tin tổng quát bổ ích cho mọi sinh viên FPT (học bổng quốc tế, kỹ năng mềm, sự kiện cựu sinh viên về thăm trường).
+3. **Xin Referral việc làm & thực tập OJT:** Tìm thấy các tin tuyển dụng do chính cựu sinh viên đăng tải, có thể gửi CV và xin suất bảo lãnh giới thiệu nội bộ giúp tăng cơ hội trúng tuyển lên gấp nhiều lần.
+4. **Đặt lịch tư vấn 1-1 với Mentor:** Chủ động chọn khung giờ rảnh và đặt lịch hẹn trao đổi trực tuyến 1-1 qua Google Meet với cựu sinh viên để được review CV và giải đáp thắc mắc.
 
 ---
 
 ### 1.3. Nỗi đau & Rào cản (Pain Points)
-- **Thông tin phân mảnh:** Sự kiện bị phân tán trên hơn 30 Fanpage câu lạc bộ, group Zalo lớp, email phòng CTSV và bảng tin trường. Rất nhiều lần Tú bỏ lỡ workshop bổ ích chỉ vì bài viết bị thuật toán mạng xã hội ẩn đi.
-- **"Cháy vé" chớp nhoáng và thiếu Waitlist:** Các workshop có diễn giả nổi tiếng thường hết sạch slot chỉ sau 10 – 15 phút mở cổng. Khi sinh viên vào chậm thì form đã khóa, không có danh sách chờ (Waitlist) để nhận lại slot nếu có bạn khác hủy vé.
-- **Điểm danh thủ công rườm rà & mất quyền lợi:** Tại cửa hội trường, ban tổ chức dùng bảng ký tên giấy hoặc yêu cầu quét Google Form dài dòng khiến hàng trăm sinh viên chen lấn. Từng có lần Tú tham gia đầy đủ buổi hội thảo nhưng người điểm danh ghi sót MSSV dẫn tới việc không được cập nhật điểm PDP.
-- **Không có cơ chế hủy vé linh hoạt:** Khi có lịch thi bù đột xuất, Tú không thể chủ động hủy vé đã đăng ký, dẫn tới việc lãng phí slot ngồi cho các bạn sinh viên khác đang có nhu cầu thực sự.
+- **Khoảng cách thế hệ và thông tin phân mảnh:** Mạng lưới cựu sinh viên FPT rất đông đảo và thành đạt, nhưng sinh viên khóa dưới không có kênh chính thức nào để liên lạc ngoài việc tự tìm kiếm mò mẫm trên LinkedIn hoặc Facebook cá nhân (thường bị trôi tin nhắn chờ hoặc ngại làm phiền).
+- **Không có sự phân loại theo ngành nghề:** Các bài viết chia sẻ kinh nghiệm trên mạng xã hội thường bị trộn lẫn giữa IT, Marketing, Ngôn ngữ... khiến sinh viên mất rất nhiều thời gian lọc tin phù hợp với chuyên môn của mình.
+- **Rào cản khi xin thực tập OJT:** Nộp hồ sơ đại trà qua các trang tuyển dụng bên ngoài thường bị cạnh tranh khốc liệt và ít khi nhận được phản hồi. Thiếu kênh xin Referral trực tiếp từ cựu sinh viên trường đang làm việc tại doanh nghiệp.
+- **Thiếu công cụ đặt lịch tư vấn chuyên nghiệp:** Khi muốn nhờ cựu sinh viên review CV hay tư vấn nghề nghiệp, việc nhắn tin qua lại để chốt giờ rảnh rất phức tạp, dễ bị quên lịch hoặc trùng lịch học trên trường.
 
 ---
 
 ### 1.4. Thói quen Sử dụng Thiết bị (Device Habits)
-- **Thao tác một tay:** Sử dụng ngón tay cái bên phải để cuộn và chạm màn hình trong lúc đang đi bộ trong khuôn viên trường hoặc tay kia cầm tài liệu/balo.
-- **Môi trường ánh sáng khắc nghiệt:** Sử dụng điện thoại cả dưới ánh nắng gay gắt ở sân trường (cần tương phản chữ cao, không bị lóa) lẫn trong không gian hội trường tối khi diễn giả đang trình chiếu slide chiếu bóng.
-- **Kết nối mạng không ổn định:** Mạng WiFi campus (`FPT_University`) thường bị nghẽn cục bộ vào giờ tan ca hoặc khi hàng trăm người cùng truy cập tại sảnh hội trường tầng hầm.
+- **Thao tác một tay:** Sử dụng smartphone bằng ngón tay cái khi đang ngồi xe buýt đến trường hoặc giữa giờ giải lao tại thư viện.
+- **Môi trường sử dụng:** Đọc bài chia sẻ cả trong không gian phòng học lẫn ngoài trời sảnh trường; kết nối WiFi trường (`FPT_University`) đôi khi chập chờn vào giờ tan tiết.
 
 ---
 
 ### 1.5. Nhu cầu Khả năng Tiếp cận (Accessibility Needs)
-- **Kích thước chữ dễ đọc (WCAG 2.1):** Cỡ chữ nội dung tối thiểu đạt **14 sp** (chuẩn Material Design & WCAG), tiêu đề chính từ **18 – 24 sp**, không dùng các font chữ cách điệu gây khó đọc khi lướt nhanh.
-- **Vùng chạm tương tác lớn:** Mọi nút bấm (Button), biểu tượng (Icon Button), và thẻ bấm (Card) phải có kích thước vùng chạm tối thiểu **48 × 48 dp** theo chuẩn WCAG Success Criterion 2.5.5, giúp thao tác một tay chính xác, tránh bấm nhầm.
-- **Độ tương phản màu sắc cao (Contrast Ratio):** Văn bản thông thường phải đạt độ tương phản tối thiểu **4.5:1** so với màu nền; các thành phần đồ họa và điều khiển UI đạt tối thiểu **3:1**.
-- **Không phụ thuộc vào màu sắc đơn thuần:** Trạng thái sự kiện (Còn slot, Hết slot, Đã đăng ký, Đã hủy) bắt buộc phải đi kèm cả icon và nhãn chữ (Label), không truyền đạt ý nghĩa chỉ bằng màu xanh/đỏ.
+- **Cỡ chữ nội dung dễ đọc (WCAG 2.1):** Văn bản bài viết tối thiểu đạt **14 sp** (body text), tiêu đề từ **18 – 24 sp**, độ tương phản cao (> 4.5:1) để đọc bài viết dài không bị mỏi mắt.
+- **Vùng chạm tương tác lớn:** Nút "Đặt lịch Mentor", "Nộp CV / Xin Referral" và các chip bộ lọc có kích thước vùng chạm tối thiểu **48 × 48 dp** theo chuẩn WCAG 2.5.5.
+- **Không phụ thuộc vào màu sắc:** Phân loại chuyên ngành và trạng thái đơn ứng tuyển (Đã nhận / Đang chờ duyệt / Đã lên lịch) luôn có icon và nhãn văn bản đi kèm.
 
 ---
 
 ## 2. Câu Phát biểu Vấn đề (One-Sentence Problem Statement)
 
-> **"Sinh viên Đại học FPT thiếu một kênh tập trung, trực quan để cập nhật kịp thời các sự kiện/workshop trong trường, đăng ký nhanh chóng trước khi hết slot, và lưu trữ mã vé QR điện tử để check-in điểm danh PDP tự động mà không sợ bị bỏ lỡ hay thất lạc quyền lợi."**
+> **"Sinh viên Đại học FPT thiếu một nền tảng chuyên biệt để kết nối trực tiếp với mạng lưới cựu sinh viên, phân chia rõ ràng giữa không gian chung toàn trường và không gian chuyên sâu theo từng nhóm ngành, gây khó khăn trong việc học hỏi kinh nghiệm thực chiến, xin giới thiệu việc làm/OJT (Referral) và đặt lịch tư vấn nghề nghiệp 1-1."**
 
 ---
 
 ## 3. Tiêu chí Thành công Đo được (Measurable Success Metric)
 
-> **"Sinh viên có thể tìm kiếm, chọn và hoàn tất đăng ký 1 sự kiện bất kỳ trong vòng dưới 25 giây; và mở mã vé QR check-in trong dưới 5 giây ngay từ màn hình chính."**
+> **"Sinh viên có thể tìm kiếm, chọn một bài chia sẻ kinh nghiệm theo đúng chuyên ngành và hoàn tất gửi yêu cầu đặt lịch tư vấn 1-1 với cựu sinh viên Mentor trong vòng dưới 30 giây; và nộp CV xin Referral việc làm OJT trong dưới 20 giây."**

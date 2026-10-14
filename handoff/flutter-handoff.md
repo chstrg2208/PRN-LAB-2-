@@ -1,8 +1,9 @@
 # 🚀 Flutter Developer Handoff Specification
-**Dự án:** F-Event — FPT Campus Event Hub  
+**Dự án:** F-Alumni — FPT Alumni Mentorship & Opportunity Network  
 **Môn học:** PRM323 — Cross-Platform Application Development  
-**Sinh viên thực hiện:** Nguyễn Minh Tú (MSSV: SE193059)  
-**Mục tiêu:** Bản đặc tả kỹ thuật toàn diện để bất kỳ lập trình viên Flutter nào cũng có thể cài đặt chính xác 100% ứng dụng mà không cần phải hỏi lại tác giả, sẵn sàng làm nền tảng cho **Lab 3 (Flutter + Firebase BE)**.
+**Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP.HCM  
+**Thành viên:** Trương Chí Trung (SE193059), Nguyễn Phương Khải (SE183590), Đỗ Trọng Tín, Võ Quang Tâm  
+**Mục tiêu:** Bản đặc tả kỹ thuật chi tiết để lập trình viên Flutter xây dựng giao diện hoàn hảo mà không cần hỏi lại, đồng thời chuẩn bị sẵn sàng cho **Lab 3 (Flutter + Firebase Backend)**.
 
 ---
 
@@ -10,10 +11,8 @@
 
 ### 1.1. Bảng Ánh xạ Design Tokens sang Mã nguồn Flutter (Tokens to Flutter)
 
-Lập trình viên tích hợp trực tiếp bộ Token này vào file cấu hình giao diện `theme/app_theme.dart`:
-
 ```dart
-// Theme code dự kiến cho Flutter
+// Theme code cấu hình cho Flutter
 class AppColors {
   static const Color primary = Color(0xFFF27024); // FPT Orange
   static const Color primaryContainer = Color(0xFFFFF0E6);
@@ -76,16 +75,16 @@ class AppRadius {
 | Component trong Figma (Page 05) | Widget Chuẩn trong Flutter (Material 3) | Gói Thư viện Phụ thuộc (Dependencies nếu có) | Các Thuộc tính / Variant Tương ứng |
 | :--- | :--- | :--- | :--- |
 | **Button (Primary)** | `FilledButton` | Built-in Flutter SDK | `style: FilledButton.styleFrom(backgroundColor: AppColors.primary, minimumSize: Size(double.infinity, 48))` |
-| **Button (Secondary/Waitlist)** | `OutlinedButton` | Built-in Flutter SDK | `style: OutlinedButton.styleFrom(foregroundColor: AppColors.primary, side: BorderSide(color: AppColors.primary))` |
+| **Button (Secondary/Outlined)** | `OutlinedButton` | Built-in Flutter SDK | `style: OutlinedButton.styleFrom(foregroundColor: AppColors.primary, side: BorderSide(color: AppColors.primary))` |
 | **Button (Loading)** | `FilledButton` chứa `SizedBox(width: 24, height: 24, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2.5))` | Built-in | Tắt callback `onPressed: null` để khóa tương tác |
 | **Text Field** | `TextFormField` | Built-in Flutter SDK | `decoration: InputDecoration(border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)), contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 14))` |
-| **Event Card** | `Card` bọc trong `InkWell` | Built-in Flutter SDK | `elevation: 1, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))` |
+| **Post / Job Card** | `Card` bọc trong `InkWell` | Built-in Flutter SDK | `elevation: 1, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))` |
 | **Category Chip** | `FilterChip` hoặc `ChoiceChip` | Built-in Flutter SDK | `shape: StadiumBorder(), selectedColor: AppColors.primaryContainer` |
 | **Navigation Bottom Bar** | `NavigationBar` | Built-in Flutter SDK (Material 3) | `destinations: [NavigationDestination(icon, label)...], indicatorColor: AppColors.primaryContainer` |
 | **App Bar** | `AppBar` hoặc `SliverAppBar` | Built-in Flutter SDK | `backgroundColor: AppColors.secondary, foregroundColor: Colors.white` |
 | **Confirmation Dialog** | `AlertDialog` | Built-in Flutter SDK | Gọi qua `showDialog(context: context, builder: (context) => AlertDialog(...))` |
 | **Loading State (Skeleton)** | `Shimmer.fromColors(...)` | Package `shimmer: ^3.0.0` | `baseColor: Colors.grey[300]!, highlightColor: Colors.grey[100]!` |
-| **Dynamic QR Code** | `QrImageView` | Package `qr_flutter: ^4.1.0` | `data: ticketCode, version: QrVersions.auto, size: 200.0` |
+| **File Picker (CV upload)** | `FilePicker.platform.pickFiles()` | Package `file_picker: ^8.0.0` | Hỗ trợ chọn file định dạng `.pdf`, `.docx` |
 | **Avatar Profile** | `CircleAvatar` | Built-in Flutter SDK | `radius: 24, backgroundImage: NetworkImage(user.photoUrl)` |
 
 ---
@@ -94,442 +93,376 @@ class AppRadius {
 
 ---
 
-### 📱 SCR_01: Authentication / Sign-in Screen
+### 📱 SCR_01: Login & Role Selection Screen
 
 #### 1. Layout Structure
 - `Scaffold`
   - `SafeArea`
-    - `Padding(padding: EdgeInsets.symmetric(horizontal: AppSpacing.lg))`
-      - `Column` (Căn giữa theo chiều dọc `mainAxisAlignment: MainAxisAlignment.center`, **không cuộn trang**):
-        - `AppSpacing.xl`
-        - `Image.asset('assets/images/fpt_event_logo.png', height: 120)`
+    - `Padding(horizontal: 24)`
+      - `Column` (Căn giữa theo chiều dọc `MainAxisAlignment.center`):
+        - `Image.asset('assets/images/f_alumni_logo.png', height: 110)`
         - `AppSpacing.md`
-        - `Text("F-Event", style: AppTypography.displayLarge.copyWith(color: AppColors.primary))`
-        - `Text("Không gian Sự kiện Đại học FPT", style: AppTypography.bodyMedium.copyWith(color: AppColors.textSecondary))`
+        - `Text("F-Alumni", style: AppTypography.displayLarge.copyWith(color: AppColors.primary))`
+        - `Text("Mạng lưới Kết nối Cựu sinh viên & Sinh viên FPT", style: AppTypography.bodyMedium, textAlign: TextAlign.center)`
         - `AppSpacing.xl`
-        - `DropdownButtonFormField<String>` (Chọn campus: HCM, Hòa Lạc, Đà Nẵng, Cần Thơ, Quy Nhơn)
+        - `DropdownButtonFormField<String>` (Chọn vai trò: "Sinh viên trường" hoặc "Cựu sinh viên Mentor")
+        - `AppSpacing.sm`
+        - `DropdownButtonFormField<String>` (Chọn chuyên ngành: "Kỹ thuật phần mềm (SE)", "Trí tuệ nhân tạo (AI)", "Quản trị kinh doanh", "Thiết kế đồ họa"...)
         - `AppSpacing.lg`
         - `OutlinedButton.icon` (Nút Google Sign-in với icon Google)
-        - `AppSpacing.xl`
-        - `Text("Bằng việc đăng nhập, bạn đồng ý với Điều khoản sinh viên FPT", style: AppTypography.labelSmall, textAlign: TextAlign.center)`
+        - `AppSpacing.lg`
+        - `Text("Đăng nhập dành riêng cho tài khoản FPT Edu (@fpt.edu.vn)", style: AppTypography.labelSmall, textAlign: TextAlign.center)`
 
 #### 2. Components Sử dụng
 - `DropdownButtonFormField` (Variant: `Default`, `Bordered`)
-- `Button` (Variant: `GoogleSignInButton` - chiều cao 48dp, viền xám, icon Google đa màu)
+- `Button` (Variant: `GoogleSignInButton` - chiều cao 48dp)
 
 #### 3. States Áp dụng
-- `Default`: Sẵn sàng cho người dùng chọn campus và bấm đăng nhập.
-- `Loading`: Khi người dùng chạm nút Google Sign-in, nút chuyển sang spinner quay tròn, vô hiệu hóa dropdown.
-- `Error`: Hiển thị `SnackBar` màu đỏ ở đáy màn hình nếu tài khoản Google không thuộc miền `@fpt.edu.vn`.
+- `Default`: Sẵn sàng để chọn vai trò/chuyên ngành và bấm đăng nhập.
+- `Loading`: Spinner quay tròn trong nút đăng nhập.
+- `Error`: `SnackBar` báo lỗi nếu email không thuộc `@fpt.edu.vn`.
 
 #### 4. User Interactions & Validation Rules
-- **Chạm vào Dropdown Campus:** Mở danh sách các phân hiệu Đại học FPT. Giá trị mặc định: `"Campus TP. Hồ Chí Minh"`.
-- **Chạm nút "Tiếp tục với Email FPT Edu":** Kích hoạt Google OAuth SDK.
-  - *Validation Rule:* Email trả về bắt buộc phải có đuôi kết thúc bằng `@fpt.edu.vn`.
-  - *Nếu sai đuôi (ví dụ dùng `@gmail.com` cá nhân):* Hiển thị cảnh báo: *"Chỉ chấp nhận tài khoản sinh viên FPT (@fpt.edu.vn). Vui lòng chọn đúng tài khoản."*
+- **Chọn Chuyên ngành:** Bắt buộc sinh viên chọn chuyên ngành trước khi bấm đăng nhập để hệ thống cá nhân hóa Home Feed `SCR_02`.
+- **Validation Email Google:** Bắt buộc đuôi kết thúc `@fpt.edu.vn`.
 
 #### 5. Navigation
-- **Nguồn đến:** Màn hình đầu tiên khi khởi động ứng dụng (nếu chưa lưu token đăng nhập).
-- **Hành động chuyển tiếp:** Khi xác thực Google thành công → Điều hướng thay thế (`context.go('/home')` hoặc `Navigator.pushReplacementNamed`) sang `SCR_02`.
-- **Nút Back hệ thống:** Thoát ứng dụng Android.
+- **Hành động chuyển tiếp:** Đăng nhập thành công → `context.go('/home')` mở `SCR_02`.
+- **Nút Back:** Thoát app Android.
 
 #### 6. Important UI Constraints
-- Touch target nút Google Sign-in tối thiểu **48 × 48 dp**.
-- Text không bị tràn chữ trên màn hình nhỏ nhờ căn lề chuẩn 24dp hai bên.
-- **Hành vi trên màn hình rộng (≥ 600 dp):** Khối form đăng nhập được giới hạn chiều rộng tối đa `maxWidth: 400 dp` và căn chính giữa màn hình máy tính bảng.
+- Nút Google Sign-in đạt chiều cao **48 dp**.
+- Màn hình rộng (≥ 600 dp): Khung form căn giữa với chiều rộng tối đa `400 dp`.
 
 ---
 
-### 📱 SCR_02: Home / Discover Screen
+### 📱 SCR_02: Home Feed Screen (Không gian Chung & Nhóm ngành)
 
 #### 1. Layout Structure
 - `Scaffold`
-  - `AppBar` (Custom Header với lời chào và Avatar)
-  - `RefreshIndicator` (Hỗ trợ kéo xuống để làm mới dữ liệu - Pull-to-refresh)
-    - `CustomScrollView` (**Toàn bộ phần nội dung cuộn mượt mà**):
+  - `AppBar` (Header lời chào và avatar sinh viên)
+  - `RefreshIndicator` (Pull-to-refresh)
+    - `CustomScrollView`:
       - `SliverToBoxAdapter`:
         - `Padding(horizontal: 16)`: Search Bar (`TextField` chiều cao 44dp)
+        - `AppSpacing.sm`
+        - `SegmentedButton` / `TabBar` ngang: **"🌐 Không gian chung"** vs **"💻 Nhóm ngành IT / Software"**
+        - `AppSpacing.sm`
+        - `SizedBox(height: 36)`: `ListView.separated` chứa các chip chủ đề con ("Nổi bật", "Việc làm", "Học bổng", "OJT")
         - `AppSpacing.md`
-        - `SizedBox(height: 36)`: `ListView.separated` nằm ngang chứa các `CategoryChip`
-        - `AppSpacing.lg`
-        - `Text("Sự kiện nổi bật 🔥", style: AppTypography.titleLarge)`
+        - `Text("Bài chia sẻ nổi bật từ Alumni 🔥", style: AppTypography.titleLarge)`
         - `AppSpacing.xs`
-        - `FeaturedEventBanner` (Thẻ Hero Banner nền Navy cao 160dp)
+        - `FeaturedPostCard` (Thẻ bài viết nổi bật có ảnh bìa và tác giả VNG)
         - `AppSpacing.lg`
-        - `Text("Sắp diễn ra", style: AppTypography.titleLarge)`
+        - `Text("Mới nhất trong tuần", style: AppTypography.titleLarge)`
         - `AppSpacing.xs`
-      - `SliverList.builder` / `SliverList.separated`:
-        - Render danh sách các `EventCard` (chiều cao 100dp/thẻ)
-        - `SizedBox(height: 80)` (Khoảng đệm an toàn chân trang tránh bị Bottom Bar che khuất)
-  - `bottomNavigationBar`: `NavigationBar` (4 Destinations)
+      - `SliverList.builder`: Render danh sách `PostCard`
+      - `SliverToBoxAdapter`: `SizedBox(height: 80)` (Khoảng đệm an toàn)
+  - `bottomNavigationBar`: `NavigationBar` (Tab 1 `Trang chủ` ở trạng thái `Selected`)
 
 #### 2. Components Sử dụng
-- `SearchField` (Variant: `Default`, `LeadingIconSearch`)
-- `CategoryChip` (Variant: `Selected` [nền cam viền cam], `Unselected` [nền trắng viền xám])
-- `FeaturedEventBanner` (Variant: `HeroCard` [nền navy, bo góc 12dp, có badge cam])
-- `EventCard` (Variant: `Default`, `Pressed` có hiệu ứng gợn sóng InkWell)
-- `BottomNavigationBar` (Variant: Tab 1 `Home` ở trạng thái `Selected`)
+- `SearchField` (Variant: `Default`)
+- `SpaceSegmentedButton` (Variant: 2 tabs)
+- `CategoryChip` (Variant: `Selected`, `Unselected`)
+- `PostCard` (Variant: `Default`, `Pressed`)
+- `BottomNavigationBar` (4 tabs)
 
 #### 3. States Áp dụng
-- `Loading`: Hiển thị `Shimmer` skeleton loader cho banner và 4 thẻ card mô phỏng.
-- `Populated`: Hiển thị đầy đủ danh sách sự kiện từ Firestore.
-- `Empty`: Khi tìm kiếm từ khóa không có kết quả → Hiển thị hình vẽ vector + *"Không tìm thấy sự kiện phù hợp"*.
-- `Error`: Mất mạng khi tải danh sách → Hiển thị thẻ lỗi với nút "Tải lại trang".
+- `Loading`: Skeleton shimmer 3 bài viết.
+- `Populated`: Danh sách bài viết tải từ Cloud Firestore.
+- `Empty`: Khi nhóm ngành chưa có bài viết mới → Hiện Empty State vector + nút *"Khám phá bài viết chung"*.
 
 #### 4. User Interactions & Validation Rules
-- **Gõ vào thanh Search:** Lọc trực thời (debounce 300ms) danh sách sự kiện bên dưới theo tiêu đề.
-- **Chạm vào Category Chip:** Lọc sự kiện theo chuyên mục (Tech, Âm nhạc, Thể thao). Chỉ cho phép chọn 1 danh mục tại 1 thời điểm.
-- **Chạm vào Thẻ Sự kiện (Event Card / Banner):** Kích hoạt hiệu ứng InkWell và mở màn hình `SCR_03`.
-- **Chuyển Tab trên Bottom Bar:** Chuyển đổi màn hình giữa Home, Schedule, Notifications, Profile.
+- **Chuyển đổi Tab Không gian:** Chuyển đổi linh hoạt giữa các bài viết chung toàn trường và bài viết chuyên sâu của ngành.
+- **Chạm vào Thẻ Bài viết:** Mở màn hình chi tiết `SCR_03`.
 
 #### 5. Navigation
-- **Nguồn đến:** Màn hình gốc sau khi đăng nhập thành công.
-- **Hành động chuyển tiếp:** Chạm sự kiện → `Navigator.pushNamed(context, '/event-detail', arguments: eventId)`.
-- **Nút Back hệ thống:** Hiện dialog hỏi "Bạn có muốn thoát ứng dụng F-Event?".
+- **Hành động chuyển tiếp:** Chạm bài viết → `Navigator.pushNamed(context, '/post-detail', arguments: post)`.
 
 #### 6. Important UI Constraints
-- Touch target của mọi chip danh mục đạt tối thiểu **48 × 48 dp** (chiều cao chip 32dp + padding mở rộng 8dp trên dưới).
-- Tiêu đề sự kiện trên thẻ tối đa 2 dòng, nếu dài hơn áp dụng `TextOverflow.ellipsis`.
-- **Hành vi trên màn hình rộng (≥ 600 dp):** Thay thế `SliverList` bằng `SliverGrid` hiển thị dạng lưới 2 cột hoặc 3 cột; `NavigationBar` chuyển sang `NavigationRail` cố định bên lề trái.
+- Touch target của mọi chip đạt tối thiểu **48 × 48 dp**.
+- Màn hình rộng (≥ 600 dp): Chuyển `SliverList` thành `SliverGrid` 2 cột.
 
 ---
 
-### 📱 SCR_03: Event Detail Screen
+### 📱 SCR_03: Post / Experience Detail Screen
 
 #### 1. Layout Structure
 - `Scaffold`
-  - `CustomScrollView` (**Phần nội dung chính cuộn độc lập bên trên**):
-    - `SliverAppBar` (Chiều cao mở rộng `expandedHeight: 220 dp`, ghim cố định khi cuộn `pinned: true`, hiển thị nút Back và Bookmark)
+  - `CustomScrollView`:
+    - `SliverAppBar` (Hiển thị tiêu đề bài viết, nút Back, nút Bookmark)
     - `SliverToBoxAdapter`:
       - `Padding(all: 16)`:
-        - `Row`: Chip thể loại + Badge số điểm PDP (`+5 PDP`)
-        - `AppSpacing.sm`
-        - `Text(event.title, style: AppTypography.titleLarge)`
+        - `Row`: Chip chuyên mục ("Kinh nghiệm phỏng vấn") + Thời gian đọc ("5 phút đọc")
         - `AppSpacing.xs`
-        - `Text("Tổ chức bởi: " + event.clubName, style: AppTypography.bodyMedium)`
+        - `Text(post.title, style: AppTypography.titleLarge)`
         - `AppSpacing.md`
-        - `Card` thông tin nhanh: Ngày giờ, Địa điểm phòng hội trường
+        - `AlumniAuthorCard` (Avatar, tên cựu SV, chức danh Senior tại VNG, nút xem profile)
+        - `AppSpacing.md`
+        - `Text(post.content, style: AppTypography.bodyLarge)`
         - `AppSpacing.lg`
-        - `Text("Mô tả chi tiết", style: AppTypography.titleMedium)`
-        - `AppSpacing.xs`
-        - `Text(event.description, style: AppTypography.bodyMedium)`
+        - `AttachmentCard` (Tệp checklist PDF đính kèm + nút tải về)
         - `AppSpacing.lg`
-        - `Text("Diễn giả", style: AppTypography.titleMedium)`
-        - `AppSpacing.xs`
-        - `SpeakerCard` (Avatar tròn, tên diễn giả, chức danh)
-        - `SizedBox(height: 100)` (Khoảng trống dự phòng cho thanh Bottom Bar cố định)
-  - `bottomNavigationBar`: **Sticky Bottom Action Bar** (**Cố định ở chân màn hình, không cuộn**):
-    - `Container` (Chiều cao 80dp, nền trắng, viền trên `Border(top: BorderSide(color: AppColors.border))`, đổ bóng Elevation 3)
+        - `Text("Hỏi đáp với tác giả", style: AppTypography.titleMedium)`
+        - `CommentList` (Các câu hỏi và phản hồi)
+        - `SizedBox(height: 100)` (Khoảng trống cho Sticky Bottom Bar)
+  - `bottomNavigationBar`: **Sticky Bottom Action Bar**:
+    - `Container` (Chiều cao 80dp, nền trắng, viền trên, elevation 3):
       - `Padding(horizontal: 16, vertical: 12)`
-        - `Row`:
-          - `Column`: Text "Còn lại: 18/100 chỗ" + Thanh tiến độ nhỏ
-          - `FilledButton` ("ĐĂNG KÝ THAM GIA" - chiều cao 48dp, chiều rộng tối thiểu 160dp)
+        - `FilledButton` ("ĐẶT LỊCH TƯ VẤN 1-1 VỚI MENTOR" - chiều cao 48dp, full-width)
 
 #### 2. Components Sử dụng
-- `SliverAppBar` (Variant: `FlexibleSpaceBar` với ảnh cover sự kiện)
-- `IconButton` (Back button, Bookmark toggle button)
-- `PDPBadge` (Variant: Nền cam nhạt, chữ cam đậm)
-- `SpeakerTile` (Variant: ListTile có CircleAvatar)
-- `StickyBottomBar` (Variant: Có slot counter và nút CTA chính)
+- `AlumniAuthorCard` (Variant: `Compact`)
+- `AttachmentCard` (Variant: `PDF`)
+- `StickyBottomBar` (Variant: `SingleButtonCTA`)
 
 #### 3. States Áp dụng
-- `Default (Available)`: Sự kiện còn chỗ → Nút cam "ĐĂNG KÝ THAM GIA".
-- `Full (Waitlist)`: Sự kiện hết 100% chỗ → Nút chuyển sang Outlined Button viền cam *"THAM GIA DANH SÁCH CHỜ (WAITLIST)"*.
-- `Registered`: Sinh viên đã đăng ký sự kiện này trước đó → Nút đổi thành màu xanh lá *"XEM VÉ CỦA BẠN"*.
-- `Loading`: Skeleton shimmer cho nội dung chi tiết bài viết.
+- `Default`: Nội dung bài viết đầy đủ.
+- `Loading`: Skeleton shimmer bài viết.
 
 #### 4. User Interactions & Validation Rules
-- **Chạm nút Back trên AppBar:** Trở về màn hình trước đó (`Navigator.pop(context)`).
-- **Chạm nút Bookmark:** Đổi icon từ Outline sang Filled, hiển thị thông báo Toast nhanh: *"Đã lưu sự kiện"*.
-- **Chạm nút "ĐĂNG KÝ THAM GIA":** Mở màn hình đăng ký `SCR_04`.
-- **Chạm nút "THAM GIA DANH SÁCH CHỜ":** Gửi yêu cầu xếp hàng lên hệ thống và hiển thị vị trí trên hàng đợi.
+- **Chạm "Đặt lịch tư vấn 1-1 với Mentor":** Điều hướng sang màn hình đặt lịch `SCR_07` với thông tin Mentor được chọn tự động.
+- **Chạm Bookmark:** Lưu bài viết vào mục Hồ sơ `SCR_08`.
 
 #### 5. Navigation
-- **Nguồn đến:** Từ thẻ sự kiện trên `SCR_02` hoặc thông báo `SCR_07`.
-- **Hành động chuyển tiếp:** Chạm Đăng ký → `Navigator.pushNamed(context, '/event-register', arguments: event)`.
-- **Nút Back:** `Navigator.pop(context)` quay lại màn hình gọi trước đó.
+- **Nguồn đến:** Từ `SCR_02`.
+- **Hành động chuyển tiếp:** Chạm Đặt lịch → `Navigator.pushNamed(context, '/mentor-booking', arguments: mentor)`.
 
 #### 6. Important UI Constraints
-- Chiều cao Sticky Bottom Bar luôn cố định **80 dp** (đã bao gồm vùng đệm ngón tay).
-- **Hành vi trên màn hình rộng (≥ 600 dp):** Bố cục chia thành 2 cột: Cột trái (60% chiều rộng) hiển thị ảnh và mô tả chi tiết; Cột phải (40% chiều rộng) hiển thị thông tin thời gian, diễn giả và khối nút Đăng ký cố định dạng Card bên cạnh.
+- Chiều cao Sticky Bottom Bar luôn cố định **80 dp**.
+- Màn hình rộng (≥ 600 dp): Chia thành 2 cột: Cột trái (65% bài viết) và Cột phải (35% thông tin Mentor + nút đặt lịch).
 
 ---
 
-### 📱 SCR_04: Event Registration / Checkout Form Screen
+### 📱 SCR_04: Career & Opportunity Board Screen
 
 #### 1. Layout Structure
 - `Scaffold`
-  - `AppBar(title: Text("Xác nhận Đăng ký"))`
-  - `SingleChildScrollView` (**Cuộn trang tránh tràn bàn phím khi nhập liệu**):
-    - `Padding(all: 16)`:
-      - `Form(key: _formKey)`:
-        - `EventMiniSummaryCard` (Tóm tắt nhanh tên sự kiện, ngày giờ, hội trường)
-        - `AppSpacing.md`
-        - `Text("Thông tin người tham dự", style: AppTypography.titleMedium)`
-        - `AppSpacing.sm`
-        - `TextFormField` (Họ và tên - Pre-filled, `readOnly: true`)
-        - `AppSpacing.sm`
-        - `TextFormField` (MSSV - Pre-filled, `readOnly: true`, có icon verified xanh)
-        - `AppSpacing.sm`
-        - `TextFormField` (Email FPT Edu - Pre-filled, `readOnly: true`)
-        - `AppSpacing.md`
-        - `Text("Hình thức tham gia", style: AppTypography.titleMedium)`
-        - `RadioListTile` (Tham gia Offline tại hội trường)
-        - `RadioListTile` (Xem Livestream trực tuyến)
-        - `AppSpacing.sm`
-        - `TextFormField` (Câu hỏi cho diễn giả - `maxLines: 3`, không bắt buộc)
-        - `AppSpacing.md`
-        - `CheckboxListTile` (Cam kết tham dự đúng giờ nhận điểm PDP)
-        - `AppSpacing.lg`
-        - `FilledButton` ("XÁC NHẬN ĐĂNG KÝ VÉ" - chiều cao 48dp, full-width)
-        - `SizedBox(height: 24)`
+  - `AppBar(title: Text("Cơ hội Việc làm & Học bổng"))`
+  - `Column`:
+    - `Padding(horizontal: 16, vertical: 8)`:
+      - `SizedBox(height: 36)`: `ListView` chứa các chip lọc: "Tất cả", "Thực tập OJT", "Việc làm (Job)", "Học bổng"
+    - `Expanded`:
+      - `ListView.separated`:
+        - Render danh sách các `JobCard`: Logo công ty, tiêu đề vị trí, mức lương, địa điểm, badge *"Cựu SV bảo lãnh Referral"*, nút "Xem & Xin Referral"
+  - `bottomNavigationBar`: `NavigationBar` (Tab 2 `Việc làm` ở trạng thái `Selected`)
 
 #### 2. Components Sử dụng
-- `TextFormField` (Variant: `ReadOnly / Pre-filled` với màu nền `#F5F5F5`; Variant: `Editable` cho câu hỏi)
-- `RadioListTile` (Chọn hình thức)
-- `CheckboxListTile` (Cam kết tham dự)
-- `Button` (Variant: `Primary`, `Loading` với spinner quay tròn)
-- `ErrorBanner` (Variant: Nền đỏ nhạt `#FDF3F2`, viền đỏ, icon cảnh báo, nút Thử lại)
+- `CategoryChip` (Bộ lọc hình thức tuyển dụng)
+- `JobCard` (Variant: Có badge Referral nổi bật)
 
 #### 3. States Áp dụng
-- `Default`: Form sẵn sàng với dữ liệu tài khoản sinh viên đã điền tự động.
-- `Loading`: Khi người dùng bấm xác nhận, nút chuyển sang spinner, các trường nhập khóa tạm thời.
-- `Network Error (Phục hồi)`: Mất kết nối internet → Hiển thị Error Banner ở đầu form, **giữ nguyên toàn bộ dữ liệu form đã điền**, người dùng bấm "Thử lại (Retry)" để gửi lại yêu cầu.
-- `Success`: Mở Dialog Thành công Overlay và chuyển hướng sang `SCR_05`.
+- `Populated`: Danh sách cơ hội tải từ Firestore.
+- `Empty`: Khi không có vị trí nào phù hợp bộ lọc.
 
 #### 4. User Interactions & Validation Rules
-- **Validation Hộp kiểm Cam kết:** Bắt buộc phải đánh dấu chọn cam kết trước khi nút "Xác nhận đăng ký" kích hoạt (`isCommitted == true`).
-- **Xử lý bàn phím mở lên:** Tự động cuộn trang (`ScrollController`) để trường nhập câu hỏi không bị bàn phím ảo che khuất.
-- **Chạm nút "XÁC NHẬN ĐĂNG KÝ VÉ":** Kích hoạt `_formKey.currentState!.validate()`. Nếu hợp lệ → Chuyển sang State Loading → Gửi dữ liệu lên Firestore.
+- **Chạm "Xem & Xin Referral" trên thẻ Job:** Mở chi tiết công việc `SCR_05`.
 
 #### 5. Navigation
-- **Nguồn đến:** Từ nút Đăng ký trên `SCR_03`.
-- **Hành động chuyển tiếp:** Đăng ký thành công → Mở Dialog Thành công → Bấm "Xem vé" → `Navigator.pushReplacementNamed(context, '/ticket-pass')`.
-- **Nút Back:** Hiển thị dialog cảnh báo nếu người dùng đã gõ câu hỏi: *"Bạn có muốn hủy bỏ thông tin đăng ký?"*.
+- **Hành động chuyển tiếp:** Chuyển sang `SCR_05`.
 
 #### 6. Important UI Constraints
-- Chiều cao vùng bấm nút luôn đạt **48 dp**.
-- Toàn bộ form bọc trong `SingleChildScrollView` kết hợp `resizeToAvoidBottomInset: true` trên `Scaffold` để triệt tiêu lỗi `RenderFlex overflowed by XX pixels`.
-- **Hành vi trên màn hình rộng (≥ 600 dp):** Khung form giới hạn chiều rộng tối đa `500 dp` căn giữa màn hình.
+- Chiều cao mỗi thẻ Job đạt chuẩn tối thiểu **110 dp**.
+- Màn hình rộng (≥ 600 dp): Chuyển thành dạng lưới 2 cột.
 
 ---
 
-### 📱 SCR_05: Ticket Pass / Dynamic QR Check-in Screen
+### 📱 SCR_05: Job Detail & Referral Apply Screen
 
 #### 1. Layout Structure
-- `Scaffold(backgroundColor: AppColors.secondary)` (Nền xanh Navy trang trọng)
-  - `AppBar(backgroundColor: Colors.transparent, elevation: 0, title: Text("Vé Tham Dự Sự Kiện"))`
+- `Scaffold`
+  - `AppBar(title: Text("Chi tiết Tuyển dụng & Referral"))`
+  - `SingleChildScrollView`:
+    - `Padding(all: 16)`:
+      - `JobHeaderCard` (Tên vị trí, công ty, lương, địa điểm)
+      - `AppSpacing.md`
+      - `ReferralAlumniNoteCard` (Ghi chú từ cựu sinh viên bảo lãnh)
+      - `AppSpacing.md`
+      - `Text("Mô tả công việc (JD) & Quyền lợi", style: AppTypography.titleMedium)`
+      - `Text(job.description, style: AppTypography.bodyMedium)`
+      - `AppSpacing.lg`
+      - `Text("Nộp CV xin Referral", style: AppTypography.titleMedium)`
+      - `UploadCVCard` (Nút chọn file PDF, hiển thị tên file: `TruongChiTrung_SE_CV.pdf`)
+      - `AppSpacing.sm`
+      - `TextFormField` (Thư ngỏ gửi cựu SV - `maxLines: 4`)
+      - `AppSpacing.lg`
+      - `FilledButton` ("GỬI YÊU CẦU XIN REFERRAL" - chiều cao 48dp)
+      - `SizedBox(height: 24)`
+
+#### 2. Components Sử dụng
+- `UploadCVCard` (Variant: `FileAttached` có icon PDF và dung lượng)
+- `TextFormField` (Nhập thư ngỏ)
+- `Button` (Variant: `Primary`, `Loading`)
+- `ErrorBanner` (Variant: Hiển thị khi mất mạng và bảo lưu form)
+
+#### 3. States Áp dụng
+- `Default`: Sẵn sàng nộp hồ sơ.
+- `Loading`: Đang upload CV lên Firebase Storage.
+- `Network Error (Phục hồi)`: Mất kết nối internet → Hiển thị Error Banner, **giữ nguyên toàn bộ text thư ngỏ và file CV**, bấm "Thử lại (Retry)" để gửi lại.
+
+#### 4. User Interactions & Validation Rules
+- **Validation File CV:** Bắt buộc định dạng `.pdf` hoặc `.docx`, dung lượng tối đa 10MB.
+
+#### 5. Navigation
+- **Hành động chuyển tiếp:** Gửi thành công → Mở Dialog xác nhận → Trở về `SCR_04` hoặc chuyển sang xem hồ sơ tại `SCR_08`.
+
+#### 6. Important UI Constraints
+- `Scaffold` có `resizeToAvoidBottomInset: true` tránh bàn phím che khuất ô nhập thư ngỏ.
+
+---
+
+### 📱 SCR_06: Alumni Mentors Directory Screen
+
+#### 1. Layout Structure
+- `Scaffold`
+  - `AppBar(title: Text("Danh bạ Cựu sinh viên FPT"))`
+  - `Column`:
+    - `Padding(horizontal: 16, vertical: 8)`:
+      - `SizedBox(height: 36)`: Chip lọc công ty: "Tất cả", "FPT Software", "VNG", "Google", "Shopee"
+    - `Expanded`:
+      - `ListView.separated`:
+        - Render các `MentorCard`: Avatar tròn, Tên cựu SV, Niên khóa, Chức danh, Công ty, Lĩnh vực tư vấn, Đánh giá sao, Nút "Đặt lịch tư vấn 1-1"
+  - `bottomNavigationBar`: `NavigationBar` (Tab 3 `Mentors` ở trạng thái `Selected`)
+
+#### 2. Components Sử dụng
+- `MentorCard` (Variant: `FullBio`)
+- `RatingBadge` (5.0 ⭐)
+
+#### 3. States Áp dụng
+- `Populated`: Danh bạ cựu sinh viên.
+- `Empty`: Không tìm thấy mentor theo công ty lọc.
+
+#### 4. User Interactions & Validation Rules
+- **Chạm "Đặt lịch tư vấn 1-1":** Mở màn hình đặt lịch `SCR_07`.
+
+#### 5. Navigation
+- **Hành động chuyển tiếp:** Chuyển sang `SCR_07`.
+
+#### 6. Important UI Constraints
+- Nút bấm trên mỗi thẻ Mentor đạt chiều cao tối thiểu **48 dp**.
+
+---
+
+### 📱 SCR_07: Mentor Booking & Session Pass Screen
+
+#### 1. Layout Structure
+- `Scaffold(backgroundColor: AppColors.secondary)`
+  - `AppBar(title: Text("Đặt lịch Hẹn Tư vấn 1-1"))`
   - `Center`:
     - `SingleChildScrollView`:
       - `Padding(all: 20)`:
-        - `TicketContainer` (Thẻ vé trắng bo góc 16dp, có vết cắt hình bán nguyệt ở hai bên mép giữa):
-          - `Container` đầu vé (Màu FPT Orange): Tên sự kiện, thời gian, hội trường
-          - `Padding(all: 16)`:
-            - `Row`: Badge trạng thái vé (`● VÉ HỢP LỆ` viền xanh lá) + Mã số ghế
-            - `Divider` nét đứt cách điệu (Dashed line divider)
-            - `Center`:
-              - `QrImageView` (Mã QR động kích thước 200 × 200 dp)
-            - `Text("Xuất trình mã này cho Ban tổ chức tại cửa Hội trường", style: AppTypography.labelSmall)`
-            - `AppSpacing.md`
-            - `StudentInfoSummary`: Tên ("Nguyễn Minh Tú"), MSSV ("SE193059"), Mã vé
+        - `BookingCard` (Thẻ trắng bo góc 16dp):
+          - Header: Tóm tắt thông tin Mentor được chọn
+          - `AppSpacing.md`
+          - `Text("Chọn ngày hẹn", style: AppTypography.titleSmall)`
+          - `DatePickerStrip` (Dải ngày ngang trong tuần)
+          - `AppSpacing.sm`
+          - `Text("Khung giờ rảnh khả dụng", style: AppTypography.titleSmall)`
+          - `Wrap`: Các chip giờ rảnh (`09:00 - 09:45`, `14:00 - 14:45`, `20:00 - 20:45`)
+          - `AppSpacing.md`
+          - `TextFormField` ("Chủ đề bạn muốn hỏi Mentor")
+          - `AppSpacing.lg`
+          - `FilledButton` ("XÁC NHẬN ĐẶT LỊCH HẸN (GOOGLE MEET)")
         - `AppSpacing.lg`
-        - `OutlinedButton.icon` ("LƯU VÉ VÀO THƯ VIỆN ẢNH" - Nút viền trắng, chữ trắng, cao 48dp)
-        - `AppSpacing.sm`
-        - `TextButton` ("Hủy đăng ký vé" - Chữ màu vàng cảnh báo/đỏ nhạt)
+        - `SessionPassCard` (Thẻ lịch hẹn sau khi đặt thành công: Link Google Meet, Mã lịch hẹn, Nút thêm vào Google Calendar, Nút hủy lịch)
 
 #### 2. Components Sử dụng
-- `TicketContainer` (Custom Shape Border có 2 vết khuyết bán nguyệt)
-- `QrImageView` (Mã QR động từ thư viện `qr_flutter`)
-- `Badge` (Variant: `Valid` màu xanh lá, `Used` màu xanh đậm, `Cancelled` màu xám)
-- `Button` (OutlinedButton trắng cho hành động lưu ảnh, TextButton cho hành động hủy vé)
-- `ConfirmationDialog` (Variant: Modal xác nhận hủy vé mở dưới dạng Overlay)
+- `TimeSlotChip` (Variant: `Available`, `Selected`, `Conflict/Disabled`)
+- `SessionPassCard` (Variant: `Confirmed` màu xanh lá)
+- `ConfirmationDialog` (Xác nhận hủy lịch)
 
 #### 3. States Áp dụng
-- `Valid (Hợp lệ)`: Mã QR hiển thị rõ nét, badge xanh lá cây.
-- `Checked-in (Đã điểm danh)`: Sau khi được quét tại cửa → Badge đổi thành "ĐÃ ĐIỂM DANH", mã QR mờ đi kèm dấu tích xanh to bản.
-- `Cancelled (Đã hủy)`: Khi sinh viên xác nhận hủy vé → Mã QR bị gạch chéo mờ, badge đổi thành "ĐÃ HỦY VÉ".
+- `Booking Form`: Chọn giờ và nhập chủ đề.
+- `Conflict Error`: Nếu khung giờ vừa bị người khác đặt → Hiện Alert Dialog gợi ý 2 khung giờ kế tiếp.
+- `Confirmed Pass`: Hiển thị thẻ lịch hẹn hoàn chỉnh.
 
 #### 4. User Interactions & Validation Rules
-- **Tự động kích hoạt khi mở màn hình:** Tự động thiết lập độ sáng màn hình lên 100% (sử dụng plugin `screen_brightness` nếu có) để máy quét của ban tổ chức đọc mã nhanh nhất.
-- **Chạm nút "LƯU VÉ VÀO THƯ VIỆN ẢNH":** Chụp màn hình thẻ vé lưu thành file ảnh PNG vào bộ sưu tập máy để dùng offline.
-- **Chạm nút "Hủy đăng ký vé":** Kích hoạt `showDialog()` mở `ConfirmationDialog` với thông điệp: *"Bạn có chắc chắn muốn hủy vé? Thao tác này sẽ nhường slot cho bạn sinh viên đang đợi trong danh sách chờ."*
+- **Chạm "Hủy lịch hẹn":** Mở Confirmation Dialog 2 bước giải thích quyền lợi nhường khung giờ cho bạn khác.
 
 #### 5. Navigation
-- **Nguồn đến:** Từ form đăng ký `SCR_04` hoặc từ danh sách sự kiện cá nhân `SCR_06`.
-- **Hành động chuyển tiếp:** Chạm Back → Trở về màn hình `SCR_06` (My Schedule).
-- **Nút Back:** Trở về danh sách vé.
+- **Hành động chuyển tiếp:** Đặt xong → Chuyển sang lưu vào `SCR_08`.
 
 #### 6. Important UI Constraints
-- Mã QR Code luôn giữ tỷ lệ vuông kích thước tối thiểu **200 × 200 dp**, khoảng cách lề an toàn (quiet zone) xung quanh mã tối thiểu 16 dp.
-- **Hành vi trên màn hình rộng (≥ 600 dp):** Khung vé giữ chiều rộng cố định `360 dp` nằm giữa màn hình nền xanh Navy.
+- Thẻ Session Pass giữ chiều rộng cố định `360 dp` căn giữa màn hình.
 
 ---
 
-### 📱 SCR_06: My Schedule Screen
+### 📱 SCR_08: Profile & My Network Screen
 
 #### 1. Layout Structure
 - `Scaffold`
-  - `AppBar(title: Text("Lịch trình Sự kiện"))`
-  - `Column`:
-    - `TabBar` (3 Tabs: "Sắp tới", "Chờ duyệt (Waitlist)", "Lịch sử")
-    - `Expanded`:
-      - `TabBarView`:
-        - Tab 1: `ListView.separated` chứa các thẻ sự kiện sắp tới có nút "Xem vé QR"
-        - Tab 2: `ListView.separated` chứa các sự kiện trong Waitlist kèm badge số thứ tự hàng chờ
-        - Tab 3: `ListView.separated` chứa lịch sử các sự kiện đã tham gia và điểm PDP đã cộng
-  - `bottomNavigationBar`: `NavigationBar` (Tab 2 `Schedule` ở trạng thái `Selected`)
-
-#### 2. Components Sử dụng
-- `TabBar` (Variant: Primary indicator màu cam FPT)
-- `ScheduleCard` (Variant: Có vạch chỉ báo thời gian đếm ngược)
-- `WaitlistCard` (Variant: Hiển thị badge vàng vị trí hàng đợi)
-- `EmptyStateWidget` (Variant: Vector minh họa lịch trống + Nút CTA "Khám phá ngay")
-
-#### 3. States Áp dụng
-- `Populated`: Hiển thị danh sách vé tương ứng với từng tab.
-- `Empty State`: Khi chưa có vé nào trong tab → Hiển thị hình vẽ minh họa thân thiện, dòng chữ *"Bạn chưa đăng ký sự kiện nào"* và nút *"Khám phá sự kiện ngay"*.
-- `Loading`: Skeleton shimmer 3 thẻ hàng ngang.
-
-#### 4. User Interactions & Validation Rules
-- **Vuốt ngang (Swipe):** Vuốt qua lại giữa 3 tab "Sắp tới", "Chờ duyệt", "Lịch sử".
-- **Chạm vào thẻ sự kiện:** Mở chi tiết vé `SCR_05`.
-- **Chạm nút "Khám phá ngay" trên Empty State:** Tự động chuyển đổi tab điều hướng về Tab 1 `SCR_02` (Home).
-
-#### 5. Navigation
-- **Nguồn đến:** Tab 2 trên Bottom Navigation Bar.
-- **Hành động chuyển tiếp:** Chạm vé → Mở `SCR_05`.
-- **Nút Back:** Chuyển về Tab Home `SCR_02`.
-
-#### 6. Important UI Constraints
-- Chiều cao mỗi thẻ trong lịch đạt chuẩn tối thiểu **80 dp**, touch target rộng rãi.
-- **Hành vi trên màn hình rộng (≥ 600 dp):** Hiển thị dạng Split-view: Cột trái là danh sách lịch sự kiện, Cột phải là bản xem trước của vé QR được chọn.
-
----
-
-### 📱 SCR_07: Notifications Screen
-
-#### 1. Layout Structure
-- `Scaffold`
-  - `AppBar(title: Text("Thông báo"), actions: [TextButton("Đã đọc tất cả")])`
-  - `ListView.separated`:
-    - Nhóm thông báo "Hôm nay":
-      - `NotificationTile` (Nhắc lịch: Icon chuông cam, tiêu đề, thời gian diễn ra, thời gian gửi "15 phút trước")
-      - `NotificationTile` (Mở slot Waitlist: Icon vé xanh, nút "Nhận vé ngay trong 15p")
-    - Nhóm thông báo "Trước đó":
-      - `NotificationTile` (Cộng điểm PDP: Icon sao vàng, thông báo cộng +5 điểm)
-      - `NotificationTile` (Đổi phòng học: Icon cảnh báo)
-  - `bottomNavigationBar`: `NavigationBar` (Tab 3 `Notifications` ở trạng thái `Selected`)
-
-#### 2. Components Sử dụng
-- `NotificationTile` (Variant: `Unread` có nền cam nhạt và chấm cam tròn; Variant: `Read` nền trắng)
-- `CategoryBadge` trên thông báo
-- `EmptyStateWidget` (Khi không có thông báo mới)
-
-#### 3. States Áp dụng
-- `Populated`: Hiển thị danh sách các tin nhắn đẩy từ Firebase Cloud Messaging.
-- `Unread / Read`: Phân biệt trực quan giữa thông báo đã xem và chưa xem bằng màu nền và icon.
-- `Empty`: Hiển thị hình minh họa chuông ngủ yên và chữ *"Không có thông báo mới"*.
-
-#### 4. User Interactions & Validation Rules
-- **Chạm vào thông báo nhắc lịch:** Điều hướng trực tiếp đến màn hình chi tiết sự kiện `SCR_03` hoặc vé QR `SCR_05`.
-- **Chạm thông báo mở slot Waitlist:** Mở trực tiếp hộp thoại xác nhận nhận vé trong thời hạn 15 phút.
-- **Vuốt ngang (Dismissible):** Vuốt sang trái để xóa thông báo khỏi danh sách.
-
-#### 5. Navigation
-- **Nguồn đến:** Tab 3 trên Bottom Bar hoặc mở ứng dụng từ Push Notification ngoài màn hình khóa Android.
-- **Hành động chuyển tiếp:** Điều hướng sâu (Deep linking) vào thẳng sự kiện liên quan.
-- **Nút Back:** Trở về Tab Home `SCR_02`.
-
-#### 6. Important UI Constraints
-- Chiều cao dòng thông báo tối thiểu **64 dp**, vùng bấm bao trọn toàn bộ thẻ.
-- **Hành vi trên màn hình rộng (≥ 600 dp):** Danh sách thông báo căn giữa với chiều rộng tối đa `600 dp`.
-
----
-
-### 📱 SCR_08: Profile & PDP Tracking Screen
-
-#### 1. Layout Structure
-- `Scaffold`
-  - `AppBar(title: Text("Hồ sơ & Điểm rèn luyện"))`
+  - `AppBar(title: Text("Hồ sơ & Lịch tư vấn"))`
   - `SingleChildScrollView`:
     - `Padding(all: 16)`:
-      - `StudentProfileCard` (Avatar tròn, Họ tên "Nguyễn Minh Tú", MSSV "SE193059", Khóa K19)
+      - `StudentProfileCard` (Avatar, Tên Trương Chí Trung, MSSV SE193059, Ngành SE K19)
       - `AppSpacing.md`
-      - `PDPProgressDashboardCard` (Thẻ theo dõi tiến độ điểm PDP):
-        - `Row`: Vòng tròn tiến độ tròn `CircularProgressIndicator` (85/100 Điểm PDP) + Thông tin số sự kiện đã tham gia
+      - `TabBar` (3 Tabs: "Lịch tư vấn", "Hồ sơ Referral", "Bài viết đã lưu")
+      - `AppSpacing.sm`
+      - Danh sách các thẻ tương ứng theo tab được chọn
       - `AppSpacing.lg`
-      - `Text("Cài đặt ứng dụng", style: AppTypography.titleMedium)`
-      - `AppSpacing.xs`
-      - `Card`:
-        - `ListTile` (Icon danh mục: "Chủ đề sự kiện yêu thích", trailing arrow)
-        - `Divider`
-        - `ListTile` (Icon chuông: "Cài đặt thông báo nhắc nhở")
-        - `Divider`
-        - `ListTile` (Icon bảo mật: "Điều khoản & Quyền riêng tư")
-        - `Divider`
-        - `ListTile` (Icon đăng xuất màu đỏ: "Đăng xuất tài khoản")
-  - `bottomNavigationBar`: `NavigationBar` (Tab 4 `Profile` ở trạng thái `Selected`)
+      - `Text("Cài đặt tài khoản", style: AppTypography.titleMedium)`
+      - `Card`: Các `ListTile` cài đặt thông báo, đổi ngành, đăng xuất
+  - `bottomNavigationBar`: `NavigationBar` (Tab 4 `Hồ sơ` ở trạng thái `Selected`)
 
 #### 2. Components Sử dụng
-- `StudentProfileCard` (Variant: Card trắng, avatar tròn, badge ngành SE)
-- `PDPProgressDashboardCard` (Variant: Card nền FPT Navy, chữ trắng, vòng tròn tiến độ màu cam FPT)
-- `SettingsListTile` (Variant: Standard, Destructive chữ đỏ cho đăng xuất)
-- `AlertDialog` (Hộp thoại xác nhận đăng xuất)
+- `StudentProfileCard`
+- `TabBar` (3 tabs quản lý)
+- `ListTile` (Cài đặt)
 
 #### 3. States Áp dụng
-- `Populated`: Hiển thị thông tin sinh viên và điểm PDP đồng bộ từ máy chủ.
-- `Loading`: Shimmer avatar và thanh tiến độ.
+- `Populated`: Thông tin cá nhân và dữ liệu lưu trữ.
 
 #### 4. User Interactions & Validation Rules
-- **Chạm vào Đăng xuất:** Mở `AlertDialog` xác nhận: *"Bạn có chắc chắn muốn đăng xuất tài khoản FPT Edu khỏi thiết bị này?"*.
-- **Chạm "Xác nhận đăng xuất":** Xóa token xác thực cục bộ và chuyển hướng thay thế về màn hình `SCR_01` (Login Screen).
+- **Chạm Đăng xuất:** Mở AlertDialog xác nhận.
 
 #### 5. Navigation
-- **Nguồn đến:** Tab 4 trên Bottom Navigation Bar.
-- **Hành động chuyển tiếp:** Đăng xuất → Điều hướng về `SCR_01`.
-- **Nút Back:** Trở về Tab Home `SCR_02`.
+- **Hành động chuyển tiếp:** Đăng xuất → Chuyển về `SCR_01`.
 
 #### 6. Important UI Constraints
-- Vùng chạm của mỗi mục cài đặt `ListTile` đạt tối thiểu **48 dp** chiều cao.
-- **Hành vi trên màn hình rộng (≥ 600 dp):** Khối Profile và Dashboard điểm PDP xếp thành 2 cột song song.
+- Chiều cao các `ListTile` tối thiểu **48 dp**.
 
 ---
 
 ## 3. Định hướng Kiến trúc Lab 3 (Flutter + Firebase Backend)
 
-Bản đặc tả thiết kế này được xây dựng tương thích 100% với kiến trúc dịch vụ Firebase cho bài **Lab 3** sắp tới của giảng viên:
+Bản đặc tả thiết kế này được thiết kế tương thích 100% với các dịch vụ Firebase cho bài **Lab 3**:
 
 ```mermaid
 graph LR
     subgraph FlutterApp ["Flutter Mobile App (Lab 3)"]
-        UI_Auth[SCR_01: Login]
-        UI_Event[SCR_02 & 03: Events]
-        UI_Ticket[SCR_04 & 05: Registration & QR]
-        UI_Notif[SCR_07: Notifications]
-        UI_Remote[Remote Feature Flags]
+        UI_Auth[SCR_01: Login & Role]
+        UI_Feed[SCR_02 & 03: Posts]
+        UI_Job[SCR_04 & 05: Jobs & Referral]
+        UI_Book[SCR_06 & 07: Mentors & Booking]
+        UI_User[SCR_08: Profile & Network]
     end
 
     subgraph FirebaseBE ["Firebase Cloud Backend Services"]
-        FB_Auth[(Firebase Authentication\nGoogle OAuth @fpt.edu.vn)]
-        FB_Store[(Cloud Firestore\nCollections: events, tickets, users)]
-        FB_FCM[(Firebase Cloud Messaging\nPush Notifications & Topic)]
-        FB_Config[(Firebase Remote Config\nBật/Tắt tính năng bán vé)]
-        FB_Crash[(Firebase Crashlytics\nTheo dõi lỗi crash thời gian thực)]
+        FB_Auth[(Firebase Auth\nGoogle OAuth @fpt.edu.vn)]
+        FB_Store[(Cloud Firestore\nCollections: posts, jobs, mentors, bookings, users)]
+        FB_Storage[(Firebase Storage\nLưu trữ file CV PDF của sinh viên)]
+        FB_FCM[(Firebase Cloud Messaging\nĐẩy tin Job mới & Nhắc lịch Meet)]
+        FB_Config[(Remote Config\nBật/Tắt tính năng Referral)]
+        FB_Crash[(Crashlytics\nTheo dõi crash real-time)]
     end
 
     UI_Auth <--> FB_Auth
-    UI_Event <--> FB_Store
-    UI_Ticket <--> FB_Store
-    UI_Notif <--> FB_FCM
-    UI_Remote <--> FB_Config
-    FlutterApp -. Log errors .-> FB_Crash
+    UI_Feed <--> FB_Store
+    UI_Job <--> FB_Store
+    UI_Job <--> FB_Storage
+    UI_Book <--> FB_Store
+    UI_Feed <--> FB_FCM
+    FlutterApp -. Log .-> FB_Crash
 ```
 
-1. **Firebase Authentication:** Quản lý phiên đăng nhập Google với quy tắc kiểm tra miền email `hd == "fpt.edu.vn"`.
-2. **Cloud Firestore Data Models:**
-   - Collection `events`: `{ eventId, title, clubName, bannerUrl, startTime, venue, totalSlots, registeredSlots, pdpPoints, isWaitlistActive }`.
-   - Collection `tickets`: `{ ticketId, eventId, studentId, studentName, studentEmail, qrDataCode, status: 'valid' | 'used' | 'cancelled', createdAt }`.
-   - Collection `users`: `{ uid, mssv, fullName, email, currentPdpPoints, registeredEventIds: [] }`.
-3. **Firebase Cloud Messaging (FCM):** Đăng ký Topic thông báo theo chuyên mục (ví dụ `topics/tech_events`) và gửi thông báo nhắc lịch tự động trước 24 giờ và 1 giờ qua Cloud Functions.
-4. **Firebase Remote Config:** Kiểm soát các biến cấu hình từ xa như cờ bật tắt đăng ký sớm (`early_bird_rsvp_enabled`), số slot tối đa, và banner thông báo khẩn cấp của trường mà không cần phát hành lại bản build app.
-5. **Firebase Crashlytics:** Theo dõi các lỗi phát sinh trong quá trình quét mã QR và gửi đơn đăng ký trên thiết bị của sinh viên.
+1. **Firebase Authentication:** Quản lý đăng nhập Google với quy tắc kiểm tra email `@fpt.edu.vn`.
+2. **Cloud Firestore Collections:**
+   - Collection `posts`: `{ postId, title, content, category, major: 'SE' | 'AI' | 'general', authorId, authorName, authorCompany, createdAt }`.
+   - Collection `jobs`: `{ jobId, title, company, salary, location, major, alumniReferralId, deadline, createdAt }`.
+   - Collection `mentors`: `{ mentorId, fullName, graduationYear, currentCompany, currentRole, availableSlots: [] }`.
+   - Collection `bookings`: `{ bookingId, studentId, studentName, mentorId, meetLink, timeSlot, status: 'confirmed' | 'cancelled' }`.
+   - Collection `users`: `{ uid, mssv, fullName, email, role: 'student' | 'alumni', major, savedPostIds: [], appliedJobIds: [] }`.
+3. **Firebase Storage:** Lưu trữ file CV `.pdf` khi sinh viên nộp hồ sơ xin Referral.
+4. **Firebase Cloud Messaging (FCM):** Đăng ký Topic theo ngành (ví dụ `topics/major_se_jobs`) và đẩy thông báo nhắc hẹn trước 15 phút.
+5. **Firebase Remote Config:** Kiểm soát cờ tính năng mở cổng nhận Referral từ cựu sinh viên.
+6. **Firebase Crashlytics:** Giám sát lỗi ứng dụng thời gian thực.

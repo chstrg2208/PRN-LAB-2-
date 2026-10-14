@@ -1,23 +1,24 @@
 # 📱 Screen Specifications: Detailed Design Intent & Content Breakdown
-**Dự án:** F-Event — FPT Campus Event Hub  
+**Dự án:** F-Alumni — FPT Alumni Mentorship & Opportunity Network  
 **Môn học:** PRM323 — Cross-Platform Application Development  
-**Sinh viên thực hiện:** Nguyễn Minh Tú (MSSV: SE193059)  
+**Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP.HCM  
+**Thành viên:** Trương Chí Trung (SE193059), Nguyễn Phương Khải (SE183590), Đỗ Trọng Tín, Võ Quang Tâm  
 
 ---
 
 ## 1. Danh sách 8 Màn hình Độc lập trong Hệ thống
 
-Hệ thống bao gồm 8 màn hình riêng biệt (không tính dialog hay các state variants), mỗi màn hình được thiết kế nhằm phục vụ một nhiệm vụ cụ thể của sinh viên và liên kết chặt chẽ vào 3 User Flows:
+Hệ thống bao gồm 8 màn hình riêng biệt (không tính dialog hay các state variants), mỗi màn hình được thiết kế nhằm phục vụ một nhiệm vụ cụ thể và liên kết chặt chẽ vào 3 User Flows:
 
 ```
-SCR_01: Authentication / Sign-in Screen (Đăng nhập FPT Edu Google OAuth)
-SCR_02: Home / Discover Screen (Khám phá & Bộ lọc sự kiện)
-SCR_03: Event Detail Screen (Chi tiết sự kiện, diễn giả & Sticky CTA)
-SCR_04: Event Registration Screen (Form điền thông tin đăng ký vé)
-SCR_05: Ticket Pass / QR Check-in Screen (Vé điện tử & Mã QR điểm danh)
-SCR_06: My Schedule Screen (Quản lý lịch sự kiện cá nhân & Waitlist)
-SCR_07: Notifications Screen (Thông báo nhắc lịch FCM & Mở slot)
-SCR_08: Profile & PDP Tracking Screen (Hồ sơ sinh viên & Điểm rèn luyện)
+SCR_01: Login & Role Selection Screen (Xác thực Google FPT & Chọn vai trò/ngành)
+SCR_02: Home Feed Screen (Không gian chung toàn trường & Nhóm ngành chuyên sâu)
+SCR_03: Post / Experience Detail Screen (Chi tiết bài chia sẻ kinh nghiệm & Bio Mentor)
+SCR_04: Career & Opportunity Board Screen (Bảng tin OJT, Việc làm & Học bổng)
+SCR_05: Job Detail & Referral Apply Screen (Chi tiết công việc & Nộp CV xin Referral)
+SCR_06: Alumni Mentors Directory Screen (Danh bạ Cựu sinh viên & Bộ lọc công ty)
+SCR_07: Mentor Booking & Session Pass Screen (Đặt lịch hẹn 1-1 Google Meet & Vé hẹn)
+SCR_08: Profile & My Network Screen (Hồ sơ cá nhân, kho CV & Lịch tư vấn đã đặt)
 ```
 
 ---
@@ -26,131 +27,137 @@ SCR_08: Profile & PDP Tracking Screen (Hồ sơ sinh viên & Điểm rèn luyệ
 
 ---
 
-### 🖥️ SCR_01: Authentication / Sign-in Screen
-- **Mục đích sử dụng:** Xác thực danh tính sinh viên Đại học FPT thông qua tài khoản Google Workspace giáo dục (`@fpt.edu.vn`) ngay khi mở ứng dụng lần đầu hoặc khi hết hạn phiên đăng nhập.
+### 🖥️ SCR_01: Login & Role Selection Screen
+- **Mục đích sử dụng:** Xác thực danh tính sinh viên / cựu sinh viên Đại học FPT qua tài khoản Google Workspace (`@fpt.edu.vn`) và thiết lập hồ sơ ban đầu.
 - **Nội dung hiển thị:**
-  - Logo ứng dụng **F-Event** với biểu tượng vé sự kiện cách điệu cùng màu cam FPT.
-  - Tiêu đề chào đón: *"Chào mừng bạn đến với F-Event — Không gian sự kiện FPT University"*.
-  - Nút bấm chính một chạm: *"Tiếp tục với Email FPT Edu (@fpt.edu.vn)"* có logo Google chuẩn.
-  - Bộ chọn phân hiệu cơ sở (Dropdown Campus): TP. Hồ Chí Minh, Hòa Lạc (Hà Nội), Đà Nẵng, Cần Thơ, Quy Nhơn.
-  - Dòng cam kết bảo mật thông tin sinh viên và điều khoản sử dụng.
-- **Thuộc User Flow:** Flow khởi đầu bắt buộc (Onboarding & Authentication Flow).
+  - Logo ứng dụng **F-Alumni** với biểu tượng chiếc mũ tốt nghiệp kết hợp đôi bàn tay nâng đỡ.
+  - Tiêu đề: *"F-Alumni — Mạng lưới Kết nối Cựu sinh viên & Sinh viên Đại học FPT"*.
+  - Nút bấm đăng nhập một chạm: *"Đăng nhập với Google FPT Edu (@fpt.edu.vn)"*.
+  - Chọn vai trò (Role Picker): **"Sinh viên trường (Student)"** hoặc **"Cựu sinh viên (Alumni Mentor)"**.
+  - Chọn chuyên ngành chính: Kỹ thuật phần mềm (SE), Trí tuệ nhân tạo (AI), An toàn thông tin (IA), Quản trị kinh doanh (BA), Marketing số, Thiết kế mỹ thuật số (GD), Ngôn ngữ Anh/Nhật/Hàn.
+  - Chọn cơ sở: TP.HCM, Hòa Lạc, Đà Nẵng, Cần Thơ, Quy Nhơn.
+- **Thuộc User Flow:** Flow khởi đầu bắt buộc.
 - **Ý đồ thiết kế (Design Intent):**
-  - Giảm thiểu tối đa ma sát (Zero Friction): Sinh viên không cần đăng ký tài khoản mới, chỉ cần 1 lần bấm xác thực tài khoản Google sẵn có trên điện thoại.
-  - Tự động đồng bộ hóa thông tin sinh viên (Họ tên, MSSV, Khoa) từ tài khoản trường cho các bước đăng ký vé về sau.
+  - Giảm thiểu ma sát đăng ký tài khoản, đồng thời cá nhân hóa ngay giao diện cho sinh viên dựa trên chuyên ngành đã chọn khi bước vào `SCR_02`.
 
 ---
 
-### 🖥️ SCR_02: Home / Discover Screen
-- **Mục đích sử dụng:** Trung tâm khám phá sự kiện, giúp sinh viên nắm bắt tin tức nóng nhất, lọc workshop theo chuyên môn và tìm kiếm các hoạt động phù hợp với thời khóa biểu.
+### 🖥️ SCR_02: Home Feed Screen (Không gian Chung & Nhóm ngành)
+- **Mục đích sử dụng:** Trung tâm cập nhật tin tức và bài viết chia sẻ kinh nghiệm thực chiến từ cựu sinh viên.
 - **Nội dung hiển thị:**
-  - Header cá nhân hóa: Lời chào *"Xin chào, Tú Nguyễn"*, phân hiệu *"Campus TP.HCM"*, và Avatar tròn có badge cam.
-  - Thanh tìm kiếm tương tác (Search Bar): Kèm nút mở bộ lọc nâng cao (Filter).
-  - Thanh cuộn ngang các chip danh mục (Category Chips): "Tất cả", "💻 Công nghệ / Tech", "🎵 Âm nhạc / Nghệ thuật", "⚽ Thể thao", "💼 Hội thảo Doanh nghiệp".
-  - Banner Hero sự kiện nổi bật trong tuần (Featured Banner): Ảnh chất lượng cao, tên workshop "GenAI with Flutter & Dart", ngày giờ, địa điểm "Hall Alpha", badge "+5 Điểm PDP", nút "Xem vé ngay".
-  - Danh mục sự kiện sắp diễn ra (Upcoming Events List): Danh sách dạng thẻ Card dọc, mỗi thẻ hiển thị ảnh bìa, danh mục, thời gian, số chỗ còn lại (ví dụ: *"Còn 18/100 slots"*), và nút "Đăng ký".
-  - Thanh điều hướng đáy (Bottom Navigation Bar) gồm 4 tab cố định.
-- **Thuộc User Flow:** User Flow 1 (Điểm bắt đầu Khám phá & Đăng ký sự kiện).
+  - Header: Lời chào *"Xin chào, Trương Chí Trung"*, nhãn chuyên ngành *"Kỹ thuật phần mềm (SE)"*, avatar cá nhân.
+  - Thanh tìm kiếm: *"Tìm bài chia sẻ, học bổng, việc làm..."*.
+  - **Bộ chuyển đổi không gian (Space Tab Switcher):**
+    - **Tab 1: "🌐 Không gian chung"** — Hiển thị bài viết kỹ năng mềm, cơ hội học bổng quốc tế, ngày hội cựu sinh viên toàn trường.
+    - **Tab 2: "💻 Nhóm ngành IT / Software"** (tự động theo ngành của user) — Hiển thị bài chia sẻ chuyên sâu về code, roadmap, phỏng vấn technical.
+  - Chip phân loại con: "🔥 Nổi bật", "💼 Cơ hội việc làm", "🎓 Học bổng", "💡 Kinh nghiệm OJT".
+  - Thẻ bài viết nổi bật (Featured Post Card): Ảnh tác giả, họ tên cựu sinh viên, chức danh *"Senior Mobile Engineer tại VNG"*, tiêu đề bài viết *"Lộ trình ôn luyện phỏng vấn Software Engineer 2026"*, số lượt thích, bình luận, nút Bookmark.
+  - Danh sách bài viết mới nhất dạng Card dọc.
+  - Thanh điều hướng đáy (Bottom Navigation Bar) gồm 4 tab.
+- **Thuộc User Flow:** User Flow 1 (Điểm bắt đầu Khám phá bài viết).
 - **Ý đồ thiết kế (Design Intent):**
-  - Tối ưu quét mắt nhanh: Áp dụng quy tắc F-pattern, sinh viên dễ dàng định vị ngay sự kiện hot nhất ở nửa trên màn hình và cuộn nhanh danh sách bên dưới bằng 1 ngón tay cái.
+  - Giải quyết trực tiếp nhu cầu đề bài: Vừa có không gian chia sẻ chung cho toàn trường, vừa có không gian chuyên sâu riêng theo ngành giúp sinh viên tiếp cận đúng thông tin chuyên môn cần thiết.
 
 ---
 
-### 🖥️ SCR_03: Event Detail Screen
-- **Mục đích sử dụng:** Cung cấp thông tin toàn diện, minh bạch về sự kiện, diễn giả, quyền lợi điểm rèn luyện PDP, và thúc đẩy hành động đăng ký giữ chỗ trước khi hết slot.
+### 🖥️ SCR_03: Post / Experience Detail Screen
+- **Mục đích sử dụng:** Trình bày chi tiết bài viết chia sẻ kinh nghiệm, tài liệu hướng dẫn và tạo cầu nối trực tiếp để sinh viên đặt lịch hẹn với tác giả.
 - **Nội dung hiển thị:**
-  - Ảnh bìa Hero tỷ lệ 16:9 sắc nét, có nút Back và nút Bookmark/Lưu vé trên góc trên.
-  - Tiêu đề sự kiện H1 20sp Bold, tên câu lạc bộ bảo trợ (CLB F-Code).
-  - Khối thông tin nhanh (Quick Info Cards): Icon lịch ngày giờ (15/10/2026, 13:30 - 16:30), Icon địa điểm (Hội trường Alpha, Tòa nhà Innovation).
-  - Badge quyền lợi điểm rèn luyện: Nổi bật với nền cam nhạt *"Được cộng +5 Điểm PDP sau khi điểm danh"*.
-  - Nội dung mô tả chi tiết: Giới thiệu nội dung workshop, kiến thức thu nhận được, yêu cầu chuẩn bị laptop/công cụ.
-  - Khối thông tin diễn giả (Speaker Info): Ảnh chân dung, họ tên, chức danh chuyên gia từ doanh nghiệp đối tác.
-  - **Sticky Bottom Action Bar:** Luôn cố định ở chân màn hình, hiển thị số chỗ trực thời (ví dụ: *"Còn 18/100 slots"*) và nút bấm chính *"ĐĂNG KÝ THAM GIA"* (hoặc *"THAM GIA DANH SÁCH CHỜ"* nếu đã hết chỗ).
-- **Thuộc User Flow:** User Flow 1 (Xem thông tin) & User Flow 3 (Điểm phát hiện Hết slot / Waitlist).
+  - Header có nút Back, nút Chia sẻ và nút Bookmark lưu bài.
+  - Tiêu đề bài viết H1 20sp Bold, ngày đăng, thời lượng đọc ("5 phút đọc").
+  - Thẻ thông tin cựu sinh viên tác giả (Author Tile): Avatar, họ tên *"Lê Hoàng Long"*, khóa K14, chức danh hiện tại, công ty (logo VNG), số năm kinh nghiệm, nút "Xem hồ sơ Mentor".
+  - Thân bài viết: Các giai đoạn phỏng vấn, câu hỏi phỏng vấn thường gặp, lời khuyên thực tế khi làm bài test kỹ thuật.
+  - Thẻ tệp đính kèm: *"Interview_Preparation_Checklist_2026.pdf"* kèm nút tải về.
+  - Khu vực Hỏi đáp - Bình luận (Q&A): Sinh viên đặt câu hỏi công khai, cựu sinh viên phản hồi.
+  - **Sticky Bottom Action Bar:** Nút bấm nổi bật *"Đặt lịch tư vấn 1-1 với Mentor"* (chiều cao 48dp) luôn ghim cố định ở chân màn hình.
+- **Thuộc User Flow:** User Flow 1 (Xem bài & Chuyển tiếp sang đặt lịch tư vấn).
 - **Ý đồ thiết kế (Design Intent):**
-  - Giải quyết triệt để vấn đề Visual Hierarchy đã được khắc phục qua Vòng lặp 1: Người dùng không phải cuộn hết trang để tìm nút đăng ký. Nút CTA luôn thường trực giúp tỷ lệ chuyển đổi đạt tối đa.
+  - Tối ưu tỷ lệ chuyển đổi từ việc đọc thụ động sang hành động chủ động kết nối trực tiếp với Mentor.
 
 ---
 
-### 🖥️ SCR_04: Event Registration / Checkout Form Screen
-- **Mục đích sử dụng:** Thu thập và xác nhận thông tin sinh viên đăng ký tham gia sự kiện một cách nhanh chóng, chính xác, không sai sót.
+### 🖥️ SCR_04: Career & Opportunity Board Screen
+- **Mục đích sử dụng:** Bảng tin việc làm, cơ hội thực tập OJT và học bổng được cựu sinh viên trực tiếp đăng tải hoặc sẵn sàng đứng ra bảo lãnh giới thiệu (Referral).
 - **Nội dung hiển thị:**
-  - Top App Bar có nút Back và tiêu đề *"Xác nhận Đăng ký"*.
-  - Thẻ tóm tắt sự kiện nhỏ gọn (Tên sự kiện, ngày giờ, địa điểm).
-  - Các trường thông tin sinh viên tự động điền sẵn (Pre-filled): Họ và tên ("Nguyễn Minh Tú"), Mã số sinh viên ("SE193059"), Email sinh viên ("tuntse193059@fpt.edu.vn").
-  - Tùy chọn hình thức tham gia (Radio Button): "Tham gia Trực tiếp tại Hội trường (Offline)" hoặc "Xem Livestream (Online)".
-  - Trường văn bản mở rộng: *"Câu hỏi bạn muốn gửi trước cho diễn giả (không bắt buộc)"*.
-  - Hộp kiểm điều khoản: *"Tôi cam kết tham gia đúng giờ và tuân thủ quy định hội trường"*.
-  - Nút bấm CTA lớn chân trang: *"XÁC NHẬN ĐĂNG KÝ VÉ"* (có tích hợp Loading Spinner khi bấm gửi).
-  - Error Banner (trạng thái ngoại lệ): Hiển thị khi mất kết nối mạng kèm nút "Thử lại (Retry)".
-- **Thuộc User Flow:** User Flow 1 (Điền thông tin vé) & User Flow 3 (Phục hồi lỗi mất mạng).
+  - Header: Tiêu đề *"Cơ hội Việc làm & Học bổng"*, nút lọc nâng cao.
+  - Bộ lọc danh mục ngang: "Tất cả", "Thực tập OJT", "Việc làm (Full-time)", "Học bổng Thạc sĩ".
+  - Danh sách thẻ cơ hội (Job Cards):
+    - Logo công ty (FPT Software, VNG, Shopee, Viettel).
+    - Tên vị trí: *"Junior Flutter Developer (Hỗ trợ sinh viên FPT)"*.
+    - Mức lương / phụ cấp thực tập, địa điểm làm việc.
+    - **Huy hiệu vàng:** *"Cựu SV K15 bảo lãnh Referral"*.
+    - Hạn chót nộp hồ sơ, số lượt đã ứng tuyển.
+    - Nút bấm trên thẻ: *"Xem & Xin Referral"*.
+- **Thuộc User Flow:** User Flow 2 (Điểm bắt đầu tìm kiếm việc làm OJT).
 - **Ý đồ thiết kế (Design Intent):**
-  - Tối giản thao tác nhập liệu: Do thông tin MSSV và Email đã được hệ sinh thái FPT Edu xác thực, sinh viên chỉ mất chưa đầy 10 giây để chọn hình thức tham gia và nhấn xác nhận.
+  - Tạo sự khác biệt hoàn toàn với các trang tuyển dụng đại trà: Mọi cơ hội ở đây đều có sự kết nối và bảo trợ uy tín từ cựu sinh viên trường FPT.
 
 ---
 
-### 🖥️ SCR_05: Ticket Pass / Dynamic QR Check-in Screen
-- **Mục đích sử dụng:** Đóng vai trò là chiếc vé vào cửa điện tử thông minh, hiển thị mã QR động phục vụ điểm danh không chạm tại sảnh hội trường và quản lý trạng thái vé.
+### 🖥️ SCR_05: Job Detail & Referral Apply Screen
+- **Mục đích sử dụng:** Cung cấp mô tả công việc chi tiết và tiếp nhận hồ sơ xin Referral của sinh viên.
 - **Nội dung hiển thị:**
-  - Thẻ vé điện tử dạng card bo góc nổi khối, có vết cắt khuyết vé đặc trưng (Ticket notch design).
-  - Header vé màu cam FPT hiển thị tên sự kiện, thời gian, vị trí ghế ngồi.
-  - Badge trạng thái vé rõ ràng: Có icon + text: `● VÉ HỢP LỆ` (Màu xanh lá) / `● ĐÃ ĐIỂM DANH` (Màu xanh lục đậm) / `● ĐÃ HỦY VÉ` (Màu xám).
-  - **Mã QR Code động:** Nằm ở trung tâm vé, tự động tăng độ sáng màn hình lên 100% khi sinh viên mở trang để máy quét dễ nhận diện.
-  - Thông tin sinh viên sở hữu vé: Họ tên, MSSV, Mã vé độc nhất (FEV-2026-SE193059-001).
-  - Nút hành động chính: *"LƯU VÉ VÀO BỘ SƯU TẬP ẢNH"* (để dùng offline khi mất sóng).
-  - Nút hành động phụ (Hủy vé): *"Hủy đăng ký vé"* dạng Text Link màu xám nhạt (khi bấm sẽ kích hoạt Confirmation Dialog 2 bước).
-- **Thuộc User Flow:** User Flow 1 (Đích đến sau khi đăng ký), User Flow 2 (Điểm danh tại cửa), User Flow 3 (Điểm khởi tạo hủy vé nhường slot).
+  - Header có nút Back và nút lưu công việc.
+  - Tóm tắt công việc: Vị trí, công ty, mức đãi ngộ, chế độ làm việc (Hybrid / Onsite).
+  - Khối thông tin cựu sinh viên bảo lãnh: Tên cựu SV, bộ phận làm việc, ghi chú từ cựu SV (*"Mình đang cần 2 bạn thực tập sinh Flutter cho dự án team, ưu tiên các bạn nắm vững Dart & Bloc"*).
+  - Mô tả công việc (JD), yêu cầu kỹ thuật và quyền lợi.
+  - **Form ứng tuyển & xin Referral:**
+    - Khu vực tải lên CV (Upload PDF, tự động lấy CV từ hồ sơ nếu đã có).
+    - Ô nhập thư ngỏ ngắn (Cover letter note): Lý do muốn xin Referral, điểm mạnh bản thân.
+    - Nút CTA chân trang: *"GỬI YÊU CẦU XIN REFERRAL"* (có loading spinner khi gửi).
+  - Error Banner: Hiển thị khi mất kết nối mạng và bảo lưu toàn bộ file CV cùng nội dung thư ngỏ.
+- **Thuộc User Flow:** User Flow 2 (Nộp CV) & User Flow 3 (Phục hồi lỗi mạng).
 - **Ý đồ thiết kế (Design Intent):**
-  - Thiết kế chống gian lận và tối ưu trải nghiệm check-in ngoài đời thực: Mã QR to bản, sắc nét, tương phản tối đa, giúp camera của ban tổ chức quét thành công chỉ trong 1 giây.
+  - Tối giản hóa quy trình xin việc, biến việc xin Referral từ cựu sinh viên thành một trải nghiệm trang trọng, lịch sự và nhanh chóng.
 
 ---
 
-### 🖥️ SCR_06: My Schedule Screen
-- **Mục đích sử dụng:** Quản lý toàn diện lịch trình các sự kiện mà sinh viên đã đăng ký, theo dõi tiến độ tham gia và quản lý trạng thái danh sách chờ.
+### 🖥️ SCR_06: Alumni Mentors Directory Screen
+- **Mục đích sử dụng:** Danh bạ tổng hợp mạng lưới cựu sinh viên trường sẵn sàng hỗ trợ đàn em khóa dưới.
 - **Nội dung hiển thị:**
-  - Header trang: *"Lịch trình Sự kiện của tôi"*.
-  - Thanh chuyển đổi 3 tab con (Segmented Tab Bar):
-    - Tab 1: *"Sắp tới (Upcoming)"* — Hiển thị danh sách vé hợp lệ chuẩn bị diễn ra kèm nút "Mở vé QR".
-    - Tab 2: *"Chờ duyệt (Waitlist)"* — Hiển thị các sự kiện đã đăng ký xếp hàng, số thứ tự trong hàng chờ (ví dụ: *"Bạn đang ở vị trí #3"*).
-    - Tab 3: *"Lịch sử (History)"* — Danh sách sự kiện đã tham gia trong quá khứ, trạng thái cộng điểm PDP.
-  - Thẻ sự kiện trong lịch: Thiết kế dạng hàng ngang với vạch màu biểu thị thời gian bắt đầu còn lại (đếm ngược: 2 ngày, 3 giờ...).
-  - Empty State: Hiển thị minh họa lịch học và nút *"Khám phá sự kiện ngay"* khi chưa có vé nào.
-- **Thuộc User Flow:** User Flow 2 (Mở vé điểm danh) & User Flow 3 (Quản lý và hủy vé).
+  - Header: *"Mạng lưới Cựu sinh viên FPT"*.
+  - Bộ lọc công ty công nghệ lớn: "Tất cả", "FPT Software", "VNG", "Google", "Shopee", "Ngân hàng/Fintech".
+  - Thẻ thông tin Mentor (Mentor Cards):
+    - Avatar, tên cựu sinh viên, niên khóa (K12, K13, K14...).
+    - Vị trí hiện tại, công ty đang công tác.
+    - Lĩnh vực sẵn sàng tư vấn: "Review CV", "Phỏng vấn kỹ thuật", "Lộ trình OJT", "Học bổng du học".
+    - Đánh giá từ sinh viên khóa trước: 5.0 ⭐ (18 buổi tư vấn thành công).
+    - Nút CTA: *"Đặt lịch tư vấn 1-1"*.
+- **Thuộc User Flow:** User Flow 1 (Duyệt danh sách cựu sinh viên theo công ty mong muốn).
 - **Ý đồ thiết kế (Design Intent):**
-  - Giúp sinh viên kiểm soát trọn vẹn thời gian biểu cá nhân, không bị trùng lịch thi hoặc lịch học trên giảng đường FPT.
+  - Xây dựng niềm tin và sự tự hào cho sinh viên thông qua các tấm gương cựu sinh viên thành đạt từ chính ngôi trường của mình.
 
 ---
 
-### 🖥️ SCR_07: Notifications Screen
-- **Mục đích sử dụng:** Kênh liên lạc tức thời giữa ban tổ chức nhà trường/CLB với sinh viên qua hệ thống thông báo đẩy (Firebase Cloud Messaging).
+### 🖥️ SCR_07: Mentor Booking & Session Pass Screen
+- **Mục đích sử dụng:** Chọn khung giờ rảnh của Mentor để lên lịch hẹn tư vấn trực tuyến và xuất thẻ lịch hẹn (Session Pass).
 - **Nội dung hiển thị:**
-  - Top App Bar: Tiêu đề *"Thông báo"*, nút tùy chọn "Đánh dấu đã đọc tất cả".
-  - Bộ lọc thông báo: "Tất cả", "Nhắc lịch", "Cập nhật slot".
-  - Danh sách thẻ thông báo theo thời gian (Hôm nay, Hôm qua, Tuần trước):
-    - *Thông báo Nhắc lịch (Event Reminder):* Icon đồng hồ màu cam — *"Workshop GenAI sẽ diễn ra sau 1 giờ nữa tại Hội trường Alpha. Đừng quên mang theo laptop!"*.
-    - *Thông báo Mở slot Waitlist:* Icon vé chúc mừng — *"Tin vui! Bạn đã có 1 slot chính thức cho F-Acoustic Night. Bấm để nhận vé ngay trong 15 phút"*.
-    - *Thông báo Đổi phòng/giờ:* Icon cảnh báo — *"Thông báo: Workshop Flutter chuyển từ phòng 204 sang Hội trường Alpha"*.
-    - *Thông báo Điểm PDP:* Icon ngôi sao — *"Chúc mừng bạn đã được ghi nhận +5 điểm rèn luyện PDP"*.
-  - Badge chấm tròn màu cam biểu thị thông báo mới chưa đọc.
-- **Thuộc User Flow:** User Flow 2 (Chạm thông báo để mở vé) & User Flow 3 (Nhận thông báo slot trống từ Waitlist).
+  - Thẻ tóm tắt thông tin Mentor được chọn.
+  - Lịch chọn ngày trong tuần (Calendar Strip).
+  - Khung chọn giờ rảnh trong ngày (Time Slots Grid): ví dụ: `09:00 - 09:45`, `14:00 - 14:45`, `20:00 - 20:45`.
+  - Ô nhập chủ đề thảo luận: *"Chủ đề bạn muốn hỏi Mentor"*.
+  - Nút bấm: *"XÁC NHẬN ĐẶT LỊCH HẸN (QUA GOOGLE MEET)"*.
+  - **Thẻ lịch hẹn Session Pass (sau khi đặt thành công):**
+    - Mã lịch hẹn: `SES-2026-SE193059-01`.
+    - Trạng thái: `● ĐÃ XÁC NHẬN` (Màu xanh lá).
+    - Link phòng họp Google Meet tự động tạo.
+    - Nút: *"Thêm vào Google Calendar"* và text link *"Hủy lịch hẹn"*.
+- **Thuộc User Flow:** User Flow 1 (Đích đến đặt lịch) & User Flow 3 (Trùng lịch / Hủy lịch nhường chỗ).
 - **Ý đồ thiết kế (Design Intent):**
-  - Đóng vai trò là cầu nối kỹ thuật quan trọng nhất với dịch vụ Firebase Cloud Messaging (FCM) trong Lab 3.
+  - Tự động hóa hoàn toàn quy trình hẹn lịch, loại bỏ việc nhắn tin trao đổi giờ giấc thủ công dễ gây nhầm lẫn.
 
 ---
 
-### 🖥️ SCR_08: Profile & PDP Tracking Screen
-- **Mục đích sử dụng:** Không gian cá nhân của sinh viên, theo dõi tổng kết số điểm rèn luyện PDP đã tích lũy, quản lý sở thích sự kiện và cài đặt tài khoản.
+### 🖥️ SCR_08: Profile & My Network Screen
+- **Mục đích sử dụng:** Không gian cá nhân của sinh viên để quản lý hồ sơ, kho CV, bài viết đã lưu và theo dõi trạng thái các buổi tư vấn/hồ sơ xin Referral.
 - **Nội dung hiển thị:**
-  - Thẻ thông tin sinh viên FPT (Student Profile Card): Avatar, Họ tên, Mã sinh viên (SE193059), Chuyên ngành (Kỹ thuật phần mềm), Khóa (K19).
-  - **Khối Tổng kết Điểm Rèn luyện PDP (PDP Progress Dashboard):**
-    - Vòng tròn tiến độ trực quan: Hiển thị 85/100 Điểm PDP đã đạt được trong kỳ.
-    - Thống kê chi tiết: 12 sự kiện chuyên môn đã tham gia, 3 hoạt động phong trào CLB.
-  - Danh mục Cài đặt & Tùy chọn (Settings List):
-    - "Chủ đề sự kiện yêu thích" (chọn CLB và thể loại muốn nhận thông báo ưu tiên).
-    - "Cài đặt thông báo đẩy" (Bật/tắt nhắc lịch trước 24h và 1h).
-    - "Lịch sử tích lũy chứng nhận".
-    - "Hỗ trợ & Góp ý cho Ban Tổ chức".
-    - Nút "Đăng xuất tài khoản" bằng chữ màu đỏ.
-- **Thuộc User Flow:** User Flow 2 (Kiểm tra cập nhật điểm PDP sau sự kiện).
+  - Thẻ hồ sơ sinh viên: Avatar, Họ tên (*"Trương Chí Trung"*), MSSV (*"SE193059"*), Ngành (*"Kỹ thuật phần mềm - Khóa K19"*).
+  - Thanh chuyển đổi tab quản lý:
+    - **Tab "Lịch tư vấn của tôi":** Các buổi hẹn 1-1 sắp tới, lịch sử các buổi đã hoàn thành.
+    - **Tab "Hồ sơ xin Referral":** Danh sách các công việc đã nộp CV kèm trạng thái (Đang chờ cựu SV duyệt / Đã nhận Referral).
+    - **Tab "Bài viết đã lưu":** Danh sách các bài chia sẻ kinh nghiệm đã Bookmark.
+  - Kho quản lý tệp CV đính kèm.
+  - Danh mục Cài đặt: Tùy chỉnh thông báo việc làm mới, đổi chuyên ngành quan tâm, Hỗ trợ và Đăng xuất.
+- **Thuộc User Flow:** User Flow 1 (Xem bài đã lưu), Flow 2 (Theo dõi hồ sơ), Flow 3 (Khởi tạo hủy lịch hẹn).
 - **Ý đồ thiết kế (Design Intent):**
-  - Tạo động lực gamification: Hiển thị thanh tiến độ điểm rèn luyện PDP rõ ràng giúp sinh viên có động lực tích cực tham gia các hoạt động ngoại khóa để hoàn thành chỉ tiêu tốt nghiệp.
+  - Đóng vai trò là trung tâm quản lý toàn bộ hành trình phát triển nghề nghiệp và các mối quan hệ kết nối của sinh viên.
