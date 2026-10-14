@@ -3,11 +3,24 @@
 > **Môn học:** PRM323 — Cross-Platform Application Development  
 > **Giảng viên hướng dẫn:** ThS. Lê Hoàng Phương (@Lam Phuong / PhuonglhK)  
 > **Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP. Hồ Chí Minh  
-> **Danh sách thành viên:**  
-> 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2)  
-> 2. **Nguyễn Phương Khải** — MSSV: **SE183590**  
-> 3. **Đỗ Trọng Tín** — MSSV: *(Đang cập nhật)*  
-> 4. **Võ Quang Tâm** — MSSV: **SE192621**  
+> **Danh sách thành viên & Phân công Vai trò:**  
+> 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2: Google Stitch & AI Lead) → Branch: [`tv2`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv2)  
+> 2. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV1: UX Research, Persona & User Flow) → Branch: [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1)  
+> 3. **Võ Quang Tâm** — MSSV: **SE192621** (TV3: UI Design System & Screen Spec) → Branch: [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3)  
+> 4. **Đỗ Trọng Tín** — MSSV: *(Đang cập nhật)* (TV4: Flutter Handoff & Architecture) → Branch: [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4)  
+
+---
+
+## 👥 Phân công Vai trò & Git Branches
+
+Dự án được phân chia thành 4 nhánh Git độc lập tương ứng với 4 thành viên theo đúng quy định làm việc nhóm và lưu vết đóng góp:
+
+| Thành viên | MSSV | Vai trò bài Lab 2 | Git Branch | Trách nhiệm Deliverables chính |
+| :--- | :--- | :--- | :---: | :--- |
+| **Trương Chí Trung** | **SE193059** | **Trưởng nhóm / TV2** | [`tv2`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv2) | **AI & Prompting:** Thực thi Google Stitch, lưu trữ nguyên văn Prompts, thực hiện 3 vòng lặp Before/After, biên soạn phản biện 10 Heuristics & bảng quyết định |
+| **Nguyễn Phương Khải** | **SE183590** | **TV1** | [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1) | **UX & Luồng người dùng:** Biên soạn Persona, Problem Statement, Information Architecture (IA) 8 màn hình, 3 sơ đồ User Flow Mermaid (có luồng phục hồi lỗi) |
+| **Võ Quang Tâm** | **SE192621** | **TV3** | [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3) | **Design System & Đặc tả:** Thiết lập Design Tokens (Colors, Typography, 8dp Spacing), đặc tả chi tiết 8 màn hình, Top 10 quyết định thiết kế cốt lõi & Checklist A11y |
+| **Đỗ Trọng Tín** | *(Chờ cập nhật)* | **TV4** | [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4) | **Developer Handoff:** Biên soạn Flutter Developer Handoff 6 mục cho 8 màn hình, 2 bảng mapping dữ liệu/widget và kiến trúc backend Firebase chuẩn bị cho Lab 3 |
 
 ---
 
