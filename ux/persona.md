@@ -3,10 +3,10 @@
 **Môn học:** PRM323 — Cross-Platform Application Development  
 **Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP.HCM  
 **Thành viên nhóm:**  
-1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm)  
-2. **Nguyễn Phương Khải** — MSSV: **SE183590**  
-3. **Đỗ Trọng Tín** — MSSV: Đang cập nhật  
-4. **Võ Quang Tâm** — MSSV: **SE192621**  
+1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2)  
+2. **Võ Quang Tâm** — MSSV: **SE192621** (TV1)  
+3. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV3)  
+4. **Đỗ Trọng Tín** — MSSV: Đang cập nhật (TV4)  
 
 ---
 
