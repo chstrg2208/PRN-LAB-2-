@@ -81,53 +81,58 @@ Generate the 4 core screens of the student journey:
 
 ## 3. Ba Vòng lặp Có ý nghĩa với AI (Three Meaningful AI Iterations)
 
----
-
-### 🔁 Vòng lặp 1: Tối ưu Bộ chuyển đổi Không gian Chung & Chuyên ngành (Space Switcher & Visual Hierarchy on Home Feed)
-- **Tên vấn đề nhắm tới:** `Space Separation Ambiguity & Information Overload on Home Feed Screen`.
-- **Phân tích hiện trạng ban đầu (Before):**
-  - Màn hình Home Feed do Stitch tạo ban đầu trộn lẫn tất cả bài viết của sinh viên IT, Kinh tế, Thiết kế đồ họa vào cùng một luồng cuộn duy nhất.
-  - Sinh viên ngành SE như Trương Chí Trung phải cuộn qua hàng chục bài viết không liên quan đến chuyên môn kỹ thuật để tìm được bài chia sẻ phỏng vấn IT.
-  - Chưa có sự phân định rõ ràng giữa tin tức chung toàn trường và tin chuyên ngành.
-- **Prompt tinh chỉnh (Refinement Prompt):**
-  ```text
-  Refactor SCR_02 (Home Feed): Implement a prominent Segmented Tab Switcher right below the search bar: Tab 1 "🌐 Không gian chung" and Tab 2 "💻 Nhóm ngành IT / Software". When Tab 2 is active, filter articles strictly to Software Engineering, AI, and Tech topics. Highlight the Featured Post card with author company badge (VNG Corporation) to establish strong visual hierarchy.
-  ```
-- **Kết quả cải tiến (After):** Sinh viên có thể chuyển đổi 1 chạm giữa tin chung toàn trường và tin chuyên môn kỹ thuật sâu của ngành mình.
-- **Bằng chứng So sánh Trước & Sau:** Lưu tại `assets/stitch/iter1_before.png` và `assets/stitch/iter1_after.png`.
+Theo đúng quy định của đề bài và Rubric chấm điểm, mỗi vòng lặp nhắm vào một vấn đề trải nghiệm cụ thể có tên riêng, kèm đầy đủ ảnh **Trước (Before)** và **Sau (After)**:
 
 ---
 
-### 🔁 Vòng lặp 2: Khắc phục Nhận diện Huy hiệu Referral & Độ Tương phản (Referral Badge Prominence & WCAG 2.1 Contrast)
-- **Tên vấn đề nhắm tới:** `Low Contrast on Job Tags & Unclear Referral Distinction on Career Board`.
+### 🔁 Vòng lặp 1: Bổ sung Hộp thoại Xác nhận 2 Bước khi Đặt lịch Tư vấn
+- **Tên vấn đề nhắm tới:** `Missing Confirmation Dialog on Mentor Booking Screen (Usability Heuristic #5: Error Prevention & #3: User Freedom)`.
 - **Phân tích hiện trạng ban đầu (Before):**
-  - Trên bảng tin tuyển dụng `SCR_04`, các thẻ công việc có cựu sinh viên bảo lãnh Referral và tin tuyển dụng thông thường trông hoàn toàn giống nhau.
-  - Các dòng chữ phụ (mức lương, hạn nộp) dùng màu xám `#9E9E9E` chỉ đạt tương phản **2.8:1** (Vi phạm WCAG 2.1 AA yêu cầu tối thiểu **4.5:1**).
-- **Prompt tinh chỉnh (Refinement Prompt):**
+  - Màn hình chọn giờ tư vấn ban đầu (`iter1_before.png`) chỉ có nút "XÁC NHẬN ĐẶT LỊCH HẸN (QUA GOOGLE MEET)". Khi người dùng bấm nút, hệ thống chốt lịch ngay lập tức mà không có bước xác nhận lại thông tin ngày giờ và hình thức gặp mặt.
+  - Người dùng thao tác một tay rất dễ chạm nhầm khung giờ hoặc bấm nhầm nút gửi, dẫn đến việc chiếm dụng khung giờ rảnh quý báu của cựu sinh viên.
+- **Prompt tinh chỉnh nguyên văn (Refinement Prompt):**
   ```text
-  Audit and refactor SCR_04 (Career Board):
-  1. Add a distinctive, high-trust badge for alumni-sponsored positions: "★ Cựu SV bảo lãnh Referral" in solid Gold/Green container with distinct checkmark icon.
-  2. Increase text contrast of all secondary metadata (salary, deadline, location) from gray #9E9E9E to #595959, guaranteeing contrast ratio >= 5.4:1 against pure white background.
-  3. Change CTA button on each card to "Xem & Xin Referral" with minimum height 48dp.
+  On the Mentor Booking screen, add a centered confirmation modal dialog overlay: "Xác nhận đặt lịch hẹn tư vấn 1-1 với Mentor Lê Hoàng Long vào Thứ Bảy 18/10 lúc 09:00 - 09:45 qua Google Meet?" with two buttons: "Hủy bỏ" and "Xác nhận đặt lịch".
   ```
-- **Kết quả cải tiến (After):** Cơ hội có Referral nổi bật rõ rệt; chữ phụ sắc nét dễ đọc đạt 5.4:1 tương phản.
-- **Bằng chứng So sánh Trước & Sau:** Lưu tại `assets/stitch/iter2_before.png` và `assets/stitch/iter2_after.png`.
+- **Kết quả cải tiến (After):** Xuất hiện hộp thoại Modal Dialog sắc nét ở trung tâm màn hình, có icon lịch màu xanh, ghi rõ ngày giờ và tên Mentor, kèm 2 nút "Hủy bỏ" (viền xám) và "Xác nhận đặt lịch" (nút xanh nổi bật), nền xung quanh được làm tối để hướng sự tập trung.
+- **Bằng chứng So sánh Trước & Sau:**
+  | Trước khi lặp (Before) | Sau khi lặp (After) |
+  | :---: | :---: |
+  | ![Iteration 1 Before](../assets/stitch/iter1_before.png) | ![Iteration 1 After](../assets/stitch/iter1_after.png) |
 
 ---
 
-### 🔁 Vòng lặp 3: Bổ sung Trạng thái Phục hồi Lỗi Mạng khi Nộp CV & Trùng Lịch Tư vấn (Network Error & Booking Conflict Recovery)
-- **Tên vấn đề nhắm tới:** `Missing Error Recovery on CV Upload & Mentor Time Slot Conflict Handling`.
+### 🔁 Vòng lặp 2: Thiết kế Trạng thái Trống (Empty State) khi Tìm kiếm Việc làm không có kết quả
+- **Tên vấn đề nhắm tới:** `Missing Empty State & Filter Reset on Job Search (Usability Heuristic #1: Visibility of System Status & #9: Error Recovery)`.
 - **Phân tích hiện trạng ban đầu (Before):**
-  - Ban đầu khi gửi đơn xin Referral kèm file CV tại `SCR_05`, nếu mất mạng, màn hình bị đơ và xóa trắng form khiến sinh viên mất công gõ lại thư ngỏ.
-  - Tại `SCR_07`, nếu khung giờ hẹn vừa có sinh viên khác chọn, ứng dụng chỉ báo lỗi chung chung mà không gợi ý giải pháp.
-- **Prompt tinh chỉnh (Refinement Prompt):**
+  - Màn hình Bảng tin Việc làm & Học bổng ban đầu (`iter2_before.png`) chỉ có danh sách việc làm khi có sẵn dữ liệu.
+  - Khi sinh viên gõ từ khóa tìm kiếm không tồn tại (ví dụ: "DevOps Fresher") hoặc chọn kết hợp các bộ lọc quá hẹp, màn hình sẽ bị trắng trơn không có thông báo gì, khiến sinh viên tưởng ứng dụng bị đơ hoặc mất mạng.
+- **Prompt tinh chỉnh nguyên văn (Refinement Prompt):**
   ```text
-  Design critical recovery states:
-  1. Network Error Banner for SCR_05 (Referral Apply): If network fails during CV submission, show a non-destructive error banner: "Mất kết nối Internet. File CV và thư ngỏ của bạn đã được bảo lưu an toàn." Include a "Thử lại (Retry)" button that re-submits without clearing any entered data or attached files.
-  2. Conflict Resolution Modal for SCR_07 (Mentor Booking): If a selected time slot is taken, display an informative dialog: "Khung giờ này vừa có người đặt. Gợi ý 2 khung giờ rảnh kế tiếp của Mentor:" and highlight the next 2 available slots.
+  On the Career & Job Board screen, generate the Empty State when search returns no results. Show a search input with keyword "DevOps Fresher", a friendly vector illustration of an empty folder, title "Chưa tìm thấy cơ hội phù hợp", subtitle "Thử tìm với từ khóa khác hoặc điều chỉnh bộ lọc của bạn", and a button "Xóa bộ lọc".
   ```
-- **Kết quả cải tiến (After):** Đảm bảo an toàn 100% dữ liệu form CV và cung cấp giải pháp thay thế mượt mà khi trùng lịch.
-- **Bằng chứng So sánh Trước & Sau:** Lưu tại `assets/stitch/iter3_before.png` và `assets/stitch/iter3_after.png`.
+- **Kết quả cải tiến (After):** Hiển thị màn hình Empty State hoàn chỉnh với ô tìm kiếm "DevOps Fresher", icon chiếc cặp tài liệu có kính lúp, thông điệp hướng dẫn rõ ràng, nút "↻ Xóa bộ lọc" màu xanh, cùng các chip gợi ý từ khóa phổ biến ("Flutter", "Backend", "AI & Data") và khối kêu gọi cựu sinh viên đăng tin tuyển dụng.
+- **Bằng chứng So sánh Trước & Sau:**
+  | Trước khi lặp (Before) | Sau khi lặp (After) |
+  | :---: | :---: |
+  | ![Iteration 2 Before](../assets/stitch/iter2_before.png) | ![Iteration 2 After](../assets/stitch/iter2_after.png) |
+
+---
+
+### 🔁 Vòng lặp 3: Thiết kế Chi tiết Hồ sơ Ứng tuyển & Tải File CV xin Referral (`SCR_05`)
+- **Tên vấn đề nhắm tới:** `Missing Endorsement Details & Two-Way Referral Application Flow (Feature Completeness for Flow 2)`.
+- **Phân tích hiện trạng ban đầu (Before):**
+  - Bảng tin việc làm ban đầu (`iter3_before.png`) chỉ có thẻ tóm tắt với nút "Xem & Xin Referral" nhưng chưa có màn hình chi tiết để sinh viên xem lời nhắn bảo lãnh từ cựu SV và nộp hồ sơ.
+  - Sinh viên không có nơi để đính kèm file CV PDF cũng như không có chỗ để viết thư ngỏ giới thiệu bản thân gửi cho cựu sinh viên.
+- **Prompt tinh chỉnh nguyên văn (Refinement Prompt):**
+  ```text
+  Design the Job Detail & Referral Application screen (SCR_05) for "Flutter Developer (Referral by Alumni)" at FPT Software. Include job title, salary 12-18M VNĐ, an alumni endorsement card "Bảo lãnh hồ sơ bởi Anh Trần Tuấn Anh (Tech Lead K12)", an uploaded CV card showing "TruongChiTrung_SE_CV.pdf (2.4 MB)", a cover letter input field "Thư ngỏ gửi cựu sinh viên...", and a primary button "GỬI YÊU CẦU XIN REFERRAL".
+  ```
+- **Kết quả cải tiến (After):** Màn hình chi tiết ứng tuyển toàn diện: hiển thị mức lương 12-18 triệu, trích dẫn lời nhắn bảo lãnh trực tiếp từ anh Trần Tuấn Anh (Tech Lead K12), thẻ file CV đã tải lên `TruongChiTrung_SE_CV.pdf`, link GitHub `github.com/trungtc-fpt`, ô nhập thư ngỏ 500 ký tự có chip gợi ý ("+ Giới thiệu Capstone", "+ Điểm mạnh Flutter"), cam kết phản hồi trong 48h, và nút CTA lớn "GỬI YÊU CẦU XIN REFERRAL ▶".
+- **Bằng chứng So sánh Trước & Sau:**
+  | Trước khi lặp (Before) | Sau khi lặp (After - Phần 1 & 2) |
+  | :---: | :---: |
+  | ![Iteration 3 Before](../assets/stitch/iter3_before.png) | ![Iteration 3 After Part 1](../assets/stitch/iter3_after.png)<br>![Iteration 3 After Part 2](../assets/stitch/iter3_after_part2.png) |
 
 ---
 
