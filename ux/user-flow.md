@@ -101,151 +101,130 @@ Inventory đề xuất **11 màn hình có mục đích riêng** theo danh sách
 
 ---
 
-### 🟢 User Flow 1: Khám phá Bài viết & Đặt lịch Tư vấn 1-1 với Mentor
-- **Điểm bắt đầu:** Sinh viên mở ứng dụng; nếu đã có phiên đăng nhập hợp lệ thì vào `SCR_02`, nếu chưa thì đăng nhập tại `SCR_01` rồi vào `SCR_02`.
-- **Mục tiêu:** Học hỏi kinh nghiệm phỏng vấn OJT và hoàn tất đặt một buổi hẹn tư vấn trực tuyến 1-1 với cựu sinh viên tác giả qua Google Meet.
-- **Điểm kết thúc:** Mở màn hình `SCR_07` hiển thị thẻ xác nhận lịch hẹn (Session Pass) thành công, lịch tự động lưu vào `SCR_08`.
+### 🟢 User Flow 1: Đăng bài và thảo luận trên Forum
+- **Điểm bắt đầu:** Sinh viên mở F-Alumni; nếu chưa có phiên hợp lệ thì đăng nhập tại `SCR_01`, sau đó vào Forum Feed `SCR_02`.
+- **Mục tiêu:** Đăng câu hỏi hoặc bài chia sẻ hợp lệ để cộng đồng có thể trao đổi qua bình luận và trả lời.
+- **Điểm kết thúc thành công:** Bài đã xuất bản, hiển thị tại `SCR_03` và có bình luận/trả lời hiển thị trong thảo luận. Kết thúc thay thế: rời màn hình soạn bài mà không xuất bản.
+- **User Stories:** FO-01–FO-03, FO-05–FO-07.
 
 ```mermaid
 flowchart TD
-    Start([Bắt đầu: Mở ứng dụng F-Alumni]) --> AuthGate{Có phiên đăng nhập hợp lệ?}
-    AuthGate -- Có --> EnterHome[Vào SCR_02 Home Feed]
-    AuthGate -- Chưa --> Login[Đăng nhập và chọn vai trò / chuyên ngành tại SCR_01]
-    Login --> LoginSuccess[Hệ thống xác nhận đăng nhập thành công]
-    LoginSuccess --> EnterHome
-    EnterHome --> SwitchSpace{Chọn không gian hiển thị?}
-    
-    SwitchSpace -- Không gian Chung --> ViewGeneral[Duyệt bài học bổng & hướng nghiệp chung toàn trường]
-    ViewGeneral --> EndGeneral([Kết thúc thay thế: đã xem nội dung không gian chung])
-    SwitchSpace -- Chuyển Tab: Nhóm ngành IT --> ViewMajor[Xem danh sách bài viết chuyên sâu Kỹ thuật Phần mềm]
-    
-    ViewMajor --> ClickPost[Chạm vào bài 'Lộ trình ôn luyện phỏng vấn Software Engineer 2026']
-    ClickPost --> OpenDetail[Mở SCR_03 Post Detail: Đọc bài viết, tải checklist PDF]
-    
-    OpenDetail --> DecisionPost{Sinh viên muốn làm gì?}
-    DecisionPost -- Nhánh Thay Thế: Lưu đọc sau --> BookmarkAction[Bấm icon Bookmark trên AppBar]
-    BookmarkAction --> BookmarkToast[Toast: 'Đã lưu bài viết vào mục Hồ sơ']
-    BookmarkToast --> EndAlt([Kết thúc nhánh lưu bài])
-
-    DecisionPost -- Xem hồ sơ Mentor --> OpenMentors[Người dùng mở danh bạ alumni tại SCR_06]
-    OpenMentors --> SelectAuthor[Người dùng chọn mentor là tác giả bài viết]
-    SelectAuthor --> OpenBooking
-    
-    DecisionPost -- Happy Path: Đặt lịch tư vấn --> ClickBookMentor[Nhấn nút Sticky 'Đặt lịch tư vấn 1-1 với Mentor']
-    ClickBookMentor --> OpenBooking[Mở SCR_07 Mentor Booking Screen]
-    OpenBooking --> PickSlot[Chọn khung giờ rảnh của Mentor: Thứ Bảy 09:00 - 09:45]
-    PickSlot --> InputTopic[Nhập chủ đề: 'Nhờ anh review CV thực tập OJT vị trí Flutter']
-    InputTopic --> SubmitBooking[Nhấn nút 'Xác nhận Đặt lịch hẹn']
-    
-    SubmitBooking --> ShowLoading[Hiển thị Spinner xử lý kết nối máy chủ]
-    ShowLoading --> SuccessModal[Modal Dialog: 'Đặt lịch tư vấn thành công!']
-    SuccessModal --> ViewPass[Chạm 'Xem thẻ lịch hẹn']
-    ViewPass --> ShowSessionPass[Hiển thị Session Pass: Có link Google Meet & nút thêm vào Lịch]
-    ShowSessionPass --> OpenMySessions[Người dùng mở lịch tư vấn của tôi tại SCR_08]
-    OpenMySessions --> EndHappy([Kết thúc Flow 1: Xác nhận và xem lịch đã lưu])
-
-    style Start fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
-    style EndHappy fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-    style EndAlt fill:#fffde7,stroke:#fbc02d,stroke-width:2px
-    style SuccessModal fill:#ffe0b2,stroke:#f57c00,stroke-width:2px
+    Start([Bắt đầu: Mở ứng dụng]) --> AuthGate{Có phiên đăng nhập hợp lệ?}
+    AuthGate -- Chưa --> Login[Đăng nhập tại SCR_01]
+    Login --> LoginSuccess[Hệ thống xác nhận đăng nhập]
+    LoginSuccess --> Forum[Forum Feed SCR_02]
+    AuthGate -- Có --> Forum
+    Forum --> CreateChoice{Tạo bài mới?}
+    CreateChoice -- Không --> ExitFeed([Kết thúc thay thế: tiếp tục ở Forum Feed SCR_02])
+    CreateChoice -- Có --> Composer[Mở SCR_04 Create / Edit Post]
+    Composer --> CancelChoice{Tiếp tục soạn hay hủy?}
+    CancelChoice -- Hủy --> CancelPost[Quay lại SCR_02; không xuất bản bài]
+    CancelPost --> EndCancel([Kết thúc: đã rời soạn bài])
+    CancelChoice -- Tiếp tục --> ChooseType[Chọn câu hỏi hoặc chia sẻ; chọn ngành/đối tượng phù hợp]
+    ChooseType --> EnterContent[Nhập nội dung theo các trường của prototype]
+    EnterContent --> AddImage{Đính kèm ảnh?}
+    AddImage -- Có --> AttachImage[Chọn ảnh tại SCR_04]
+    AddImage -- Không --> ValidatePost
+    AttachImage --> ValidatePost{Thông tin bắt buộc đã hợp lệ?}
+    ValidatePost -- Chưa --> ValidationFeedback[SCR_04 chỉ rõ mục cần bổ sung; giữ nội dung hợp lệ đã nhập]
+    ValidationFeedback --> EnterContent
+    ValidatePost -- Rồi --> Publish[Người dùng gửi bài]
+    Publish --> PublishFeedback[Hệ thống xác nhận đăng bài thành công]
+    PublishFeedback --> PublishedInFeed[Bài mới xuất hiện trên Forum Feed SCR_02]
+    PublishedInFeed --> PostDetail[Người dùng mở bài vừa đăng tại SCR_03]
+    PostDetail --> CommunityReply[Thành viên khác bình luận hoặc trả lời tại SCR_03]
+    CommunityReply --> VisibleDiscussion[Hệ thống hiển thị bình luận/trả lời trong bài]
+    VisibleDiscussion --> EndPosted([Kết thúc: bài đăng và thảo luận đã hiển thị])
 ```
+
+**Nhánh và giả định UX:** Không đính kèm ảnh vẫn có thể tiếp tục đăng. Khi thiếu hoặc sai thông tin bắt buộc, `SCR_04` báo lỗi tại chỗ và giữ nội dung hợp lệ để người dùng sửa; chi tiết trường bắt buộc theo prototype, không tự đặt thêm quy tắc. Hủy trước khi đăng quay về `SCR_02`; chính sách lưu nháp chưa được xác định, nên không khẳng định nội dung được lưu hoặc xóa. Thành viên khác có thể bình luận/trả lời tại `SCR_03`; việc bài đã đăng không phụ thuộc vào thời điểm có phản hồi.
+
+**Success target liên quan:** Metric đăng bài trong persona đo từ khi đề bài xuất hiện đến khi bài hiển thị sau xuất bản; mục tiêu đề xuất là ≥80% hoàn thành độc lập và trung vị ≤120 giây. Đây là ngưỡng kiểm thử, chưa phải kết quả đo.
 
 ---
 
-### 🔵 User Flow 2: Tìm cơ hội OJT & Gửi yêu cầu Referral
-- **Điểm bắt đầu:** Sinh viên đã đăng nhập và đang ở `SCR_04` (Career & Opportunity Board).
-- **Mục tiêu:** Tìm cơ hội phù hợp, xem thông tin vị trí và gửi CV cùng yêu cầu Referral.
-- **Kết thúc thành công:** `SCR_05` xác nhận gửi thành công; trạng thái hồ sơ có thể theo dõi tại `SCR_08`.
-- **Kết thúc thay thế:** Không có kết quả sau khi thử điều chỉnh/xóa bộ lọc; hoặc sinh viên rời form chưa gửi và quay lại `SCR_04`.
+### 🔵 User Flow 2: Khám phá cơ hội tuyển dụng qua Forum
+- **Điểm bắt đầu:** Sinh viên đã đăng nhập và đang ở Forum Feed `SCR_02`.
+- **Mục tiêu:** Tìm một bài đăng tuyển dụng/OJT phù hợp trong Forum và liên hệ tác giả qua Chat.
+- **Điểm kết thúc thành công:** Tin nhắn hỏi thông tin được xác nhận đã gửi tại `SCR_08`. Kết thúc thay thế: không liên hệ tác giả hoặc kết thúc tìm kiếm khi chưa có kết quả.
+- **User Stories:** FO-02, FO-05, FO-12–FO-14, US-05, CH-01.
 
 ```mermaid
 flowchart TD
-    Start([Bắt đầu: SCR_04 đang hiển thị]) --> SetFilters[Người dùng chọn từ khóa hoặc bộ lọc OJT và ngành]
-    SetFilters --> SearchResults{Hệ thống có cơ hội phù hợp?}
-    SearchResults -- Không --> EmptyState[SCR_04 hiển thị empty state: Chưa tìm thấy cơ hội phù hợp]
-    EmptyState --> SearchRecovery{Người dùng muốn thử lại?}
-    SearchRecovery -- Có --> RecoverSearch[Người dùng điều chỉnh bộ lọc hoặc chọn Xóa bộ lọc]
-    RecoverSearch --> SearchResults
-    SearchRecovery -- Không --> NoResultsEnd([Kết thúc thay thế: quay lại SCR_04, chưa tìm thấy cơ hội])
-    SearchResults -- Có --> Browse[Người dùng xem danh sách cơ hội có Referral]
-    Browse --> SelectOpportunity[Người dùng chọn một cơ hội]
-    SelectOpportunity --> Review[SCR_05 hiển thị JD, quyền lợi và thông tin alumni bảo lãnh]
-    Review --> OpenForm[Người dùng mở form Referral tại SCR_05]
-    OpenForm --> ProvideLetter[Người dùng nhập thư ngỏ tối đa 500 ký tự]
-    ProvideLetter --> FormChoice{Người dùng gửi hay hủy yêu cầu?}
-    FormChoice -- Hủy --> Cancel[Người dùng dùng nút Back trước khi gửi]
-    Cancel --> CancelEnd([Quay lại SCR_04; thông tin form chưa gửi bị bỏ, không lưu draft])
-    FormChoice -- Gửi --> Validate[Hệ thống kiểm tra đã chọn CV PDF bắt buộc]
-    Validate --> HasCV{Đã chọn CV PDF?}
-    HasCV -- Chưa --> MissingCV[SCR_05 báo cần có CV trước khi gửi]
-    MissingCV --> KeepLetter[Giữ thư ngỏ đã nhập; người dùng chọn CV PDF]
-    KeepLetter --> Validate
-    HasCV -- Rồi --> Submit[Người dùng nhấn Gửi yêu cầu xin Referral]
-    Submit --> Loading[Hệ thống gửi yêu cầu và hiển thị trạng thái đang xử lý]
-    Loading --> SubmitOutcome{Kết quả gửi yêu cầu?}
-    SubmitOutcome -- Thành công --> Success[SCR_05 hiển thị hộp thoại gửi thành công và mã theo dõi]
-    SubmitOutcome -- Lỗi mạng --> NetworkBanner[SCR_05 báo lỗi kết nối; giữ nguyên thư ngỏ và CV đã chọn]
-    NetworkBanner --> NetworkChoice{Thử lại hay dừng tại form?}
-    NetworkChoice -- Thử lại khi có kết nối --> Retry[Người dùng nhấn Thử lại]
-    Retry --> Loading
-    NetworkChoice -- Dừng --> NetworkWaitEnd([Tạm dừng tại SCR_05; dữ liệu được giữ, chưa gửi lại])
-    Success --> Track[SCR_08 hiển thị trạng thái hồ sơ đang chờ alumni phản hồi]
-    Track --> EndSuccess([Kết thúc thành công: yêu cầu Referral đã được gửi])
+    Start([Bắt đầu: Forum Feed SCR_02]) --> OpenSearch[Mở tìm kiếm/lọc tại SCR_11]
+    OpenSearch --> SetRecruitment[Chọn loại bài Recruitment; tùy chọn campus, ngành hoặc từ khóa]
+    SetRecruitment --> SearchResult{Có bài tuyển dụng phù hợp?}
+    SearchResult -- Không --> EmptyResults[SCR_11 báo không có kết quả phù hợp]
+    EmptyResults --> RecoveryChoice{Điều chỉnh bộ lọc hay dừng?}
+    RecoveryChoice -- Điều chỉnh --> AdjustFilters[Sửa từ khóa/bộ lọc hoặc xóa bộ lọc]
+    AdjustFilters --> SearchResult
+    RecoveryChoice -- Dừng --> EndNoResults([Kết thúc thay thế: chưa tìm thấy bài phù hợp])
+    SearchResult -- Có --> Results[SCR_11 hiển thị kết quả; sắp xếp gần đây/phổ biến]
+    Results --> OpenPost[Mở bài tuyển dụng tại SCR_03]
+    OpenPost --> ReviewPost[Đọc thông tin cơ hội và tác giả trên bài Forum]
+    ReviewPost --> ContactChoice{Muốn hỏi thêm tác giả?}
+    ContactChoice -- Không --> EndNoContact([Kết thúc thay thế: rời bài mà không liên hệ])
+    ContactChoice -- Có --> AuthorProfile[Mở hồ sơ tác giả tại SCR_06]
+    AuthorProfile --> StartChat[Chọn Chat; mở hoặc bắt đầu hội thoại tại SCR_08]
+    StartChat --> ComposeInquiry[Soạn câu hỏi về nội dung bài tuyển dụng]
+    ComposeInquiry --> SendInquiry[Gửi tin nhắn]
+    SendInquiry --> SentFeedback[SCR_08 xác nhận tin nhắn đã gửi]
+    SentFeedback --> EndContact([Kết thúc: đã liên hệ tác giả qua Chat])
 ```
 
-**Quy tắc và giả định:** CV PDF là điều kiện bắt buộc của yêu cầu này; thư ngỏ có giới hạn 500 ký tự theo đặc tả, nhưng tính bắt buộc của thư ngỏ chưa được quy định. Sơ đồ chỉ kiểm tra đã chọn CV PDF; chưa có quy tắc khác về nội dung thư ngỏ hoặc file. Thông báo thiếu CV và giữ thư ngỏ khi bổ sung CV là hành vi UX đề xuất. Đường Back từ form về `SCR_04` cũng là đề xuất; thông tin chưa gửi bị bỏ và không lưu thành draft. Không có xác nhận hủy vì screen spec chưa mô tả dialog này. Khi gặp lỗi mạng, `SCR_05` giữ form và CV theo screen spec; người dùng có thể thử lại hoặc tạm dừng tại form. Flow 3 tập trung vào đặt lịch mentor.
+**Nhánh và giới hạn:** Khi không có kết quả, người dùng có thể đổi/xóa bộ lọc rồi tìm lại hoặc dừng. Sau khi đọc bài, người dùng có thể rời mà không liên hệ. Recruitment là loại bài Forum; gửi tin nhắn chỉ mở trao đổi với tác giả, không có nghĩa là đã ứng tuyển hoặc nhận được việc.
 
 ---
 
-### 🔴 User Flow 3: Đặt lịch Mentor và phục hồi khi có sự cố
-- **Điểm bắt đầu:** Sinh viên đã đăng nhập và đang xem danh bạ alumni tại `SCR_06`.
-- **Mục tiêu:** Chọn mentor và khung giờ phù hợp, xác nhận buổi tư vấn 1-1 và nhận thông tin lịch hẹn.
-- **Kết thúc thành công:** Lịch hẹn được xác nhận; sinh viên xem Session Pass tại `SCR_07` với thông tin buổi hẹn và link Google Meet.
-- **Kết thúc thay thế:** Sinh viên rời quy trình trước khi xác nhận và trở về `SCR_06`, hoặc trạng thái đặt lịch còn chưa xác định nên không gửi lại yêu cầu cho đến khi kiểm tra được.
+### 🔴 User Flow 3: Tìm thành viên và nhắn tin trực tiếp
+- **Điểm bắt đầu:** Người dùng đã đăng nhập và chọn tab Members để mở Member Search `SCR_05`.
+- **Mục tiêu:** Tìm một sinh viên/alumni phù hợp và gửi thành công tin nhắn trực tiếp.
+- **Điểm kết thúc:** Tin nhắn có trạng thái đã gửi trong `SCR_08`, hoặc người dùng kết thúc an toàn mà không gửi / tin nhắn còn chờ xác nhận.
+- **User Stories:** US-05, US-06, CH-01–CH-07.
 
 ```mermaid
 flowchart TD
-    Start([Bắt đầu: Sinh viên đang ở SCR_06]) --> SelectMentor[Người dùng chọn alumni mentor]
-    SelectMentor --> OpenBooking[Mở SCR_07: thông tin mentor và lựa chọn tư vấn]
-    OpenBooking --> ChooseSlot[Người dùng chọn ngày, khung giờ còn khả dụng và nhập chủ đề]
-    ChooseSlot --> LeaveChoice{Tiếp tục hay rời quy trình?}
-    LeaveChoice -- Rời --> LeaveBooking[Người dùng dùng Back trước khi xác nhận]
-    LeaveBooking --> EndLeave([Quay lại SCR_06; lựa chọn chưa gửi bị bỏ])
-    LeaveChoice -- Tiếp tục --> ConfirmDialog[SCR_07 hiển thị hộp thoại xác nhận mentor, ngày và giờ]
-    ConfirmDialog --> ConfirmChoice{Người dùng xác nhận đặt lịch?}
-    ConfirmChoice -- Hủy bỏ --> ReturnForm[Đóng hộp thoại; giữ lựa chọn trên form SCR_07]
-    ReturnForm --> LeaveChoice
-    ConfirmChoice -- Xác nhận --> Submit[Hệ thống gửi yêu cầu và hiển thị loading trên SCR_07]
-    Submit --> Result{Kết quả gửi yêu cầu?}
-    Result -- Thành công --> SuccessFeedback[Hiển thị xác nhận đặt lịch thành công]
-    SuccessFeedback --> SessionPass[Hiển thị Session Pass tại SCR_07 với link Google Meet]
-    SessionPass --> EndSuccess([Kết thúc: Lịch hẹn đã xác nhận])
-    Result -- Khung giờ vừa được đặt --> ConflictAlert[SCR_07 báo khung giờ không còn khả dụng]
-    ConflictAlert --> SuggestSlots[Thông báo xung đột và làm nổi bật 2 khung giờ rảnh kế tiếp]
-    SuggestSlots --> ConflictChoice{Chọn giờ khác hay dừng?}
-    ConflictChoice -- Chọn giờ khác --> ChooseAlternative[Người dùng chọn khung giờ khác; chủ đề đã nhập được giữ lại]
-    ChooseAlternative --> ConfirmDialog
-    ConflictChoice -- Dừng --> EndConflictExit([Kết thúc thay thế: giữ nguyên không có lịch mới; ở lại SCR_07])
-    Result -- Không nhận được kết quả do lỗi mạng --> NetworkFeedback[SCR_07 báo chưa xác định được lịch hẹn; không gửi lại ngay]
-    NetworkFeedback --> CheckBookings[Người dùng mở SCR_08 để kiểm tra lịch tư vấn của tôi]
-    CheckBookings --> BookingFound{Đã xác minh có lịch mới?}
-    BookingFound -- Có --> ExistingPass[SCR_08 hiển thị lịch đã xác nhận; mở Session Pass tại SCR_07]
-    ExistingPass --> EndVerified([Kết thúc: Lịch hẹn đã xác minh; không gửi lại])
-    BookingFound -- Chưa rõ --> UnknownEnd([Kết thúc an toàn: chưa gửi lại; kiểm tra SCR_08 khi có thể xác minh])
-    BookingFound -- Đã xác minh chưa tạo lịch --> RetryDecision{Đã dùng lần gửi lại an toàn chưa?}
-    RetryDecision -- Rồi --> RetryLimitEnd([Kết thúc an toàn: đã xác minh chưa có lịch; không tự gửi thêm])
-    RetryDecision -- Chưa --> ReturnRetry[Quay lại SCR_07 với mentor và chủ đề đã giữ; kiểm tra lại khung giờ]
-    ReturnRetry --> SlotStillAvailable{Khung giờ còn khả dụng?}
-    SlotStillAvailable -- Có --> RetryConfirm[Người dùng xác nhận lại; gửi lại tối đa một lần]
-    RetryConfirm --> RetrySubmit[Hiển thị loading và gửi lại yêu cầu đã xác minh chưa được tạo]
-    RetrySubmit --> RetryResult{Kết quả gửi lại?}
-    RetryResult -- Thành công --> SuccessFeedback
-    RetryResult -- Xung đột --> ConflictAlert
-    RetryResult -- Chưa rõ do lỗi mạng --> RetryUnclearEnd([Kết thúc an toàn: không gửi thêm; kiểm tra SCR_08 sau])
-    SlotStillAvailable -- Không --> ConflictAlert
+    Start([Bắt đầu: Member Search SCR_05]) --> SearchMember[Nhập tên hoặc tiêu chí tìm thành viên]
+    SearchMember --> HasMember{Có kết quả phù hợp?}
+    HasMember -- Không --> NoMember[SCR_05 báo không tìm thấy thành viên]
+    NoMember --> SearchRecovery{Tìm lại hay dừng?}
+    SearchRecovery -- Tìm lại --> RefineSearch[Điều chỉnh hoặc xóa tiêu chí tìm kiếm]
+    RefineSearch --> HasMember
+    SearchRecovery -- Dừng --> EndNoMember([Kết thúc thay thế: chưa chọn được thành viên])
+    HasMember -- Có --> OpenProfile[Mở hồ sơ thành viên tại SCR_06]
+    OpenProfile --> ChatChoice{Bắt đầu Chat?}
+    ChatChoice -- Không --> EndLeave([Kết thúc thay thế: rời hồ sơ mà chưa gửi tin])
+    ChatChoice -- Có --> OpenConversation[Mở hoặc tạo hội thoại tại SCR_08]
+    OpenConversation --> ReadHistory[Hiển thị lịch sử nếu đã có; nếu mới thì hội thoại trống]
+    ReadHistory --> Compose[Soạn tin nhắn tại SCR_08]
+    Compose --> HasText{Tin nhắn có nội dung?}
+    HasText -- Không --> EmptyFeedback[SCR_08 báo cần nhập nội dung; giữ nội dung đã soạn nếu có]
+    EmptyFeedback --> Compose
+    HasText -- Có --> Send[Người dùng gửi tin nhắn]
+    Send --> SendingState[SCR_08 hiển thị trạng thái đang gửi]
+    SendingState --> DeliveryResult{Kết quả gửi có xác định?}
+    DeliveryResult -- Đã gửi --> SentState[Hiển thị tin nhắn với trạng thái Đã gửi; trạng thái nhận/đã đọc cập nhật khi có]
+    SentState --> ReturnChoice{Mở danh sách hội thoại?}
+    ReturnChoice -- Có --> ConversationList[Quay về Conversation List SCR_07]
+    ConversationList --> EndSent([Kết thúc: hội thoại còn trong danh sách gần đây])
+    ReturnChoice -- Không --> EndInThread([Kết thúc: tin nhắn đã gửi trong SCR_08])
+    DeliveryResult -- Xác nhận chưa gửi --> FailedState[SCR_08 báo gửi thất bại; giữ nguyên nội dung]
+    FailedState --> FailedChoice{Thử lại, sửa nội dung hay dừng?}
+    FailedChoice -- Thử lại khi trạng thái xác nhận chưa gửi --> Retry[Người dùng nhấn Thử lại]
+    Retry --> SendingState
+    FailedChoice -- Sửa --> Compose
+    FailedChoice -- Dừng --> EndFailed([Kết thúc an toàn: tin chưa gửi; nội dung được giữ tại SCR_08])
+    DeliveryResult -- Chưa rõ --> UncertainState[SCR_08 hiển thị Đang chờ xác nhận; giữ tin và không gửi lại ngay]
+    UncertainState --> WaitStatus[Chờ trạng thái gửi cập nhật trong cùng hội thoại]
+    WaitStatus --> UncertainChoice{Đã có trạng thái xác nhận?}
+    UncertainChoice -- Đã gửi --> SentState
+    UncertainChoice -- Xác nhận chưa gửi --> FailedState
+    UncertainChoice -- Vẫn chưa rõ --> EndPending([Kết thúc an toàn: tin còn chờ; kiểm tra lại trạng thái trước khi gửi lại])
 ```
 
-**Quy tắc và giả định:** Đường thành công, hộp thoại xác nhận hai bước, cảnh báo xung đột với hai giờ thay thế, Session Pass và link Google Meet được mô tả tại `design/screen-spec.md`. `SCR_08` có danh sách lịch tư vấn để đối chiếu khi kết quả gửi không rõ. Để tránh đặt trùng, chỉ cho phép gửi lại sau khi trạng thái trước đó đã được xác minh là chưa tạo lịch; nếu chưa thể xác minh, người dùng không gửi lại và kiểm tra sau. Quy trình kiểm tra trạng thái, thông báo lỗi mạng, giữ lựa chọn khi quay lại và việc chỉ cho retry sau xác minh là **đề xuất UX**, chưa được đặc tả như hành vi đã triển khai. Xung đột giờ quay lại `SCR_07` để chọn giờ khác và xác nhận lại. Nút **Hủy bỏ** trên hộp thoại xác nhận chỉ đóng hộp thoại và giữ form; để rời hẳn quy trình trước khi đặt, Back từ form trở về `SCR_06` và bỏ lựa chọn chưa gửi là **đề xuất UX**, không phải hủy một lịch đã xác nhận. Screen spec có hành động hủy lịch sau khi đặt; hành động đó không thuộc flow đặt lịch này.
+**Nhánh lỗi và phụ thuộc:** Tin rỗng bị chặn tại `SCR_08`. Chỉ hiển thị hành động retry khi trạng thái xác nhận tin chưa được gửi; nếu kết quả mạng chưa rõ, giữ tin ở trạng thái chờ và không gửi trùng. Ý nghĩa chính xác của trạng thái “xác nhận chưa gửi” và khả năng cập nhật/đối soát trạng thái là phụ thuộc triển khai cần xác nhận; flow không giả định backend có idempotency hoặc bảo đảm loại trùng. Nếu trạng thái chưa rõ, kết thúc an toàn là chờ và kiểm tra lại hội thoại.
+
+**Success target liên quan:** Metric tìm thành viên và gửi tin trong persona có mục tiêu đề xuất ≥80% hoàn thành độc lập, trung vị ≤90 giây; đây chưa phải kết quả usability test.
 
 ---
 
