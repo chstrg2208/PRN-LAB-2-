@@ -91,13 +91,13 @@ Inventory đề xuất **11 màn hình có mục đích riêng** theo danh sách
 
 **Không thuộc mobile inventory:** AD-01–AD-09 thuộc Admin Web Dashboard riêng; các màn hình admin không được đưa vào sơ đồ mobile hoặc tính trong tổng số màn hình Lab 2.
 
-**Chủ sở hữu flow trong các task tiếp theo:** dự kiến tách thành năm hành trình đại diện: (1) xác thực và quản lý tài khoản, (2) khám phá/tìm kiếm và thảo luận Forum, (3) tạo hoặc chỉnh sửa bài, (4) tìm thành viên và trao đổi qua Chat, (5) hỏi AI Chat và mở bài nguồn. Đây mới là phân công phạm vi cho việc thiết kế flow; điểm bắt đầu, nhánh thay thế/lỗi và kết thúc sẽ được xác định trong TASK 03, không được xem là các flow đã hoàn thành hoặc kiểm chứng.
+**Phạm vi flow:** Flow 1–4 mô tả các hành trình mobile đại diện; Flow 5 mô tả riêng kiểm duyệt trên Admin Web. Đây không phải danh sách đầy đủ mọi User Story và không khẳng định các chức năng đã được triển khai.
 
-**Trạng thái chuyển tiếp:** các flow và flow-to-screen mapping phía dưới mục 1 vẫn là tài liệu cũ, còn tham chiếu booking/referral và inventory 8 màn hình trước đây. Chúng được giữ nguyên theo phạm vi TASK 02 và sẽ được thay/đối chiếu trong task sau; không dùng chúng làm bằng chứng rằng inventory mới đã được phủ bởi flow.
+**Trạng thái mapping:** Bảng ở mục 3 được dựng lại từ các node trong bốn sơ đồ mobile. Mapping Flow 5 được ghi riêng và không tính vào inventory 11 màn hình mobile.
 
 ---
 
-## 2. Đặc tả Chi tiết 3 User Flows
+## 2. Đặc tả Chi tiết 5 User Flows
 
 ---
 
@@ -131,7 +131,11 @@ flowchart TD
     ValidatePost -- Rồi --> Publish[Người dùng gửi bài]
     Publish --> PublishFeedback[Hệ thống xác nhận đăng bài thành công]
     PublishFeedback --> PublishedInFeed[Bài mới xuất hiện trên Forum Feed SCR_02]
-    PublishedInFeed --> PostDetail[Người dùng mở bài vừa đăng tại SCR_03]
+    PublishedInFeed --> AfterPublish{Muốn xem bài mới hay danh sách bài của mình?}
+    AfterPublish -- Xem bài mới --> PostDetail[Người dùng mở bài vừa đăng tại SCR_03]
+    AfterPublish -- Xem bài của tôi --> MyProfile[Chuyển sang tab My Profile & Settings SCR_10]
+    MyProfile --> MyPosts[Xem bài đã đăng của mình trong hồ sơ theo FO-10]
+    MyPosts --> EndMyPosts([Kết thúc thay thế: đã xem bài viết của mình])
     PostDetail --> CommunityReply[Thành viên khác bình luận hoặc trả lời tại SCR_03]
     CommunityReply --> VisibleDiscussion[Hệ thống hiển thị bình luận/trả lời trong bài]
     VisibleDiscussion --> EndPosted([Kết thúc: bài đăng và thảo luận đã hiển thị])
@@ -228,19 +232,117 @@ flowchart TD
 
 ---
 
+### 🟣 User Flow 4: Hỏi AI Chat dựa trên nội dung Forum
+- **Điểm bắt đầu:** Sinh viên đã đăng nhập tại Forum Feed `SCR_02` và mở AI Chat.
+- **Mục tiêu:** Nhận câu trả lời dựa trên nội dung Forum và kiểm tra ít nhất một bài nguồn được dẫn khi có bằng chứng phù hợp.
+- **Điểm kết thúc:** Đã xem câu trả lời có nguồn và bài viết gốc, hoặc kết thúc an toàn khi thiếu nguồn hay dịch vụ gặp lỗi.
+- **User Stories:** AI-01–AI-04.
+
+```mermaid
+flowchart TD
+    Start([Bắt đầu: Forum Feed SCR_02]) --> OpenAI[Mở AI Chat SCR_09]
+    OpenAI --> ComposeQuestion[Nhập câu hỏi về kiến thức trên Forum]
+    ComposeQuestion --> HasQuestion{Câu hỏi có nội dung?}
+    HasQuestion -- Không --> EmptyQuestion[SCR_09 báo cần nhập câu hỏi; chưa gửi]
+    EmptyQuestion --> EmptyChoice{Sửa câu hỏi hay thoát?}
+    EmptyChoice -- Sửa --> ComposeQuestion
+    EmptyChoice -- Thoát --> EmptyExit[Quay về Forum Feed SCR_02]
+    EmptyExit --> EndEmpty([Kết thúc: câu hỏi rỗng chưa được gửi])
+    HasQuestion -- Có --> Ask[Người dùng gửi câu hỏi]
+    Ask --> Loading[SCR_09 hiển thị trạng thái đang xử lý]
+    Loading --> ResponseResult{Dịch vụ trả kết quả?}
+    ResponseResult -- Có --> Evidence{Có đủ nội dung Forum phù hợp?}
+    ResponseResult -- Lỗi --> ErrorFeedback[SCR_09 báo lỗi dễ hiểu; giữ nguyên câu hỏi]
+    Evidence -- Có --> GroundedAnswer[AI hiển thị câu trả lời dựa trên Forum và bài nguồn liên quan]
+    GroundedAnswer --> OpenSource[Người dùng mở một bài được dẫn tại SCR_03]
+    OpenSource --> ReviewSource[Đọc nội dung bài Forum gốc]
+    ReviewSource --> ReturnAI[Quay lại cùng cuộc trò chuyện AI tại SCR_09]
+    ReturnAI --> FollowUpChoice{Muốn hỏi tiếp trong cuộc trò chuyện?}
+    FollowUpChoice -- Có --> ComposeFollowUp[Nhập câu hỏi tiếp theo trong ngữ cảnh hiện tại]
+    ComposeFollowUp --> HasQuestion
+    FollowUpChoice -- Không --> EndVerified([Kết thúc: đã kiểm tra câu trả lời với bài nguồn])
+    Evidence -- Không --> NoEvidence[SCR_09 nói rõ chưa tìm thấy đủ bằng chứng Forum; không tạo trích dẫn]
+    NoEvidence --> NoEvidenceChoice{Thử diễn đạt lại hay sang Forum?}
+    NoEvidenceChoice -- Diễn đạt lại --> ComposeFollowUp
+    NoEvidenceChoice -- Sang Forum --> ReturnForum[Quay về Forum Feed SCR_02 để tìm bài hoặc hỏi cộng đồng]
+    ReturnForum --> EndNoEvidence([Kết thúc an toàn: chưa có câu trả lời được nguồn xác nhận])
+    ErrorFeedback --> ErrorChoice{Thử lại hay thoát?}
+    ErrorChoice -- Thử lại --> Retry[Người dùng gửi lại câu hỏi đã giữ]
+    Retry --> Loading
+    ErrorChoice -- Thoát --> ErrorExit[Quay về Forum Feed SCR_02]
+    ErrorExit --> EndError([Kết thúc an toàn: câu hỏi được giữ, chưa có câu trả lời])
+```
+
+**Nhánh và giới hạn UX:** Loading, trạng thái thiếu nguồn và lỗi là các trạng thái của `SCR_09`, không phải màn hình mới. Khi đủ nguồn, AI cần hiển thị câu trả lời gắn với nội dung Forum và liên kết bài nguồn; khi không đủ nguồn, không hiển thị trích dẫn giả và cho phép sửa câu hỏi hoặc quay về Forum. Đây là hành vi UX yêu cầu cho prototype, không xác nhận RAG hay dịch vụ AI đã được triển khai. Mục tiêu usability đề xuất trong persona là ≥80% hoàn thành độc lập và trung vị ≤90 giây thao tác, không tính thời gian chờ AI; chưa có kết quả đo.
+
+---
+
+### ⚫ User Flow 5: Admin Web kiểm duyệt bài bị báo cáo
+- **Ranh giới:** Hành trình chạy trên Admin Web Dashboard riêng, không thuộc ứng dụng mobile và không dùng ID `SCR_XX`.
+- **Điểm bắt đầu:** Admin truy cập dashboard web và đăng nhập.
+- **Mục tiêu:** Xem xét một báo cáo Forum và xử lý phù hợp với nội dung được báo cáo.
+- **Điểm kết thúc:** Báo cáo được giải quyết chính xác, hoặc Admin rời quy trình khi báo cáo vẫn đang chờ xử lý.
+- **User Stories:** AD-04–AD-07.
+
+```mermaid
+flowchart TD
+    Start([Bắt đầu: Admin mở dashboard web]) --> AdminLogin[Đăng nhập vào Admin Web]
+    AdminLogin --> LoginResult{Đăng nhập thành công?}
+    LoginResult -- Không --> LoginError[Hiển thị lỗi đăng nhập]
+    LoginError --> LoginRecovery{Sửa thông tin hay thoát?}
+    LoginRecovery -- Sửa --> AdminLogin
+    LoginRecovery -- Thoát --> EndLoginExit([Kết thúc: chưa vào dashboard])
+    LoginResult -- Có --> ReportQueue[ADM-W01: danh sách bài bị báo cáo]
+    ReportQueue --> SelectReport[Chọn một báo cáo cần xem xét]
+    SelectReport --> ReportDetail[ADM-W02: xem bài viết và lý do báo cáo]
+    ReportDetail --> Violation{Nội dung vi phạm quy định?}
+    Violation -- Không --> Dismiss[Chọn bỏ qua báo cáo]
+    Dismiss --> RecordDismiss[Hệ thống ghi nhận quyết định và cập nhật báo cáo đã giải quyết]
+    RecordDismiss --> EndDismiss([Kết thúc: báo cáo đã đóng, bài viết vẫn hiển thị])
+    Violation -- Có --> ChooseAction[Chọn ẩn hoặc xóa bài vi phạm]
+    ChooseAction --> Confirm[ADM-W02 yêu cầu xác nhận hành động kiểm duyệt]
+    Confirm --> ConfirmChoice{Admin xác nhận?}
+    ConfirmChoice -- Không --> ReturnDetail[Quay lại chi tiết; chưa thay đổi nội dung]
+    ReturnDetail --> ReportDetail
+    ConfirmChoice -- Có --> ApplyAction[Hệ thống thực hiện hành động và cập nhật trạng thái báo cáo]
+    ApplyAction --> ActionResult{Kết quả hành động?}
+    ActionResult -- Thành công --> SuccessFeedback[ADM-W02 hiển thị kết quả; báo cáo được đánh dấu đã giải quyết]
+    SuccessFeedback --> EndResolved([Kết thúc: nội dung được xử lý và báo cáo đã giải quyết])
+    ActionResult -- Xác nhận thất bại --> FailureFeedback[Hiển thị lỗi; báo cáo vẫn mở và có thể truy cập]
+    FailureFeedback --> FailureChoice{Thử lại hay để chờ?}
+    FailureChoice -- Thử lại --> RetryAction[Chỉ thử lại khi đã xác nhận thao tác trước thất bại]
+    RetryAction --> Confirm
+    FailureChoice -- Để chờ --> EndPending([Kết thúc: báo cáo còn chờ, chưa ghi nhận đã giải quyết])
+    ActionResult -- Chưa rõ --> Uncertain[Hiển thị trạng thái chưa xác định; không gửi lại thao tác xóa/ẩn]
+    Uncertain --> VerifyStatus[Kiểm tra trạng thái hiện tại của báo cáo và bài viết tại ADM-W02]
+    VerifyStatus --> StatusKnown{Đã xác định kết quả?}
+    StatusKnown -- Đã xử lý --> SuccessFeedback
+    StatusKnown -- Chưa xử lý và thao tác thất bại --> FailureFeedback
+    StatusKnown -- Vẫn chưa rõ --> EndUncertain([Kết thúc an toàn: giữ báo cáo truy cập được, chưa khẳng định đã giải quyết])
+```
+
+**Nhánh và giới hạn Admin Web:** `ADM-W01` và `ADM-W02` là các màn hình web của Admin, không thuộc inventory mobile 11 màn hình. Xác nhận trước thao tác ẩn/xóa và việc kiểm tra trạng thái sau kết quả không rõ là hành vi UX đề xuất; không hàm ý có workflow phê duyệt hoặc cơ chế backend cụ thể. Nếu kết quả chưa xác định, không lặp lại thao tác phá hủy cho đến khi trạng thái được làm rõ.
+
+---
+
 ## 3. Bảng Ánh xạ Flow sang Màn hình (Flow-to-Screen Mapping Matrix)
 
-Bảng ma trận dưới đây đối chiếu từng màn hình với node hoặc đường đi thực tế trong ba sơ đồ; dấu ✓ chỉ màn hình có xuất hiện trong flow tương ứng.
+Bảng mobile dưới đây được dựng từ các node và đường đi thực tế của bốn flow mobile. Dấu ✓ chỉ màn hình được mở hoặc hiển thị trong sơ đồ; Flow 5 là Admin Web và được liệt kê riêng bên dưới.
 
-| Mã màn hình | Tên màn hình theo screen spec | Flow 1 — Bài viết & mentor | Flow 2 — Referral | Flow 3 — Đặt lịch & phục hồi | Ghi chú node/đường đi |
-| :---: | :--- | :---: | :---: | :---: | :--- |
-| **SCR_01** | Login & Role Selection Screen | ✓ | — | — | Flow 1: `AuthGate → Login → LoginSuccess` |
-| **SCR_02** | Home Feed Screen (Không gian Chung & Nhóm ngành) | ✓ | — | — | Flow 1: `EnterHome`, duyệt feed |
-| **SCR_03** | Post / Experience Detail Screen | ✓ | — | — | Flow 1: `OpenDetail` |
-| **SCR_04** | Career & Opportunity Board Screen | — | ✓ | — | Flow 2: `Start`, tìm kiếm và lọc cơ hội |
-| **SCR_05** | Job Detail & Referral Apply Screen | — | ✓ | — | Flow 2: `Review`, form, validation, gửi và retry khi lỗi mạng |
-| **SCR_06** | Alumni Mentors Directory Screen | ✓ | — | ✓ | Flow 1: `OpenMentors`; Flow 3: `Start`, `SelectMentor` |
-| **SCR_07** | Mentor Booking & Session Pass Screen | ✓ | — | ✓ | Flow 1: `OpenBooking`, `ShowSessionPass`; Flow 3: form, xác nhận, recovery và Session Pass |
-| **SCR_08** | Profile & My Network Screen | ✓ | ✓ | ✓ | Flow 1: `OpenMySessions`; Flow 2: `Track`; Flow 3: `CheckBookings` |
+| Mã màn hình | Tên màn hình theo IA/inventory | Flow 1 — Forum | Flow 2 — Recruitment | Flow 3 — Direct Chat | Flow 4 — AI Chat | Node/đường đi thực tế |
+| :---: | :--- | :---: | :---: | :---: | :---: | :--- |
+| **SCR_01** | Login & Authentication | ✓ | — | — | — | F1: `Login` qua `AuthGate` khi chưa đăng nhập |
+| **SCR_02** | Forum Feed | ✓ | ✓ | — | ✓ | F1: `Forum`, `PublishedInFeed`; F2: `Start`; F4: `Start`, `ReturnForum` |
+| **SCR_03** | Post Detail & Comments | ✓ | ✓ | — | ✓ | F1: `PostDetail`; F2: `OpenPost`; F4: `OpenSource`, quay lại `SCR_09` |
+| **SCR_04** | Create / Edit Post | ✓ | — | — | — | F1: `Composer`, `AttachImage`, `ValidationFeedback` |
+| **SCR_05** | Member Search | — | — | ✓ | — | F3: `Start`, `SearchMember`, `NoMember` |
+| **SCR_06** | Other Member Profile | — | ✓ | ✓ | — | F2: `AuthorProfile`; F3: `OpenProfile` |
+| **SCR_07** | Conversation List | — | — | ✓ | — | F3: `ConversationList`, quay lại sau khi gửi |
+| **SCR_08** | Chat Conversation | — | ✓ | ✓ | — | F2: `StartChat`, `SentFeedback`; F3: `OpenConversation`, trạng thái gửi |
+| **SCR_09** | AI Chat | — | — | — | ✓ | F4: `OpenAI`, câu hỏi, trả lời, thiếu nguồn và lỗi |
+| **SCR_10** | My Profile & Settings | ✓ | — | — | — | F1: `MyProfile` → `MyPosts` theo FO-10 |
+| **SCR_11** | Post Search & Filter | — | ✓ | — | — | F2: `OpenSearch`, `Results`, `EmptyResults` |
 
-> **Kết luận:** Cả 8 màn hình đều có đường truy cập trong IA và xuất hiện trong ít nhất một user flow theo bảng đối chiếu trên.
+**Admin Web — mapping riêng:** Flow 5 đi từ đăng nhập dashboard đến `ADM-W01` (danh sách báo cáo), rồi `ADM-W02` (chi tiết bài, lý do báo cáo và trạng thái kiểm duyệt). Đây là hai màn hình/khung điều hướng web, không phải `SCR_XX`, không cộng vào số màn hình mobile và không thuộc bảng coverage mobile.
+
+**Kết luận coverage:** 11/11 màn hình mobile xuất hiện ít nhất một lần trong đường đi của Flow 1–4. Flow 5 được ánh xạ riêng sang Admin Web.
