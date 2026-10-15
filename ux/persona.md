@@ -1,69 +1,76 @@
-# 👤 UX Analysis: Persona & Problem Statement
+# UX Analysis: Persona & Problem Statement
+
 **Dự án:** F-Alumni — FPT Alumni Mentorship & Opportunity Network  
 **Môn học:** PRM323 — Cross-Platform Application Development  
-**Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP.HCM  
-**Thành viên nhóm:**  
-1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2)  
-2. **Võ Quang Tâm** — MSSV: **SE192621** (TV1)  
-3. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV3)  
-4. **Đỗ Trọng Tín** — MSSV: Đang cập nhật (TV4)  
+**Nhóm thực hiện:** PRM Nhóm 4 — Đại học FPT TP.HCM
 
----
+## 1. Primary Persona — Sinh viên FPT
 
-## 1. Primary Persona (Chân dung Người dùng Mục tiêu)
+| Thuộc tính | Mô tả |
+| --- | --- |
+| **Họ và tên** | Trương Chí Trung |
+| **Độ tuổi** | 20–22 tuổi *(khoảng tuổi persona đề xuất; tuổi cụ thể chưa được xác minh)* |
+| **Vai trò** | Sinh viên năm 3 ngành Kỹ thuật Phần mềm (SE), khóa K19, Đại học FPT TP.HCM; đang chuẩn bị cho kỳ thực tập doanh nghiệp OJT. |
+| **Bối cảnh học tập** | Học tại cơ sở Đại học FPT ở Khu Công nghệ cao, TP. Thủ Đức. |
+| **Thiết bị chính** | Smartphone Android; hồ sơ hiện tại dùng Samsung Galaxy A54, Android 14, khung tham chiếu 360 × 800 dp. |
 
-| Thuộc tính | Chi tiết |
-| :--- | :--- |
-| **Họ và tên** | **Trương Chí Trung** |
-| **Độ tuổi** | 20 tuổi (Sinh viên năm 3, Khóa K19) |
-| **Vai trò** | Sinh viên chuyên ngành Kỹ thuật Phần mềm (Software Engineering - SE), Đại học FPT TP.HCM; Chuẩn bị bước vào kỳ thực tập doanh nghiệp (OJT - On the Job Training) |
-| **Thiết bị sử dụng** | Samsung Galaxy A54 (Android 14, độ phân giải màn hình 360 × 800 dp logic, màn hình 120Hz) |
-| **Khuôn viên học tập** | Đại học FPT TP.HCM (Khu Công nghệ cao, TP. Thủ Đức) |
+### Bối cảnh và hoạt động thường ngày
 
----
+Trung học các môn chuyên ngành SE, làm bài tập và dự án nhóm, đồng thời chuẩn bị CV và tìm vị trí OJT. Trong giờ nghỉ hoặc khi di chuyển đến trường, Trung thường tranh thủ đọc nội dung nghề nghiệp trên điện thoại. Bạn có nền tảng lập trình nhưng còn thiếu kinh nghiệm phỏng vấn, chuẩn bị CV theo vị trí và lựa chọn hướng phát triển nghề nghiệp. Trung muốn học từ alumni FPT đã trải qua chương trình học tương tự và hiện làm trong ngành.
 
-### 1.1. Bối cảnh Hằng ngày (Daily Context)
-- **Chuẩn bị đi OJT và tìm định hướng nghề nghiệp:** Trung đang học kỳ 5-6 chuyên ngành SE, chuẩn bị bước vào giai đoạn thực tập OJT tại doanh nghiệp. Trung có nền tảng lập trình tốt nhưng còn bỡ ngỡ về quy trình phỏng vấn thực tế, cách viết CV chuẩn ngành, và lộ trình phát triển lên vị trí Middle/Senior.
-- **Nhu cầu kết nối với cựu sinh viên (Alumni):** Trung rất muốn xin lời khuyên từ các anh chị cựu sinh viên FPT (những người đi trước đã từng học đúng chương trình, hiểu văn hóa trường và hiện đang làm Software Engineer tại các công ty lớn như FPT Software, VNG, Shopee, Google...).
-- **Tìm kiếm cơ hội học bổng & việc làm nội bộ:** Trung muốn tiếp cận các cơ hội tuyển dụng OJT hoặc học bổng thạc sĩ/du học được cựu sinh viên chia sẻ độc quyền hoặc sẵn sàng viết thư bảo lãnh giới thiệu (Referral).
+### Mục tiêu
 
----
+- Tìm bài chia sẻ kinh nghiệm phỏng vấn, kỹ thuật và OJT phù hợp với ngành SE.
+- Khám phá cơ hội OJT, việc làm và học bổng do alumni chia sẻ.
+- Gửi CV và yêu cầu referral cho vị trí phù hợp.
+- Tìm mentor alumni, đặt lịch tư vấn 1-1 để được review CV hoặc định hướng nghề nghiệp.
+- Theo dõi lịch tư vấn và trạng thái hồ sơ đã gửi trong hồ sơ cá nhân.
 
-### 1.2. Mục tiêu (Goals)
-1. **Theo dõi kinh nghiệm thực chiến theo chuyên ngành:** Đọc các bài chia sẻ kinh nghiệm phỏng vấn, ôn luyện kỹ thuật, kinh nghiệm làm đồ án tốt nghiệp Capstone và bí quyết săn học bổng được phân loại riêng theo nhóm ngành (Kỹ thuật phần mềm, Trí tuệ nhân tạo, Kinh doanh, Thiết kế đồ họa...).
-2. **Tiếp cận không gian chung toàn trường:** Nắm bắt các thông tin tổng quát bổ ích cho mọi sinh viên FPT (học bổng quốc tế, kỹ năng mềm, sự kiện cựu sinh viên về thăm trường).
-3. **Xin Referral việc làm & thực tập OJT:** Tìm thấy các tin tuyển dụng do chính cựu sinh viên đăng tải, có thể gửi CV và xin suất bảo lãnh giới thiệu nội bộ giúp tăng cơ hội trúng tuyển lên gấp nhiều lần.
-4. **Đặt lịch tư vấn 1-1 với Mentor:** Chủ động chọn khung giờ rảnh và đặt lịch hẹn trao đổi trực tuyến 1-1 qua Google Meet với cựu sinh viên để được review CV và giải đáp thắc mắc.
+### Nỗi đau và rào cản
 
----
+- Khó tìm đúng alumni để hỏi; liên hệ qua mạng xã hội cá nhân có thể bị trôi tin nhắn hoặc khiến Trung ngại làm phiền.
+- Bài viết và cơ hội trên các kênh chung lẫn nhiều ngành, khiến việc tìm thông tin phù hợp mất thời gian.
+- Nộp hồ sơ đại trà không tạo được kết nối trực tiếp với alumni có thể giới thiệu nội bộ.
+- Việc nhắn tin qua lại để thống nhất giờ tư vấn dễ kéo dài hoặc trùng lịch học.
+- Wi-Fi ở trường đôi khi chập chờn, có thể làm gián đoạn việc gửi CV hoặc yêu cầu.
 
-### 1.3. Nỗi đau & Rào cản (Pain Points)
-- **Khoảng cách thế hệ và thông tin phân mảnh:** Mạng lưới cựu sinh viên FPT rất đông đảo và thành đạt, nhưng sinh viên khóa dưới không có kênh chính thức nào để liên lạc ngoài việc tự tìm kiếm mò mẫm trên LinkedIn hoặc Facebook cá nhân (thường bị trôi tin nhắn chờ hoặc ngại làm phiền).
-- **Không có sự phân loại theo ngành nghề:** Các bài viết chia sẻ kinh nghiệm trên mạng xã hội thường bị trộn lẫn giữa IT, Marketing, Ngôn ngữ... khiến sinh viên mất rất nhiều thời gian lọc tin phù hợp với chuyên môn của mình.
-- **Rào cản khi xin thực tập OJT:** Nộp hồ sơ đại trà qua các trang tuyển dụng bên ngoài thường bị cạnh tranh khốc liệt và ít khi nhận được phản hồi. Thiếu kênh xin Referral trực tiếp từ cựu sinh viên trường đang làm việc tại doanh nghiệp.
-- **Thiếu công cụ đặt lịch tư vấn chuyên nghiệp:** Khi muốn nhờ cựu sinh viên review CV hay tư vấn nghề nghiệp, việc nhắn tin qua lại để chốt giờ rảnh rất phức tạp, dễ bị quên lịch hoặc trùng lịch học trên trường.
+### Thói quen sử dụng thiết bị
 
----
+- Chủ yếu dùng smartphone Android; thường thao tác bằng một tay khi nghỉ giữa giờ hoặc đang di chuyển.
+- Đọc bài trong lớp, thư viện hoặc khu vực ngoài trời trong khuôn viên trường.
+- Có thể chuyển từ Wi-Fi trường sang mạng di động nếu kết nối không ổn định.
 
-### 1.4. Thói quen Sử dụng Thiết bị (Device Habits)
-- **Thao tác một tay:** Sử dụng smartphone bằng ngón tay cái khi đang ngồi xe buýt đến trường hoặc giữa giờ giải lao tại thư viện.
-- **Môi trường sử dụng:** Đọc bài chia sẻ cả trong không gian phòng học lẫn ngoài trời sảnh trường; kết nối WiFi trường (`FPT_University`) đôi khi chập chờn vào giờ tan tiết.
+### Nhu cầu tiếp cận
 
----
+- Nội dung dài cần dễ đọc trên màn hình điện thoại: cỡ chữ nội dung tối thiểu 14 sp và độ tương phản phù hợp.
+- Nút hành động, bộ lọc và lựa chọn khung giờ cần vùng chạm đủ lớn (mục tiêu thiết kế 48 × 48 dp).
+- Không dùng màu sắc làm dấu hiệu duy nhất; trạng thái cần có nhãn chữ và/hoặc biểu tượng đi kèm.
 
-### 1.5. Nhu cầu Khả năng Tiếp cận (Accessibility Needs)
-- **Cỡ chữ nội dung dễ đọc (WCAG 2.1):** Văn bản bài viết tối thiểu đạt **14 sp** (body text), tiêu đề từ **18 – 24 sp**, độ tương phản cao (> 4.5:1) để đọc bài viết dài không bị mỏi mắt.
-- **Vùng chạm tương tác lớn:** Nút "Đặt lịch Mentor", "Nộp CV / Xin Referral" và các chip bộ lọc có kích thước vùng chạm tối thiểu **48 × 48 dp** theo chuẩn WCAG 2.5.5.
-- **Không phụ thuộc vào màu sắc:** Phân loại chuyên ngành và trạng thái đơn ứng tuyển (Đã nhận / Đang chờ duyệt / Đã lên lịch) luôn có icon và nhãn văn bản đi kèm.
+## 2. Supporting Persona — Cựu sinh viên FPT
 
----
+> **Persona hỗ trợ, không phải primary persona.** Mô tả dưới đây là giả định thiết kế dựa trên phạm vi tính năng F-Alumni; chưa được xác minh bằng phỏng vấn hoặc nghiên cứu người dùng.
 
-## 2. Câu Phát biểu Vấn đề (One-Sentence Problem Statement)
+**Vai trò và bối cảnh:** Cựu sinh viên FPT đang làm việc trong ngành chuyên môn của mình, có kinh nghiệm thực tế và có thể chia sẻ bài viết, đăng cơ hội nghề nghiệp, nhận yêu cầu referral hoặc tư vấn sinh viên qua lịch hẹn.
 
-> **"Sinh viên Đại học FPT thiếu một nền tảng chuyên biệt để kết nối trực tiếp với mạng lưới cựu sinh viên, phân chia rõ ràng giữa không gian chung toàn trường và không gian chuyên sâu theo từng nhóm ngành, gây khó khăn trong việc học hỏi kinh nghiệm thực chiến, xin giới thiệu việc làm/OJT (Referral) và đặt lịch tư vấn nghề nghiệp 1-1."**
+**Mục tiêu và động lực:** Chia sẻ kinh nghiệm cho sinh viên FPT; hỗ trợ người học chuẩn bị nghề nghiệp; duy trì kết nối với cộng đồng trường; giới thiệu ứng viên phù hợp khi có cơ hội.
 
----
+**Nỗi đau chính:** Thời gian hạn chế; khó tiếp nhận nhiều yêu cầu không phù hợp; trao đổi lịch qua tin nhắn mất công; cần biết rõ chuyên ngành, mục tiêu và thông tin cơ bản của sinh viên trước khi nhận tư vấn hoặc referral.
 
-## 3. Tiêu chí Thành công Đo được (Measurable Success Metric)
+**Bối cảnh dùng điện thoại:** Có thể xem bài viết, yêu cầu tư vấn và cơ hội nghề nghiệp trên smartphone trong thời gian nghỉ hoặc ngoài giờ làm; cần thao tác ngắn gọn để xem yêu cầu và phản hồi khi thuận tiện. Đây là giả định cần kiểm chứng.
 
-> **"Sinh viên có thể tìm kiếm, chọn một bài chia sẻ kinh nghiệm theo đúng chuyên ngành và hoàn tất gửi yêu cầu đặt lịch tư vấn 1-1 với cựu sinh viên Mentor trong vòng dưới 30 giây; và nộp CV xin Referral việc làm OJT trong dưới 20 giây."**
+## 3. Problem Statement
+
+Sinh viên năm 3 ngành Kỹ thuật Phần mềm tại Đại học FPT TP.HCM đang chuẩn bị OJT cần một cách đáng tin cậy để tìm kinh nghiệm và cơ hội phù hợp, kết nối với alumni để xin referral hoặc tư vấn, vì thông tin phân tán và việc liên hệ, thống nhất lịch qua các kênh cá nhân làm chậm quá trình chuẩn bị nghề nghiệp.
+
+## 4. Tiêu chí thành công đề xuất
+
+Các ngưỡng dưới đây là **mục tiêu UX đề xuất**, chưa phải kết quả đo từ usability test. Đánh giá trên người tham gia thuộc nhóm sinh viên FPT mục tiêu; ghi nhận thời gian từ lúc màn hình bắt đầu hiển thị đến khi xuất hiện trạng thái hoàn tất được nêu. Tỷ lệ thành công là số người hoàn tất đúng nhiệm vụ chia cho tổng số người bắt đầu nhiệm vụ.
+
+| Nhiệm vụ | Bắt đầu đo | Hoàn tất thành công khi | Cách đo và mục tiêu đề xuất |
+| --- | --- | --- | --- |
+| **Đặt lịch với mentor từ bài chia sẻ** | Người tham gia đã đăng nhập và `SCR_02` Home Feed hiển thị. | Người tham gia chọn bài phù hợp, mở `SCR_03`, hoàn tất đặt lịch tại `SCR_07` và thấy Session Pass xác nhận; lịch được ghi nhận trong `SCR_08`. | Đo từ lúc `SCR_02` hiển thị đến khi Session Pass xuất hiện; mục tiêu **tỷ lệ hoàn thành độc lập ít nhất 80%** và **trung vị thời gian của các lượt hoàn thành không quá 120 giây**. |
+| **Gửi yêu cầu referral cho cơ hội OJT** | Người tham gia đã đăng nhập và `SCR_04` Career & Opportunity Board hiển thị; tệp CV mẫu đã có sẵn trên thiết bị để không tính thời gian chuẩn bị tệp. | Người tham gia mở cơ hội, điền form tại `SCR_05`, gửi yêu cầu và thấy xác nhận thành công/trạng thái hồ sơ. | Đo từ lúc `SCR_04` hiển thị đến xác nhận gửi thành công; mục tiêu **tỷ lệ hoàn thành độc lập ít nhất 80%** và **trung vị thời gian của các lượt hoàn thành không quá 120 giây**. |
+
+## 5. Cơ sở và giới hạn
+
+Persona chính kế thừa bối cảnh sinh viên SE năm 3 chuẩn bị OJT, nhu cầu học từ alumni, referral, mentoring, thiết bị Android và các nhu cầu tiếp cận đã có trong tài liệu dự án. Tuổi 20–22 và persona alumni là giả định biên tập để mô tả nhóm mục tiêu; chưa được kiểm chứng bằng nghiên cứu. Các tiêu chí thành công là ngưỡng đề xuất để kiểm thử, không phải bằng chứng rằng người dùng hiện đã đạt các ngưỡng đó.
