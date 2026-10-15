@@ -144,58 +144,55 @@ flowchart TD
 
 ---
 
-### 🔴 User Flow 3: Xử lý Ngoại lệ Lỗi Mạng & Trùng Lịch Tư vấn (Conflict & Error Recovery)
-*(Đáp ứng bắt buộc tiêu chí rubric: Có nhánh lỗi nhập liệu/mất mạng và nhánh phục hồi hoàn tác)*
-- **Điểm bắt đầu:** Sinh viên gửi đơn xin Referral trong điều kiện mạng yếu, HOẶC sinh viên gặp lỗi trùng lịch / muốn hủy lịch tư vấn để nhường khung giờ cho bạn khác.
-- **Mục tiêu:** Bảo toàn 100% dữ liệu form và file CV khi mất kết nối mạng; giải quyết xung đột lịch hẹn; và hủy lịch an toàn có hộp thoại xác nhận.
-- **Điểm kết thúc:** Phục hồi dữ liệu gửi lại thành công; hoặc khung giờ tư vấn được trả lại danh sách rảnh của Mentor.
+### 🔴 User Flow 3: Đặt lịch Mentor và phục hồi khi có sự cố
+- **Điểm bắt đầu:** Sinh viên đã đăng nhập và đang xem danh bạ alumni tại `SCR_06`.
+- **Mục tiêu:** Chọn mentor và khung giờ phù hợp, xác nhận buổi tư vấn 1-1 và nhận thông tin lịch hẹn.
+- **Kết thúc thành công:** Lịch hẹn được xác nhận; sinh viên xem Session Pass tại `SCR_07` với thông tin buổi hẹn và link Google Meet.
+- **Kết thúc thay thế:** Sinh viên rời quy trình trước khi xác nhận và trở về `SCR_06`, hoặc trạng thái đặt lịch còn chưa xác định nên không gửi lại yêu cầu cho đến khi kiểm tra được.
 
 ```mermaid
 flowchart TD
-    Start([Bắt đầu: Sinh viên thao tác tại SCR_05 hoặc SCR_07]) --> ScenarioBranch{Tình huống ngoại lệ diễn ra?}
-    
-    %% Nhánh 1: Mất mạng khi tải CV xin Referral
-    ScenarioBranch -- Tình huống A: Mất mạng khi gửi CV tại SCR_05 --> ClickSendCV[Nhấn 'Gửi yêu cầu xin Referral']
-    ClickSendCV --> NetworkDropped[WiFi campus chập chờn / Mất kết nối Internet]
-    NetworkDropped --> ShowErrorBanner[Hiển thị Error Banner màu đỏ nhạt:]
-    ShowErrorBanner --> BannerMsg["'Không thể kết nối máy chủ. File CV và thư ngỏ của bạn đã được bảo lưu an toàn.'"]
-    BannerMsg --> PreserveFormData[TOÀN BỘ dữ liệu text và file CV đính kèm GIỮ NGUYÊN]
-    PreserveFormData --> NetworkRestored[Sinh viên bật mạng 4G hoặc kết nối lại WiFi]
-    NetworkRestored --> ClickRetryBtn[Bấm nút 'Thử lại (Retry)' trên Error Banner]
-    ClickRetryBtn --> SendSuccess[Tải lên thành công -> Mở Dialog Xác nhận]
-    SendSuccess --> EndRecoveryNet([Hoàn tất phục hồi lỗi mạng])
-
-    %% Nhánh 2: Trùng lịch hẹn tư vấn (Slot Conflict)
-    ScenarioBranch -- Tình huống B: Khung giờ vừa bị sinh viên khác đặt trước --> ClickSubmitSlot[Bấm xác nhận đặt khung giờ 09:00 - 09:45]
-    ClickSubmitSlot --> ConflictDetect[Hệ thống kiểm tra: Khung giờ này vừa có người đặt xong!]
-    ConflictDetect --> ShowConflictAlert[Hiển thị Dialog Cảnh báo: 'Khung giờ này đã kín chỗ']
-    ShowConflictAlert --> SuggestOtherSlots[Hệ thống tự động đề xuất 2 khung giờ rảnh kế tiếp của Mentor]
-    SuggestOtherSlots --> PickAlternativeSlot[Sinh viên chọn giờ thay thế: 14:00 - 14:45]
-    PickAlternativeSlot --> ConfirmNewSlot[Xác nhận thành công khung giờ mới]
-    ConfirmNewSlot --> EndConflict([Hoàn tất xử lý trùng lịch])
-
-    %% Nhánh 3: Hủy lịch hẹn nhường chỗ (Cancel Booking Recovery)
-    ScenarioBranch -- Tình huống C: Sinh viên bận thi muốn hủy lịch hẹn 1-1 --> OpenMyBooking[Mở chi tiết lịch hẹn từ SCR_08]
-    OpenMyBooking --> ClickCancelBooking[Chạm liên kết 'Hủy lịch tư vấn này']
-    ClickCancelBooking --> OpenConfirmModal[Mở Confirmation Dialog Overlay:]
-    OpenConfirmModal --> ConfirmModalText["'Bạn có chắc chắn muốn hủy buổi tư vấn? Khung giờ này sẽ được mở lại cho các bạn sinh viên khác.'"]
-    
-    ConfirmModalText --> UserModalChoice{Sinh viên chọn?}
-    UserModalChoice -- Bấm 'Giữ lại lịch' --> DismissModal[Đóng Dialog, lịch hẹn giữ nguyên]
-    DismissModal --> EndKeepBooking([Kết thúc: Giữ lịch hẹn])
-    
-    UserModalChoice -- Bấm 'Xác nhận hủy' --> ExecuteCancel[Gửi lệnh hủy lên Firebase]
-    ExecuteCancel --> UpdateStatusCancelled[Cập nhật trạng thái: 'ĐÃ HỦY LỊCH']
-    UpdateStatusCancelled --> SlotRestored[Khung giờ tự động mở lại trên lịch rảnh của Mentor]
-    SlotRestored --> EndCancelSuccess([Hoàn tất hủy lịch nhường chỗ])
-
-    style Start fill:#ffebee,stroke:#c62828,stroke-width:2px
-    style ShowErrorBanner fill:#ffcdd2,stroke:#b71c1c,stroke-width:2px
-    style OpenConfirmModal fill:#fff9c4,stroke:#fbc02d,stroke-width:2px
-    style EndRecoveryNet fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    style EndConflict fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
-    style EndCancelSuccess fill:#e8f5e9,stroke:#2e7d32,stroke-width:2px
+    Start([Bắt đầu: Sinh viên đang ở SCR_06]) --> SelectMentor[Người dùng chọn alumni mentor]
+    SelectMentor --> OpenBooking[Mở SCR_07: thông tin mentor và lựa chọn tư vấn]
+    OpenBooking --> ChooseSlot[Người dùng chọn ngày, khung giờ còn khả dụng và nhập chủ đề]
+    ChooseSlot --> LeaveChoice{Tiếp tục hay rời quy trình?}
+    LeaveChoice -- Rời --> LeaveBooking[Người dùng dùng Back trước khi xác nhận]
+    LeaveBooking --> EndLeave([Quay lại SCR_06; lựa chọn chưa gửi bị bỏ])
+    LeaveChoice -- Tiếp tục --> ConfirmDialog[SCR_07 hiển thị hộp thoại xác nhận mentor, ngày và giờ]
+    ConfirmDialog --> ConfirmChoice{Người dùng xác nhận đặt lịch?}
+    ConfirmChoice -- Hủy bỏ --> ReturnForm[Đóng hộp thoại; giữ lựa chọn trên form SCR_07]
+    ReturnForm --> ConfirmDialog
+    ConfirmChoice -- Xác nhận --> Submit[Hệ thống gửi yêu cầu và hiển thị loading trên SCR_07]
+    Submit --> Result{Kết quả gửi yêu cầu?}
+    Result -- Thành công --> SuccessFeedback[Hiển thị xác nhận đặt lịch thành công]
+    SuccessFeedback --> SessionPass[Hiển thị Session Pass tại SCR_07 với link Google Meet]
+    SessionPass --> EndSuccess([Kết thúc: Lịch hẹn đã xác nhận])
+    Result -- Khung giờ vừa được đặt --> ConflictAlert[SCR_07 báo khung giờ không còn khả dụng]
+    ConflictAlert --> SuggestSlots[Thông báo xung đột và làm nổi bật 2 khung giờ rảnh kế tiếp]
+    SuggestSlots --> ConflictChoice{Chọn giờ khác hay dừng?}
+    ConflictChoice -- Chọn giờ khác --> ChooseAlternative[Người dùng chọn khung giờ khác; chủ đề đã nhập được giữ lại]
+    ChooseAlternative --> ConfirmDialog
+    ConflictChoice -- Dừng --> EndConflictExit([Kết thúc thay thế: giữ nguyên không có lịch mới; ở lại SCR_07])
+    Result -- Không nhận được kết quả do lỗi mạng --> NetworkFeedback[SCR_07 báo chưa xác định được lịch hẹn; không gửi lại ngay]
+    NetworkFeedback --> CheckBookings[Người dùng mở SCR_08 để kiểm tra lịch tư vấn của tôi]
+    CheckBookings --> BookingFound{Đã xác minh có lịch mới?}
+    BookingFound -- Có --> ExistingPass[SCR_08 hiển thị lịch đã xác nhận; mở Session Pass tại SCR_07]
+    ExistingPass --> EndVerified([Kết thúc: Lịch hẹn đã xác minh; không gửi lại])
+    BookingFound -- Chưa rõ --> UnknownEnd([Kết thúc an toàn: chưa gửi lại; kiểm tra SCR_08 khi có thể xác minh])
+    BookingFound -- Đã xác minh chưa tạo lịch --> RetryDecision{Đã dùng lần gửi lại an toàn chưa?}
+    RetryDecision -- Rồi --> RetryLimitEnd([Kết thúc an toàn: đã xác minh chưa có lịch; không tự gửi thêm])
+    RetryDecision -- Chưa --> ReturnRetry[Quay lại SCR_07 với mentor và chủ đề đã giữ; kiểm tra lại khung giờ]
+    ReturnRetry --> SlotStillAvailable{Khung giờ còn khả dụng?}
+    SlotStillAvailable -- Có --> RetryConfirm[Người dùng xác nhận lại; gửi lại tối đa một lần]
+    RetryConfirm --> RetrySubmit[Hiển thị loading và gửi lại yêu cầu đã xác minh chưa được tạo]
+    RetrySubmit --> RetryResult{Kết quả gửi lại?}
+    RetryResult -- Thành công --> SuccessFeedback
+    RetryResult -- Xung đột --> ConflictAlert
+    RetryResult -- Chưa rõ do lỗi mạng --> RetryUnclearEnd([Kết thúc an toàn: không gửi thêm; kiểm tra SCR_08 sau])
+    SlotStillAvailable -- Không --> ConflictAlert
 ```
+
+**Quy tắc và giả định:** Đường thành công, hộp thoại xác nhận hai bước, cảnh báo xung đột với hai giờ thay thế, Session Pass và link Google Meet được mô tả tại `design/screen-spec.md`. `SCR_08` có danh sách lịch tư vấn để đối chiếu khi kết quả gửi không rõ. Để tránh đặt trùng, chỉ cho phép gửi lại sau khi trạng thái trước đó đã được xác minh là chưa tạo lịch; nếu chưa thể xác minh, người dùng không gửi lại và kiểm tra sau. Quy trình kiểm tra trạng thái, thông báo lỗi mạng, giữ lựa chọn khi quay lại và việc chỉ cho retry sau xác minh là **đề xuất UX**, chưa được đặc tả như hành vi đã triển khai. Xung đột giờ quay lại `SCR_07` để chọn giờ khác và xác nhận lại. Nút **Hủy bỏ** trên hộp thoại xác nhận chỉ đóng hộp thoại và giữ form; để rời hẳn quy trình trước khi đặt, Back từ form trở về `SCR_06` và bỏ lựa chọn chưa gửi là **đề xuất UX**, không phải hủy một lịch đã xác nhận. Screen spec có hành động hủy lịch sau khi đặt; hành động đó không thuộc flow đặt lịch này.
 
 ---
 
