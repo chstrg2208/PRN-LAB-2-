@@ -105,33 +105,42 @@ flowchart TD
 
 ---
 
-### 🔵 User Flow 2: Tìm kiếm Cơ hội Việc làm & Nộp CV xin Cựu Sinh viên Bảo lãnh (Referral)
-- **Điểm bắt đầu:** Sinh viên chuyển sang Tab 2 `SCR_04` (Career & Opportunity Board).
-- **Mục tiêu:** Tìm vị trí thực tập OJT phù hợp do cựu sinh viên đăng tuyển và gửi CV kèm thư ngỏ xin Referral nội bộ.
-- **Điểm kết thúc:** Đơn ứng tuyển kèm CV được gửi trực tiếp đến cựu sinh viên, sinh viên nhận mã theo dõi hồ sơ.
+### 🔵 User Flow 2: Tìm cơ hội OJT & Gửi yêu cầu Referral
+- **Điểm bắt đầu:** Sinh viên đã đăng nhập và đang ở `SCR_04` (Career & Opportunity Board).
+- **Mục tiêu:** Tìm cơ hội phù hợp, xem thông tin vị trí và gửi CV cùng yêu cầu Referral.
+- **Kết thúc thành công:** `SCR_05` xác nhận gửi thành công; trạng thái hồ sơ có thể theo dõi tại `SCR_08`.
+- **Kết thúc thay thế:** Không có kết quả sau khi thử điều chỉnh/xóa bộ lọc; hoặc sinh viên rời form chưa gửi và quay lại `SCR_04`.
 
 ```mermaid
 flowchart TD
-    Start([Bắt đầu: Mở Tab SCR_04 Career Board]) --> FilterSector[Chọn bộ lọc: 'Thực tập OJT' + Ngành 'Kỹ thuật Phần mềm']
-    FilterSector --> BrowseJobs[Duyệt danh sách các cơ hội có cựu sinh viên bảo lãnh]
-    BrowseJobs --> SelectJob[Chạm vào thẻ 'Junior Flutter Developer - FPT Software']
-    SelectJob --> OpenJobDetail[Mở SCR_05 Job Detail: Xem yêu cầu, đãi ngộ, quyền lợi Referral]
-    
-    OpenJobDetail --> ClickApply[Bấm nút 'Nộp CV & Xin Referral']
-    ClickApply --> ShowForm[Mở Form ứng tuyển trong SCR_05]
-    ShowForm --> AttachCV[Tải lên file CV PDF: 'TruongChiTrung_SE_CV.pdf']
-    AttachCV --> WriteCoverLetter[Nhập thư ngỏ ngắn: 'Chào anh, em là Trung sinh viên K19 SE FPTU...']
-    WriteCoverLetter --> SubmitApply[Nhấn 'Gửi yêu cầu xin Referral']
-    
-    SubmitApply --> LoadingSubmit[Hiển thị vòng xoay xử lý tải file lên Firebase Storage]
-    LoadingSubmit --> DialogApplySuccess[Dialog Thông báo: 'Yêu cầu Referral đã được gửi thành công!']
-    DialogApplySuccess --> TrackStatus[Hồ sơ được cập nhật trạng thái 'Đang chờ cựu SV phản hồi']
-    TrackStatus --> EndFlow2([Kết thúc Flow 2: Theo dõi trạng thái tại SCR_08])
-
-    style Start fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
-    style EndFlow2 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
-    style DialogApplySuccess fill:#c8e6c9,stroke:#2e7d32,stroke-width:2px
+    Start([Bắt đầu: SCR_04 đang hiển thị]) --> SetFilters[Người dùng chọn từ khóa hoặc bộ lọc OJT và ngành]
+    SetFilters --> SearchResults{Hệ thống có cơ hội phù hợp?}
+    SearchResults -- Không --> EmptyState[SCR_04 hiển thị empty state: Chưa tìm thấy cơ hội phù hợp]
+    EmptyState --> SearchRecovery{Người dùng muốn thử lại?}
+    SearchRecovery -- Có --> RecoverSearch[Người dùng điều chỉnh bộ lọc hoặc chọn Xóa bộ lọc]
+    RecoverSearch --> SearchResults
+    SearchRecovery -- Không --> NoResultsEnd([Kết thúc thay thế: quay lại SCR_04, chưa tìm thấy cơ hội])
+    SearchResults -- Có --> Browse[Người dùng xem danh sách cơ hội có Referral]
+    Browse --> SelectOpportunity[Người dùng chọn một cơ hội]
+    SelectOpportunity --> Review[SCR_05 hiển thị JD, quyền lợi và thông tin alumni bảo lãnh]
+    Review --> OpenForm[Người dùng mở form Referral tại SCR_05]
+    OpenForm --> ProvideLetter[Người dùng nhập thư ngỏ tối đa 500 ký tự]
+    ProvideLetter --> FormChoice{Người dùng gửi hay hủy yêu cầu?}
+    FormChoice -- Hủy --> Cancel[Người dùng dùng nút Back trước khi gửi]
+    Cancel --> CancelEnd([Quay lại SCR_04; thông tin form chưa gửi bị bỏ, không lưu draft])
+    FormChoice -- Gửi --> Validate[Hệ thống kiểm tra đã chọn CV PDF bắt buộc]
+    Validate --> HasCV{Đã chọn CV PDF?}
+    HasCV -- Chưa --> MissingCV[SCR_05 báo cần có CV trước khi gửi]
+    MissingCV --> KeepLetter[Giữ thư ngỏ đã nhập; người dùng chọn CV PDF]
+    KeepLetter --> Validate
+    HasCV -- Rồi --> Submit[Người dùng nhấn Gửi yêu cầu xin Referral]
+    Submit --> Loading[Hệ thống gửi yêu cầu và hiển thị trạng thái đang xử lý]
+    Loading --> Success[SCR_05 hiển thị hộp thoại gửi thành công và mã theo dõi]
+    Success --> Track[SCR_08 hiển thị trạng thái hồ sơ đang chờ alumni phản hồi]
+    Track --> EndSuccess([Kết thúc thành công: yêu cầu Referral đã được gửi])
 ```
+
+**Quy tắc và giả định:** CV PDF là điều kiện bắt buộc của yêu cầu này; thư ngỏ có giới hạn 500 ký tự theo đặc tả, nhưng tính bắt buộc của thư ngỏ chưa được quy định. Sơ đồ chỉ kiểm tra đã chọn CV PDF; chưa có quy tắc khác về nội dung thư ngỏ hoặc file. Thông báo thiếu CV và giữ thư ngỏ khi bổ sung CV là hành vi UX đề xuất. Đường Back từ form về `SCR_04` cũng là đề xuất; thông tin chưa gửi bị bỏ và không lưu thành draft. Không có xác nhận hủy vì screen spec chưa mô tả dialog này. Các lỗi mạng và cơ chế bảo toàn form/retry thuộc Flow 3, không lặp lại ở đây.
 
 ---
 
