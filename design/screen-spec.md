@@ -39,7 +39,7 @@ SCR_08: Profile & My Network Screen (Hồ sơ cá nhân, Kho lưu trữ CV & L�
   - Khối chọn vai trò (Role Picker Segmented): Tab chọn **"Sinh viên trường (Student)"** hoặc **"Cựu sinh viên (Alumni Mentor)"**.
   - Dropdown chọn chuyên ngành chính: Kỹ thuật phần mềm (SE), Trí tuệ nhân tạo (AI), An toàn thông tin (IA), Thiết kế mỹ thuật số (GD), Quản trị kinh doanh (BA).
   - Chip chọn cơ sở Campus: TP.HCM (Q9), Hà Nội (Hòa Lạc), Đà Nẵng, Cần Thơ, Quy Nhơn.
-- **Thuộc User Flow:** Flow khởi đầu bắt buộc cho mọi hành trình.
+- **Điều hướng:** Điểm xác thực đầu vào khi chưa có phiên đăng nhập hợp lệ; đăng nhập thành công đưa người dùng vào Main Shell. **Quy tắc UX đề xuất:** nếu người dùng đã có phiên đăng nhập hợp lệ thì bỏ qua màn hình này và tiếp tục tới màn hình đích; hành vi lưu/duy trì phiên chưa được đặc tả.
 - **Ý đồ Thiết kế (Design Intent):**
   - Giảm thiểu tối đa ma sát đăng nhập (Zero-friction Google OAuth). Hệ thống tự nhận diện đuôi email (ví dụ sinh viên ngành SE có mã số `SE...`) để gợi ý sẵn chuyên ngành, giúp sinh viên vào thẳng bài viết phù hợp mà không phải cấu hình rườm rà.
 - **Các trạng thái giao diện (States Breakdown):**
@@ -139,7 +139,7 @@ SCR_08: Profile & My Network Screen (Hồ sơ cá nhân, Kho lưu trữ CV & L�
     - Ô nhập thư ngỏ ngắn (Cover letter 500 ký tự) có các chip gợi ý: `+ Giới thiệu Capstone`, `+ Điểm mạnh Flutter`.
     - Nút CTA lớn ở chân màn hình: *"GỬI YÊU CẦU XIN REFERRAL"*.
   - **Error Recovery Banner (User Flow 3):** Khung cảnh báo màu đỏ nhạt `#FDF3F2` xuất hiện khi mất kết nối mạng: *"Không thể kết nối máy chủ. Toàn bộ thông tin thư ngỏ và file CV đã được bảo lưu an toàn"* kèm nút *"Thử lại (Retry)"*.
-- **Thuộc User Flow:** User Flow 2 (Gửi CV) và **User Flow 3 (Phục hồi lỗi mạng bảo toàn form)**.
+- **Thuộc User Flow:** User Flow 2 (Gửi CV, gồm nhánh lỗi mạng và thử lại; dữ liệu form và CV được giữ nguyên).
 - **Ý đồ Thiết kế (Design Intent):**
   - Biến quy trình xin việc thành trải nghiệm tôn trọng, chu đáo. Bảo toàn 100% dữ liệu form ngăn chặn ức chế cho sinh viên khi mạng WiFi campus chập chờn.
 - **Các trạng thái giao diện (States Breakdown):**
@@ -164,7 +164,7 @@ SCR_08: Profile & My Network Screen (Hồ sơ cá nhân, Kho lưu trữ CV & L�
     - Lĩnh vực sẵn sàng tư vấn: `Review CV`, `Phỏng vấn Technical`, `Định hướng OJT`.
     - Đánh giá từ sinh viên khóa trước: `5.0 ⭐ (18 buổi tư vấn thành công)`.
     - Nút bấm: *"Đặt lịch tư vấn 1-1"* (Nền Navy `#1B365D`, chữ trắng, cao 48dp).
-- **Thuộc User Flow:** User Flow 1 (Tìm kiếm Mentor theo doanh nghiệp mong muốn).
+- **Thuộc User Flow:** User Flow 1 (Mở danh bạ từ bài chia sẻ để xem và chọn mentor tác giả) và User Flow 3 (điểm bắt đầu tìm mentor).
 - **Ý đồ Thiết kế (Design Intent):**
   - Khơi dậy sự tự hào và an tâm cho sinh viên khóa dưới thông qua các tấm gương cựu sinh viên thành đạt thực tế từ chính nhà trường.
 - **Các trạng thái giao diện (States Breakdown):**
@@ -188,7 +188,7 @@ SCR_08: Profile & My Network Screen (Hồ sơ cá nhân, Kho lưu trữ CV & L�
     - Trạng thái trực quan: `● ĐÃ XÁC NHẬN` (Xanh lá).
     - Đường dẫn phòng họp Google Meet tự động tạo.
     - Nút hành động: *"Thêm vào Google Calendar"* và dòng liên kết *"Hủy lịch hẹn này"*.
-- **Thuộc User Flow:** **User Flow 1 (Đích đến đặt lịch)** và **User Flow 3 (Xử lý trùng giờ & Hủy lịch)**.
+- **Thuộc User Flow:** **User Flow 1 (đích đến đặt lịch)** và **User Flow 3 (đặt lịch, xử lý trùng giờ và rời form trước xác nhận)**. Hủy một lịch đã xác nhận là chức năng được mô tả riêng, không phải nhánh trong ba flow hiện tại.
 - **Ý đồ Thiết kế (Design Intent):**
   - Tự động hóa và chuẩn mực hóa toàn bộ quy trình kết nối: Không mất thời gian nhắn tin thương lượng giờ giấc, hạn chế tối đa việc quên lịch nhờ tích hợp Google Calendar.
 - **Các trạng thái giao diện (States Breakdown):**
@@ -210,7 +210,7 @@ SCR_08: Profile & My Network Screen (Hồ sơ cá nhân, Kho lưu trữ CV & L�
     - **Tab 2: "Hồ sơ xin Referral":** Danh sách các công việc đã nộp CV kèm trạng thái xử lý (*"Đang chờ cựu SV phản hồi"* / *"Đã nhận Referral"*).
     - **Tab 3: "Bài viết đã lưu":** Danh sách các bài chia sẻ kinh nghiệm đã Bookmark từ `SCR_02`.
   - Danh mục Cài đặt (Settings ListTile): Đổi chuyên ngành quan tâm, Cài đặt thông báo tin OJT mới, Đăng xuất tài khoản.
-- **Thuộc User Flow:** Phục vụ cả 3 Flows (Xem bài đã lưu, Theo dõi tiến độ hồ sơ, Khởi tạo hủy lịch nhường chỗ).
+- **Thuộc User Flow:** User Flow 1 (xem lịch tư vấn đã đặt), User Flow 2 (theo dõi trạng thái hồ sơ Referral) và User Flow 3 (đối chiếu lịch tư vấn sau khi kết quả gửi chưa rõ).
 - **Ý đồ Thiết kế (Design Intent):**
   - Tạo bảng điều khiển tập trung giúp sinh viên chủ động nắm bắt toàn bộ các cơ hội phát triển nghề nghiệp và các mối quan hệ với cựu sinh viên trường.
 - **Các trạng thái giao diện (States Breakdown):**

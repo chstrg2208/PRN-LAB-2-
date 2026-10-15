@@ -14,27 +14,32 @@
 
 ```mermaid
 graph TD
-    AppRoot[F-Alumni App Root] --> AuthGate{Đã đăng nhập?}
+    AppRoot[F-Alumni App Root] --> AuthGate{Có phiên đăng nhập hợp lệ?}
     
-    AuthGate -- Chưa --> SCR_01[SCR_01: Login & Role Screen\nFPT Edu Google OAuth + Chọn Ngành]
+    AuthGate -- Chưa --> SCR_01[SCR_01: Login & Role Selection Screen\nXác thực FPT Edu và chọn vai trò / chuyên ngành]
     AuthGate -- Đã đăng nhập --> MainShell[Main Shell Navigation Bar]
+    SCR_01 -- Đăng nhập thành công --> MainShell
     
     subgraph TopLevelTabs ["Top-Level Screens (Bottom Navigation - 4 Tabs)"]
-        MainShell --> SCR_02[SCR_02: Home Feed\nTab 1: Không gian chung & Nhóm ngành]
-        MainShell --> SCR_04[SCR_04: Career & Job Board\nTab 2: Việc làm, OJT & Học bổng]
-        MainShell --> SCR_06[SCR_06: Mentors Directory\nTab 3: Danh bạ Cựu sinh viên]
-        MainShell --> SCR_08[SCR_08: Profile & Network\nTab 4: Hồ sơ & Lịch tư vấn của tôi]
+        MainShell --> SCR_02[SCR_02: Home Feed Screen\nTab 1: Không gian chung & Nhóm ngành]
+        MainShell --> SCR_04[SCR_04: Career & Opportunity Board Screen\nTab 2: Việc làm, OJT & Học bổng]
+        MainShell --> SCR_06[SCR_06: Alumni Mentors Directory Screen\nTab 3: Danh bạ Cựu sinh viên]
+        MainShell --> SCR_08[SCR_08: Profile & My Network Screen\nTab 4: Hồ sơ & Lịch tư vấn của tôi]
     end
     
     subgraph NestedScreens ["Sub-level / Nested Screens (Stack Navigation)"]
-        SCR_02 --> SCR_03[SCR_03: Post / Experience Detail\nChi tiết bài chia sẻ & Bio Tác giả]
-        SCR_03 --> SCR_07[SCR_07: Mentor Booking Screen\nĐặt lịch tư vấn 1-1 qua Google Meet]
-        
-        SCR_04 --> SCR_05[SCR_05: Job Detail & Referral Form\nChi tiết công việc & Nộp CV xin Referral]
-        
-        SCR_06 --> SCR_07
-        SCR_08 --> SCR_07
+        SCR_03[SCR_03: Post / Experience Detail Screen\nChi tiết bài chia sẻ & Bio Tác giả]
+        SCR_05[SCR_05: Job Detail & Referral Apply Screen\nChi tiết công việc & Nộp CV xin Referral]
+        SCR_07[SCR_07: Mentor Booking & Session Pass Screen\nĐặt lịch và xem Session Pass]
     end
+
+    SCR_02 --> SCR_03
+    SCR_03 -- CTA Đặt lịch --> SCR_07
+    SCR_03 -- Xem hồ sơ Mentor --> SCR_06
+    SCR_04 --> SCR_05
+    SCR_06 -- Chọn mentor và đặt lịch --> SCR_07
+    SCR_07 -- Mở tab Lịch tư vấn --> SCR_08
+    SCR_08 -- Mở lịch hẹn / Session Pass --> SCR_07
 
     style AppRoot fill:#f9f,stroke:#333,stroke-width:2px
     style MainShell fill:#bbf,stroke:#333,stroke-width:2px
@@ -50,14 +55,14 @@ graph TD
 
 | Mã MH | Tên Màn hình | Cấp độ | Phương thức Truy cập | Nội dung & Chức năng Cốt lõi |
 | :--- | :--- | :--- | :--- | :--- |
-| **SCR_01** | **Login & Role Selection** | Entry Point | Mở app khi chưa đăng nhập | Đăng nhập Google FPT Edu (`@fpt.edu.vn`), chọn vai trò (Sinh viên / Cựu sinh viên), chọn chuyên ngành chính (Kỹ thuật phần mềm, Trí tuệ nhân tạo, Quản trị kinh doanh, Thiết kế đồ họa...). |
-| **SCR_02** | **Home Feed (Không gian Chung & Ngành)** | Top-level | Tab 1 (Bottom Nav) | Bộ chuyển đổi 2 không gian: **Tab "Không gian chung"** (chia sẻ toàn trường) và **Tab "Nhóm ngành"** (bài chuyên sâu SE, AI...); Thanh tìm kiếm; Thẻ bài viết chia sẻ kinh nghiệm phỏng vấn, học bổng; Bài viết nổi bật (Featured Alumni Article). |
-| **SCR_03** | **Post / Experience Detail** | Sub-level | Chạm vào thẻ bài viết từ Home / Search | Tiêu đề bài viết, thẻ chuyên mục, nội dung hướng dẫn chi tiết, tài liệu đính kèm (Checklist phỏng vấn PDF), Thẻ thông tin Alumni tác giả (chức danh, công ty VNG/FPT Software), phần Hỏi đáp - Bình luận, nút Sticky CTA "Đặt lịch tư vấn 1-1 với Mentor". |
-| **SCR_04** | **Career & Opportunity Board** | Top-level | Tab 2 (Bottom Nav) | Bảng tin cơ hội thực tập OJT, tuyển dụng chính thức và học bổng do cựu sinh viên chia sẻ/bảo lãnh; Bộ lọc theo chuyên ngành; Thẻ công việc có badge *"Cựu SV bảo lãnh Referral"*. |
-| **SCR_05** | **Job Detail & Referral Apply** | Sub-level | Bấm "Xem & Xin Referral" từ `SCR_04` | Chi tiết mô tả công việc, mức đãi ngộ, yêu cầu kỹ năng, Form tải lên file CV (PDF), ô nhập thư ngỏ ngắn gửi cựu sinh viên, Nút nộp đơn xin Referral. |
-| **SCR_06** | **Alumni Mentors Directory** | Top-level | Tab 3 (Bottom Nav) | Danh bạ mạng lưới cựu sinh viên theo ngành; Bộ lọc công ty (Google, VNG, FPT Software, Shopee, Techcombank); Thẻ Mentor hiển thị chuyên môn, số năm kinh nghiệm, đánh giá; Nút "Đặt lịch tư vấn 1-1". |
-| **SCR_07** | **Mentor Booking & Session Pass** | Sub-level | Từ `SCR_03`, `SCR_06` hoặc `SCR_08` | Chọn khung giờ rảnh trong tuần của Mentor, nhập chủ đề cần tư vấn (Review CV / Định hướng nghề nghiệp), xác nhận tạo link Google Meet tự động, Thẻ lịch hẹn Session Pass có thể lưu vào Google Calendar. |
-| **SCR_08** | **Profile & My Network** | Top-level | Tab 4 (Bottom Nav) | Thông tin cá nhân, chuyên ngành, kho CV đã lưu, danh sách bài viết đã Bookmark, quản lý các buổi hẹn tư vấn (Sắp tới / Đã hoàn thành / Đã hủy), cài đặt nhận thông báo cơ hội mới. |
+| **SCR_01** | **Login & Role Selection Screen** | Entry Point | App mở khi chưa có phiên đăng nhập hợp lệ; đăng nhập thành công vào Main Shell | Đăng nhập Google FPT Edu (`@fpt.edu.vn`), chọn vai trò (Sinh viên / Cựu sinh viên), chọn chuyên ngành chính. |
+| **SCR_02** | **Home Feed Screen (Không gian Chung & Nhóm ngành)** | Top-level | Tab 1 trong Bottom Navigation sau đăng nhập | Chuyển giữa không gian chung và nhóm ngành; tìm kiếm, xem bài viết kinh nghiệm, phỏng vấn và học bổng. |
+| **SCR_03** | **Post / Experience Detail Screen** | Nested | Chạm thẻ bài viết từ `SCR_02` | Đọc bài, xem bio alumni, tải checklist; có CTA đặt lịch và liên kết "Xem hồ sơ Mentor" tới danh bạ `SCR_06`. |
+| **SCR_04** | **Career & Opportunity Board Screen** | Top-level | Tab 2 trong Bottom Navigation sau đăng nhập | Xem và lọc cơ hội OJT, việc làm, học bổng; mở cơ hội có Referral. |
+| **SCR_05** | **Job Detail & Referral Apply Screen** | Nested | Chọn "Xem & Xin Referral" từ `SCR_04` | Xem JD và gửi CV PDF cùng thư ngỏ xin Referral. |
+| **SCR_06** | **Alumni Mentors Directory Screen** | Top-level | Tab 3; hoặc liên kết "Xem hồ sơ Mentor" từ `SCR_03` | Tìm, lọc alumni mentor theo ngành/công ty và chọn mentor để đặt lịch. |
+| **SCR_07** | **Mentor Booking & Session Pass Screen** | Nested | Đặt lịch từ `SCR_03` hoặc `SCR_06`; mở lịch hẹn từ `SCR_08` | Chọn giờ, nhập chủ đề, xác nhận đặt lịch và xem Session Pass có link Google Meet. |
+| **SCR_08** | **Profile & My Network Screen** | Top-level | Tab 4 trong Bottom Navigation sau đăng nhập | Xem lịch tư vấn sắp tới/đã hoàn thành/đã hủy, theo dõi trạng thái hồ sơ Referral, CV đã lưu, bài đã bookmark và cài đặt. |
 
 ---
 
@@ -65,16 +70,22 @@ graph TD
 
 ---
 
-### 🟢 User Flow 1: Khám phá Bài viết Kinh nghiệm & Đặt lịch Tư vấn 1-1 với Mentor
-- **Điểm bắt đầu:** Sinh viên đang ở màn hình chính `SCR_02` (Home Feed).
+### 🟢 User Flow 1: Khám phá Bài viết & Đặt lịch Tư vấn 1-1 với Mentor
+- **Điểm bắt đầu:** Sinh viên mở ứng dụng; nếu đã có phiên đăng nhập hợp lệ thì vào `SCR_02`, nếu chưa thì đăng nhập tại `SCR_01` rồi vào `SCR_02`.
 - **Mục tiêu:** Học hỏi kinh nghiệm phỏng vấn OJT và hoàn tất đặt một buổi hẹn tư vấn trực tuyến 1-1 với cựu sinh viên tác giả qua Google Meet.
 - **Điểm kết thúc:** Mở màn hình `SCR_07` hiển thị thẻ xác nhận lịch hẹn (Session Pass) thành công, lịch tự động lưu vào `SCR_08`.
 
 ```mermaid
 flowchart TD
-    Start([Bắt đầu: Mở SCR_02 Home Feed]) --> SwitchSpace{Chọn không gian hiển thị?}
+    Start([Bắt đầu: Mở ứng dụng F-Alumni]) --> AuthGate{Có phiên đăng nhập hợp lệ?}
+    AuthGate -- Có --> EnterHome[Vào SCR_02 Home Feed]
+    AuthGate -- Chưa --> Login[Đăng nhập và chọn vai trò / chuyên ngành tại SCR_01]
+    Login --> LoginSuccess[Hệ thống xác nhận đăng nhập thành công]
+    LoginSuccess --> EnterHome
+    EnterHome --> SwitchSpace{Chọn không gian hiển thị?}
     
     SwitchSpace -- Không gian Chung --> ViewGeneral[Duyệt bài học bổng & hướng nghiệp chung toàn trường]
+    ViewGeneral --> EndGeneral([Kết thúc thay thế: đã xem nội dung không gian chung])
     SwitchSpace -- Chuyển Tab: Nhóm ngành IT --> ViewMajor[Xem danh sách bài viết chuyên sâu Kỹ thuật Phần mềm]
     
     ViewMajor --> ClickPost[Chạm vào bài 'Lộ trình ôn luyện phỏng vấn Software Engineer 2026']
@@ -84,6 +95,10 @@ flowchart TD
     DecisionPost -- Nhánh Thay Thế: Lưu đọc sau --> BookmarkAction[Bấm icon Bookmark trên AppBar]
     BookmarkAction --> BookmarkToast[Toast: 'Đã lưu bài viết vào mục Hồ sơ']
     BookmarkToast --> EndAlt([Kết thúc nhánh lưu bài])
+
+    DecisionPost -- Xem hồ sơ Mentor --> OpenMentors[Người dùng mở danh bạ alumni tại SCR_06]
+    OpenMentors --> SelectAuthor[Người dùng chọn mentor là tác giả bài viết]
+    SelectAuthor --> OpenBooking
     
     DecisionPost -- Happy Path: Đặt lịch tư vấn --> ClickBookMentor[Nhấn nút Sticky 'Đặt lịch tư vấn 1-1 với Mentor']
     ClickBookMentor --> OpenBooking[Mở SCR_07 Mentor Booking Screen]
@@ -95,7 +110,8 @@ flowchart TD
     ShowLoading --> SuccessModal[Modal Dialog: 'Đặt lịch tư vấn thành công!']
     SuccessModal --> ViewPass[Chạm 'Xem thẻ lịch hẹn']
     ViewPass --> ShowSessionPass[Hiển thị Session Pass: Có link Google Meet & nút thêm vào Lịch]
-    ShowSessionPass --> EndHappy([Kết thúc Flow 1: Lịch hẹn đã lưu vào SCR_08])
+    ShowSessionPass --> OpenMySessions[Người dùng mở lịch tư vấn của tôi tại SCR_08]
+    OpenMySessions --> EndHappy([Kết thúc Flow 1: Xác nhận và xem lịch đã lưu])
 
     style Start fill:#e1f5fe,stroke:#0288d1,stroke-width:2px
     style EndHappy fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
@@ -135,12 +151,18 @@ flowchart TD
     KeepLetter --> Validate
     HasCV -- Rồi --> Submit[Người dùng nhấn Gửi yêu cầu xin Referral]
     Submit --> Loading[Hệ thống gửi yêu cầu và hiển thị trạng thái đang xử lý]
-    Loading --> Success[SCR_05 hiển thị hộp thoại gửi thành công và mã theo dõi]
+    Loading --> SubmitOutcome{Kết quả gửi yêu cầu?}
+    SubmitOutcome -- Thành công --> Success[SCR_05 hiển thị hộp thoại gửi thành công và mã theo dõi]
+    SubmitOutcome -- Lỗi mạng --> NetworkBanner[SCR_05 báo lỗi kết nối; giữ nguyên thư ngỏ và CV đã chọn]
+    NetworkBanner --> NetworkChoice{Thử lại hay dừng tại form?}
+    NetworkChoice -- Thử lại khi có kết nối --> Retry[Người dùng nhấn Thử lại]
+    Retry --> Loading
+    NetworkChoice -- Dừng --> NetworkWaitEnd([Tạm dừng tại SCR_05; dữ liệu được giữ, chưa gửi lại])
     Success --> Track[SCR_08 hiển thị trạng thái hồ sơ đang chờ alumni phản hồi]
     Track --> EndSuccess([Kết thúc thành công: yêu cầu Referral đã được gửi])
 ```
 
-**Quy tắc và giả định:** CV PDF là điều kiện bắt buộc của yêu cầu này; thư ngỏ có giới hạn 500 ký tự theo đặc tả, nhưng tính bắt buộc của thư ngỏ chưa được quy định. Sơ đồ chỉ kiểm tra đã chọn CV PDF; chưa có quy tắc khác về nội dung thư ngỏ hoặc file. Thông báo thiếu CV và giữ thư ngỏ khi bổ sung CV là hành vi UX đề xuất. Đường Back từ form về `SCR_04` cũng là đề xuất; thông tin chưa gửi bị bỏ và không lưu thành draft. Không có xác nhận hủy vì screen spec chưa mô tả dialog này. Các lỗi mạng và cơ chế bảo toàn form/retry thuộc Flow 3, không lặp lại ở đây.
+**Quy tắc và giả định:** CV PDF là điều kiện bắt buộc của yêu cầu này; thư ngỏ có giới hạn 500 ký tự theo đặc tả, nhưng tính bắt buộc của thư ngỏ chưa được quy định. Sơ đồ chỉ kiểm tra đã chọn CV PDF; chưa có quy tắc khác về nội dung thư ngỏ hoặc file. Thông báo thiếu CV và giữ thư ngỏ khi bổ sung CV là hành vi UX đề xuất. Đường Back từ form về `SCR_04` cũng là đề xuất; thông tin chưa gửi bị bỏ và không lưu thành draft. Không có xác nhận hủy vì screen spec chưa mô tả dialog này. Khi gặp lỗi mạng, `SCR_05` giữ form và CV theo screen spec; người dùng có thể thử lại hoặc tạm dừng tại form. Flow 3 tập trung vào đặt lịch mentor.
 
 ---
 
@@ -161,7 +183,7 @@ flowchart TD
     LeaveChoice -- Tiếp tục --> ConfirmDialog[SCR_07 hiển thị hộp thoại xác nhận mentor, ngày và giờ]
     ConfirmDialog --> ConfirmChoice{Người dùng xác nhận đặt lịch?}
     ConfirmChoice -- Hủy bỏ --> ReturnForm[Đóng hộp thoại; giữ lựa chọn trên form SCR_07]
-    ReturnForm --> ConfirmDialog
+    ReturnForm --> LeaveChoice
     ConfirmChoice -- Xác nhận --> Submit[Hệ thống gửi yêu cầu và hiển thị loading trên SCR_07]
     Submit --> Result{Kết quả gửi yêu cầu?}
     Result -- Thành công --> SuccessFeedback[Hiển thị xác nhận đặt lịch thành công]
@@ -198,17 +220,17 @@ flowchart TD
 
 ## 3. Bảng Ánh xạ Flow sang Màn hình (Flow-to-Screen Mapping Matrix)
 
-Bảng ma trận chứng minh **100% mọi màn hình trong hệ thống đều được ít nhất một flow sử dụng** (đạt tối đa 5/5 điểm IA):
+Bảng ma trận dưới đây đối chiếu từng màn hình với node hoặc đường đi thực tế trong ba sơ đồ; dấu ✓ chỉ màn hình có xuất hiện trong flow tương ứng.
 
-| Mã Màn hình | Tên Màn hình | User Flow 1 (Explore & Book Mentor) | User Flow 2 (Job & Referral) | User Flow 3 (Error, Conflict & Cancel) | Ghi chú Trạng thái Sử dụng |
+| Mã màn hình | Tên màn hình theo screen spec | Flow 1 — Bài viết & mentor | Flow 2 — Referral | Flow 3 — Đặt lịch & phục hồi | Ghi chú node/đường đi |
 | :---: | :--- | :---: | :---: | :---: | :--- |
-| **SCR_01** | Login & Role Selection | ⚪ Điểm khởi đầu | ⚪ | ⚪ | Xác thực tài khoản Google FPT & Chọn ngành |
-| **SCR_02** | Home Feed (Chung & Ngành) | 🟢 **Bắt đầu chính** | ⚪ | ⚪ | Điểm bắt đầu duyệt chia sẻ theo chuyên ngành |
-| **SCR_03** | Post / Article Detail | 🟢 Đọc bài chia sẻ | ⚪ | ⚪ | Xem nội dung, bio tác giả, CTA đặt lịch |
-| **SCR_04** | Career & Job Board | ⚪ | 🔵 **Bắt đầu Job flow** | ⚪ | Bảng tin cơ hội việc làm, OJT, học bổng |
-| **SCR_05** | Job Detail & Apply Form | ⚪ | 🔵 **Nộp CV & Thư ngỏ** | 🔴 **Điểm lỗi mạng & Phục hồi form** | Xem chi tiết job, nộp hồ sơ xin Referral |
-| **SCR_06** | Mentors Directory | 🟢 Tìm cựu SV theo ngành | ⚪ | ⚪ | Danh bạ Mentor, bộ lọc công ty công nghệ |
-| **SCR_07** | Mentor Booking & Pass | 🟢 **Đích đến đặt lịch** | ⚪ | 🔴 **Điểm trùng lịch & Chọn lại giờ** | Chọn giờ rảnh, nhận Session Pass Meet |
-| **SCR_08** | Profile & My Network | 🟢 Xem bài đã lưu | 🔵 Theo dõi trạng thái CV | 🔴 **Điểm khởi tạo Hủy lịch tư vấn** | Quản lý lịch hẹn, lưu trữ CV, đổi ngành |
+| **SCR_01** | Login & Role Selection Screen | ✓ | — | — | Flow 1: `AuthGate → Login → LoginSuccess` |
+| **SCR_02** | Home Feed Screen (Không gian Chung & Nhóm ngành) | ✓ | — | — | Flow 1: `EnterHome`, duyệt feed |
+| **SCR_03** | Post / Experience Detail Screen | ✓ | — | — | Flow 1: `OpenDetail` |
+| **SCR_04** | Career & Opportunity Board Screen | — | ✓ | — | Flow 2: `Start`, tìm kiếm và lọc cơ hội |
+| **SCR_05** | Job Detail & Referral Apply Screen | — | ✓ | — | Flow 2: `Review`, form, validation, gửi và retry khi lỗi mạng |
+| **SCR_06** | Alumni Mentors Directory Screen | ✓ | — | ✓ | Flow 1: `OpenMentors`; Flow 3: `Start`, `SelectMentor` |
+| **SCR_07** | Mentor Booking & Session Pass Screen | ✓ | — | ✓ | Flow 1: `OpenBooking`, `ShowSessionPass`; Flow 3: form, xác nhận, recovery và Session Pass |
+| **SCR_08** | Profile & My Network Screen | ✓ | ✓ | ✓ | Flow 1: `OpenMySessions`; Flow 2: `Track`; Flow 3: `CheckBookings` |
 
-> **Kết luận:** Hệ thống 8 màn hình liên kết chặt chẽ, khép kín, phân chia tối ưu giữa không gian chung toàn trường và không gian chuyên sâu theo ngành nghề.
+> **Kết luận:** Cả 8 màn hình đều có đường truy cập trong IA và xuất hiện trong ít nhất một user flow theo bảng đối chiếu trên.
