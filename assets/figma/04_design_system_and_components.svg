@@ -1,0 +1,607 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2400" width="1600" height="2400" style="background-color: #F8F9FA; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <defs>
+    <!-- Gradients & Shadows -->
+    <filter id="shadow-card" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1B365D" flood-opacity="0.06"/>
+      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#1B365D" flood-opacity="0.04"/>
+    </filter>
+    <filter id="shadow-modal" x="-10%" y="-10%" width="120%" height="125%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1B365D" flood-opacity="0.12"/>
+    </filter>
+    <filter id="shadow-nav" x="0" y="-10%" width="100%" height="120%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="-4" stdDeviation="8" flood-color="#1B365D" flood-opacity="0.08"/>
+    </filter>
+    <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1B365D"/>
+      <stop offset="100%" stop-color="#0A1C36"/>
+    </linearGradient>
+    <linearGradient id="orange-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F27024"/>
+      <stop offset="100%" stop-color="#E05B0D"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ================= PAGE BACKGROUND ================= -->
+  <rect width="1600" height="2400" fill="#F8F9FA"/>
+
+  <!-- ================= 00. MASTER HEADER ================= -->
+  <g id="Header-Banner" transform="translate(60, 40)">
+    <rect width="1480" height="120" rx="16" fill="url(#primary-grad)"/>
+    <!-- Decorative Glow -->
+    <circle cx="1400" cy="20" r="100" fill="#F27024" opacity="0.15"/>
+    <circle cx="1300" cy="100" r="60" fill="#10B981" opacity="0.1"/>
+
+    <text x="40" y="52" fill="#FFFFFF" font-size="28" font-weight="700" letter-spacing="-0.02em">F-Alumni Design System &amp; Component Library</text>
+    <text x="40" y="84" fill="#93C5FD" font-size="14" font-weight="500">PRM323 - Lab 2 | Page 04: Design System &amp; Page 05: Components | Lead Designer: TV3 - Nguyễn Phương Khải (SE183590)</text>
+    
+    <!-- Badges -->
+    <rect x="1160" y="44" width="140" height="32" rx="16" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.2)"/>
+    <text x="1230" y="65" fill="#FFFFFF" font-size="12" font-weight="600" text-anchor="middle">Material Design 3</text>
+
+    <rect x="1310" y="44" width="130" height="32" rx="16" fill="#F27024"/>
+    <text x="1375" y="65" fill="#FFFFFF" font-size="12" font-weight="600" text-anchor="middle">WCAG 2.1 AA</text>
+  </g>
+
+  <!-- ================= ROW 1: COLOR PALETTE & TYPOGRAPHY ================= -->
+  
+  <!-- 01. COLOR TOKENS (LEFT) -->
+  <g id="01-Color-Tokens" transform="translate(60, 190)">
+    <rect width="720" height="490" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">01. BẢNG MÀU THƯƠNG HIỆU (COLOR TOKENS)</text>
+    <text x="32" y="68" fill="#6B7280" font-size="13">Bản sắc Đại học FPT: Navy uy tín doanh nghiệp kết hợp Orange tăng tỉ lệ chuyển đổi</text>
+
+    <!-- Brand Colors Grid -->
+    <!-- Primary Navy -->
+    <g transform="translate(32, 90)">
+      <rect width="206" height="80" rx="8" fill="#1B365D"/>
+      <rect y="80" width="206" height="56" rx="0 0 8 8" fill="#F8FAFC" stroke="#E5E7EB"/>
+      <text x="16" y="50" fill="#FFFFFF" font-size="15" font-weight="700">FPT Navy</text>
+      <text x="16" y="102" fill="#111827" font-size="13" font-weight="600">#1B365D</text>
+      <text x="16" y="122" fill="#6B7280" font-size="11">Primary / Structural</text>
+    </g>
+
+    <!-- Secondary Orange -->
+    <g transform="translate(254, 90)">
+      <rect width="206" height="80" rx="8" fill="#F27024"/>
+      <rect y="80" width="206" height="56" rx="0 0 8 8" fill="#F8FAFC" stroke="#E5E7EB"/>
+      <text x="16" y="50" fill="#FFFFFF" font-size="15" font-weight="700">FPT Orange</text>
+      <text x="16" y="102" fill="#111827" font-size="13" font-weight="600">#F27024</text>
+      <text x="16" y="122" fill="#6B7280" font-size="11">Secondary / Key CTA</text>
+    </g>
+
+    <!-- Tertiary Emerald -->
+    <g transform="translate(476, 90)">
+      <rect width="206" height="80" rx="8" fill="#10B981"/>
+      <rect y="80" width="206" height="56" rx="0 0 8 8" fill="#F8FAFC" stroke="#E5E7EB"/>
+      <text x="16" y="50" fill="#FFFFFF" font-size="15" font-weight="700">Emerald Green</text>
+      <text x="16" y="102" fill="#111827" font-size="13" font-weight="600">#10B981</text>
+      <text x="16" y="122" fill="#6B7280" font-size="11">Verified Referral / Success</text>
+    </g>
+
+    <!-- Row 2 of Colors: Neutrals & Status -->
+    <text x="32" y="260" fill="#111827" font-size="14" font-weight="700">HỆ THỐNG MÀU TRUNG TÍNH &amp; PHẢN HỒI (NEUTRALS &amp; FEEDBACK)</text>
+
+    <!-- Neutral 900 -->
+    <g transform="translate(32, 280)">
+      <rect width="120" height="50" rx="6" fill="#111827"/>
+      <text x="8" y="70" fill="#111827" font-size="12" font-weight="600">#111827</text>
+      <text x="8" y="86" fill="#6B7280" font-size="10">Dark Text</text>
+    </g>
+    <!-- Neutral 600 -->
+    <g transform="translate(168, 280)">
+      <rect width="120" height="50" rx="6" fill="#6B7280"/>
+      <text x="8" y="70" fill="#111827" font-size="12" font-weight="600">#6B7280</text>
+      <text x="8" y="86" fill="#6B7280" font-size="10">Subtitles</text>
+    </g>
+    <!-- Neutral 200 -->
+    <g transform="translate(304, 280)">
+      <rect width="120" height="50" rx="6" fill="#E5E7EB" stroke="#CBD5E1"/>
+      <text x="8" y="70" fill="#111827" font-size="12" font-weight="600">#E5E7EB</text>
+      <text x="8" y="86" fill="#6B7280" font-size="10">Dividers/Strokes</text>
+    </g>
+    <!-- Neutral 50 -->
+    <g transform="translate(440, 280)">
+      <rect width="120" height="50" rx="6" fill="#F8F9FA" stroke="#E5E7EB"/>
+      <text x="8" y="70" fill="#111827" font-size="12" font-weight="600">#F8F9FA</text>
+      <text x="8" y="86" fill="#6B7280" font-size="10">Background Canvas</text>
+    </g>
+    <!-- Surface Pure -->
+    <g transform="translate(576, 280)">
+      <rect width="106" height="50" rx="6" fill="#FFFFFF" stroke="#CBD5E1"/>
+      <text x="8" y="70" fill="#111827" font-size="12" font-weight="600">#FFFFFF</text>
+      <text x="8" y="86" fill="#6B7280" font-size="10">Elevated Card</text>
+    </g>
+
+    <!-- Semantic Alerts -->
+    <g transform="translate(32, 390)">
+      <!-- Error Red -->
+      <rect x="0" y="0" width="150" height="40" rx="6" fill="#FEE2E2" stroke="#EF4444"/>
+      <circle cx="18" cy="20" r="6" fill="#EF4444"/>
+      <text x="32" y="24" fill="#991B1B" font-size="12" font-weight="600">Error #EF4444</text>
+
+      <!-- Warning Amber -->
+      <rect x="170" y="0" width="150" height="40" rx="6" fill="#FEF3C7" stroke="#F59E0B"/>
+      <circle cx="188" cy="20" r="6" fill="#F59E0B"/>
+      <text x="202" y="24" fill="#92400E" font-size="12" font-weight="600">Conflict #F59E0B</text>
+
+      <!-- Info Blue -->
+      <rect x="340" y="0" width="150" height="40" rx="6" fill="#EFF6FF" stroke="#3B82F6"/>
+      <circle cx="358" cy="20" r="6" fill="#3B82F6"/>
+      <text x="372" y="24" fill="#1E40AF" font-size="12" font-weight="600">Info #3B82F6</text>
+
+      <!-- Soft Orange Tint -->
+      <rect x="510" y="0" width="146" height="40" rx="6" fill="#FFF3EB" stroke="#F27024"/>
+      <circle cx="528" cy="20" r="6" fill="#F27024"/>
+      <text x="542" y="24" fill="#C2410C" font-size="12" font-weight="600">Alumni #FFF3EB</text>
+    </g>
+  </g>
+
+  <!-- 02. TYPOGRAPHY SYSTEM (RIGHT) -->
+  <g id="02-Typography-Tokens" transform="translate(820, 190)">
+    <rect width="720" height="490" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">02. HỆ THỐNG KIỂU CHỮ (TYPOGRAPHY TOKENS)</text>
+    <text x="32" y="68" fill="#6B7280" font-size="13">Display font Hanken Grotesk kết hợp Body Inter tối ưu hiển thị Mobile</text>
+
+    <!-- Table of Typography Scale -->
+    <g transform="translate(32, 90)">
+      <!-- Line 1: Headline LG -->
+      <text x="0" y="24" fill="#6B7280" font-size="11" font-weight="600">HEADLINE-LG (28px Bold / LH: 34px)</text>
+      <text x="0" y="52" fill="#1B365D" font-size="24" font-weight="700">F-Alumni: Đột phá Cơ hội &amp; Mentorship</text>
+      <line x1="0" y1="68" x2="656" y2="68" stroke="#F1F5F9" stroke-width="1.5"/>
+
+      <!-- Line 2: Headline MD -->
+      <text x="0" y="90" fill="#6B7280" font-size="11" font-weight="600">HEADLINE-MD (20px SemiBold / LH: 26px)</text>
+      <text x="0" y="114" fill="#111827" font-size="18" font-weight="600">Danh bạ Cựu sinh viên &amp; Chuyên gia FPT</text>
+      <line x1="0" y1="128" x2="656" y2="128" stroke="#F1F5F9" stroke-width="1.5"/>
+
+      <!-- Line 3: Headline SM -->
+      <text x="0" y="150" fill="#6B7280" font-size="11" font-weight="600">HEADLINE-SM (18px SemiBold / LH: 24px)</text>
+      <text x="0" y="172" fill="#111827" font-size="16" font-weight="600">Nguyễn Văn Tuấn — Senior Solution Architect (K12)</text>
+      <line x1="0" y1="186" x2="656" y2="186" stroke="#F1F5F9" stroke-width="1.5"/>
+
+      <!-- Line 4: Body LG -->
+      <text x="0" y="208" fill="#6B7280" font-size="11" font-weight="600">BODY-LG (16px Regular / LH: 24px)</text>
+      <text x="0" y="228" fill="#374151" font-size="15" font-weight="400">Kết nối trực tiếp với cựu sinh viên đang làm việc tại các tập đoàn công nghệ lớn.</text>
+      <line x1="0" y1="242" x2="656" y2="242" stroke="#F1F5F9" stroke-width="1.5"/>
+
+      <!-- Line 5: Body MD -->
+      <text x="0" y="264" fill="#6B7280" font-size="11" font-weight="600">BODY-MD (14px Regular / LH: 20px) — MOBILE FLOOR</text>
+      <text x="0" y="284" fill="#4B5563" font-size="13" font-weight="400">Ứng tuyển có bảo chứng (Direct Referral) giúp hồ sơ được ưu tiên duyệt phỏng vấn vòng 1.</text>
+      <line x1="0" y1="298" x2="656" y2="298" stroke="#F1F5F9" stroke-width="1.5"/>
+
+      <!-- Line 6: Label LG & SM -->
+      <text x="0" y="320" fill="#6B7280" font-size="11" font-weight="600">LABEL-LG &amp; LABEL-SM (14px &amp; 11px SemiBold)</text>
+      <g transform="translate(0, 332)">
+        <rect width="180" height="34" rx="6" fill="#F27024"/>
+        <text x="90" y="22" fill="#FFFFFF" font-size="13" font-weight="600" text-anchor="middle">XÁC NHẬN ĐẶT LỊCH</text>
+
+        <rect x="200" y="0" width="190" height="34" rx="17" fill="#E6F7F0" stroke="#10B981"/>
+        <text x="295" y="21" fill="#10B981" font-size="11" font-weight="700" text-anchor="middle">DIRECT ALUMNI REFERRAL</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= ROW 2: BUTTONS & CONTROLS ================= -->
+  
+  <!-- 03. BUTTON COMPONENTS (LEFT) -->
+  <g id="03-Button-Components" transform="translate(60, 710)">
+    <rect width="720" height="520" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">03. NÚT BẤM &amp; TRẠNG THÁI (BUTTON VARIANTS &amp; STATES)</text>
+    <text x="32" y="68" fill="#6B7280" font-size="13">Tuân thủ nghiêm ngặt kích thước chạm tối thiểu 48x48dp (WCAG Target Area)</text>
+
+    <!-- Primary Button States -->
+    <text x="32" y="105" fill="#111827" font-size="14" font-weight="700">PRIMARY BUTTON (FPT ORANGE #F27024)</text>
+    <g transform="translate(32, 120)">
+      <!-- Default -->
+      <g>
+        <rect width="150" height="48" rx="8" fill="#F27024"/>
+        <text x="75" y="29" fill="#FFFFFF" font-size="14" font-weight="600" text-anchor="middle">Ứng tuyển ngay</text>
+        <text x="75" y="68" fill="#6B7280" font-size="11" text-anchor="middle">Default (48dp)</text>
+      </g>
+      <!-- Hover -->
+      <g transform="translate(170, 0)">
+        <rect width="150" height="48" rx="8" fill="#D85810"/>
+        <text x="75" y="29" fill="#FFFFFF" font-size="14" font-weight="600" text-anchor="middle">Ứng tuyển ngay</text>
+        <text x="75" y="68" fill="#6B7280" font-size="11" text-anchor="middle">Hover / Focused</text>
+      </g>
+      <!-- Pressed -->
+      <g transform="translate(340, 0)">
+        <rect width="150" height="48" rx="8" fill="#BF4706"/>
+        <text x="75" y="29" fill="#FFFFFF" font-size="14" font-weight="600" text-anchor="middle">Ứng tuyển ngay</text>
+        <text x="75" y="68" fill="#6B7280" font-size="11" text-anchor="middle">Pressed / Active</text>
+      </g>
+      <!-- Disabled -->
+      <g transform="translate(510, 0)">
+        <rect width="146" height="48" rx="8" fill="#E5E7EB"/>
+        <text x="73" y="29" fill="#9CA3AF" font-size="14" font-weight="600" text-anchor="middle">Đã hết slot</text>
+        <text x="73" y="68" fill="#6B7280" font-size="11" text-anchor="middle">Disabled</text>
+      </g>
+    </g>
+
+    <!-- Secondary Corporate Button States -->
+    <text x="32" y="225" fill="#111827" font-size="14" font-weight="700">SECONDARY CORPORATE BUTTON (FPT NAVY #1B365D)</text>
+    <g transform="translate(32, 240)">
+      <!-- Default -->
+      <g>
+        <rect width="150" height="48" rx="8" fill="#1B365D"/>
+        <text x="75" y="29" fill="#FFFFFF" font-size="14" font-weight="600" text-anchor="middle">Đặt lịch Mentor</text>
+        <text x="75" y="68" fill="#6B7280" font-size="11" text-anchor="middle">Default</text>
+      </g>
+      <!-- Hover -->
+      <g transform="translate(170, 0)">
+        <rect width="150" height="48" rx="8" fill="#132742"/>
+        <text x="75" y="29" fill="#FFFFFF" font-size="14" font-weight="600" text-anchor="middle">Đặt lịch Mentor</text>
+        <text x="75" y="68" fill="#6B7280" font-size="11" text-anchor="middle">Hover</text>
+      </g>
+      <!-- Outline Corporate -->
+      <g transform="translate(340, 0)">
+        <rect width="150" height="48" rx="8" fill="#FFFFFF" stroke="#1B365D" stroke-width="1.5"/>
+        <text x="75" y="29" fill="#1B365D" font-size="14" font-weight="600" text-anchor="middle">Xem hồ sơ</text>
+        <text x="75" y="68" fill="#6B7280" font-size="11" text-anchor="middle">Outline Variant</text>
+      </g>
+      <!-- Ghost Button -->
+      <g transform="translate(510, 0)">
+        <rect width="146" height="48" rx="8" fill="transparent"/>
+        <text x="73" y="29" fill="#6B7280" font-size="14" font-weight="600" text-anchor="middle">Bỏ qua</text>
+        <text x="73" y="68" fill="#6B7280" font-size="11" text-anchor="middle">Ghost / Text Button</text>
+      </g>
+    </g>
+
+    <!-- Icon Buttons & Sticky CTA Spec -->
+    <text x="32" y="345" fill="#111827" font-size="14" font-weight="700">ICON BUTTONS &amp; TOUCH TARGET SPEC (MIN 48x48dp)</text>
+    <g transform="translate(32, 360)">
+      <!-- Back Icon -->
+      <g>
+        <rect width="48" height="48" rx="24" fill="#F8F9FA" stroke="#E5E7EB"/>
+        <text x="24" y="30" fill="#111827" font-size="18" text-anchor="middle">←</text>
+        <text x="24" y="65" fill="#6B7280" font-size="10" text-anchor="middle">Back</text>
+      </g>
+      <!-- Bookmark Icon -->
+      <g transform="translate(70, 0)">
+        <rect width="48" height="48" rx="24" fill="#FFF3EB" stroke="#F27024"/>
+        <text x="24" y="28" fill="#F27024" font-size="16" text-anchor="middle">★</text>
+        <text x="24" y="65" fill="#6B7280" font-size="10" text-anchor="middle">Saved</text>
+      </g>
+      <!-- Share Icon -->
+      <g transform="translate(140, 0)">
+        <rect width="48" height="48" rx="24" fill="#F8F9FA" stroke="#E5E7EB"/>
+        <text x="24" y="28" fill="#111827" font-size="15" text-anchor="middle">↗</text>
+        <text x="24" y="65" fill="#6B7280" font-size="10" text-anchor="middle">Share</text>
+      </g>
+      <!-- Sticky CTA Spec Box -->
+      <g transform="translate(230, 0)">
+        <rect width="426" height="70" rx="8" fill="#F0F4F8" stroke="#1B365D" stroke-dasharray="4 4"/>
+        <text x="20" y="28" fill="#1B365D" font-size="13" font-weight="700">Sticky CTA Bottom Bar Rule:</text>
+        <text x="20" y="48" fill="#4B5563" font-size="12">Persistent bottom bar (Height 72dp) with Drop Shadow Level 3, z-index 100.</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- 04. FORM INPUTS & SELECTION CONTROLS (RIGHT) -->
+  <g id="04-Form-Inputs" transform="translate(820, 710)">
+    <rect width="720" height="520" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">04. Ô NHẬP LIỆU &amp; FORM CONTROLS (INPUT SPECIFICATIONS)</text>
+    <text x="32" y="68" fill="#6B7280" font-size="13">Rõ ràng trạng thái Focus Ring, Error Label và Dropdown Selectors</text>
+
+    <g transform="translate(32, 90)">
+      <!-- Input 1: Default State -->
+      <g>
+        <text x="0" y="16" fill="#374151" font-size="13" font-weight="600">Email FPT University (@fpt.edu.vn)</text>
+        <rect y="26" width="310" height="48" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+        <text x="16" y="56" fill="#9CA3AF" font-size="14">khaise183590@fpt.edu.vn</text>
+        <text x="0" y="90" fill="#6B7280" font-size="11">Default Rest State (Stroke #CBD5E1)</text>
+      </g>
+
+      <!-- Input 2: Focus State -->
+      <g transform="translate(346, 0)">
+        <text x="0" y="16" fill="#1B365D" font-size="13" font-weight="700">Họ và tên Mentee</text>
+        <rect y="24" width="310" height="52" rx="10" fill="#F0F4F8" opacity="0.6"/>
+        <rect y="26" width="310" height="48" rx="8" fill="#FFFFFF" stroke="#1B365D" stroke-width="2"/>
+        <text x="16" y="56" fill="#111827" font-size="14" font-weight="500">Nguyễn Phương Khải</text>
+        <text x="0" y="90" fill="#1B365D" font-size="11" font-weight="600">Active Focus (Ring 3px #1B365D20)</text>
+      </g>
+
+      <!-- Input 3: Error State -->
+      <g transform="translate(0, 115)">
+        <text x="0" y="16" fill="#DC2626" font-size="13" font-weight="600">Link CV / Portfolio (Google Drive / GitHub)</text>
+        <rect y="26" width="310" height="48" rx="8" fill="#FEF2F2" stroke="#EF4444" stroke-width="1.5"/>
+        <text x="16" y="56" fill="#DC2626" font-size="14">https://invalid-cv-link</text>
+        <text x="0" y="90" fill="#DC2626" font-size="11">⚠ Vui lòng nhập đúng định dạng link Drive công khai</text>
+      </g>
+
+      <!-- Input 4: Select / Dropdown -->
+      <g transform="translate(346, 115)">
+        <text x="0" y="16" fill="#374151" font-size="13" font-weight="600">Chọn Campus Đại học FPT</text>
+        <rect y="26" width="310" height="48" rx="8" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="1.5"/>
+        <text x="16" y="56" fill="#111827" font-size="14">Campus TP. Hồ Chí Minh (Q9)</text>
+        <text x="280" y="56" fill="#6B7280" font-size="12">▼</text>
+        <text x="0" y="90" fill="#6B7280" font-size="11">Selection Control / Picker</text>
+      </g>
+
+      <!-- Checkboxes & Radios -->
+      <g transform="translate(0, 230)">
+        <text x="0" y="16" fill="#111827" font-size="14" font-weight="700">SELECTION CONTROLS (CHECKBOX &amp; RADIO)</text>
+
+        <!-- Radio Button 1 -->
+        <g transform="translate(0, 32)">
+          <circle cx="12" cy="12" r="10" fill="#FFFFFF" stroke="#F27024" stroke-width="2"/>
+          <circle cx="12" cy="12" r="5" fill="#F27024"/>
+          <text x="32" y="17" fill="#111827" font-size="13" font-weight="500">Mentoring Online qua Google Meet</text>
+        </g>
+        <!-- Radio Button 2 -->
+        <g transform="translate(320, 32)">
+          <circle cx="12" cy="12" r="10" fill="#FFFFFF" stroke="#CBD5E1" stroke-width="2"/>
+          <text x="32" y="17" fill="#6B7280" font-size="13">Gặp mặt trực tiếp tại Campus</text>
+        </g>
+
+        <!-- Checkbox 1 -->
+        <g transform="translate(0, 75)">
+          <rect width="20" height="20" rx="4" fill="#1B365D"/>
+          <text x="5" y="15" fill="#FFFFFF" font-size="12" font-weight="bold">✓</text>
+          <text x="32" y="16" fill="#111827" font-size="13" font-weight="500">Đồng ý chia sẻ CV cho cựu sinh viên thẩm định referral</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= ROW 3: BADGES, CHIPS & COMPOSITE COMPONENTS ================= -->
+  
+  <!-- 05. BADGES, CHIPS & STATUS (LEFT) -->
+  <g id="05-Badges-and-Chips" transform="translate(60, 1260)">
+    <rect width="720" height="480" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">05. HUY HIỆU &amp; NHÃN LỌC (BADGES &amp; FILTER CHIPS)</text>
+    <text x="32" y="68" fill="#6B7280" font-size="13">Hệ thống phân cấp nhãn chứng thực cựu SV và trạng thái tuyển dụng</text>
+
+    <!-- Verification Badges -->
+    <g transform="translate(32, 90)">
+      <text x="0" y="16" fill="#111827" font-size="13" font-weight="700">VERIFICATION BADGES (CHỨNG NHẬN ALUMNI)</text>
+
+      <!-- Badge 1: Verified Alum -->
+      <g transform="translate(0, 30)">
+        <rect width="160" height="32" rx="16" fill="#FFF3EB" stroke="#F27024"/>
+        <text x="14" y="21" fill="#F27024" font-size="13">🎓</text>
+        <text x="36" y="21" fill="#C2410C" font-size="12" font-weight="600">Alumni K14 FPT</text>
+      </g>
+
+      <!-- Badge 2: Direct Referral -->
+      <g transform="translate(180, 30)">
+        <rect width="210" height="32" rx="16" fill="#E6F7F0" stroke="#10B981"/>
+        <text x="14" y="21" fill="#10B981" font-size="13">⚡</text>
+        <text x="36" y="21" fill="#047857" font-size="12" font-weight="700">Direct Alumni Referral</text>
+      </g>
+
+      <!-- Badge 3: Top Mentor -->
+      <g transform="translate(410, 30)">
+        <rect width="150" height="32" rx="16" fill="#EFF6FF" stroke="#3B82F6"/>
+        <text x="14" y="21" fill="#3B82F6" font-size="13">⭐</text>
+        <text x="36" y="21" fill="#1D4ED8" font-size="12" font-weight="600">Top 1% Mentor</text>
+      </g>
+    </g>
+
+    <!-- Filter Chips (SCR_04, SCR_06) -->
+    <g transform="translate(32, 200)">
+      <text x="0" y="16" fill="#111827" font-size="13" font-weight="700">INTERACTIVE FILTER CHIPS (TÌM KIẾM THEO NGÀNH NGHỀ)</text>
+
+      <!-- Active Chip -->
+      <g transform="translate(0, 30)">
+        <rect width="90" height="36" rx="18" fill="#1B365D"/>
+        <text x="45" y="23" fill="#FFFFFF" font-size="13" font-weight="600" text-anchor="middle">Tất cả</text>
+      </g>
+      <!-- Inactive Chip 1 -->
+      <g transform="translate(104, 30)">
+        <rect width="130" height="36" rx="18" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="65" y="23" fill="#4B5563" font-size="13" text-anchor="middle">Software Eng</text>
+      </g>
+      <!-- Inactive Chip 2 -->
+      <g transform="translate(248, 30)">
+        <rect width="140" height="36" rx="18" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="70" y="23" fill="#4B5563" font-size="13" text-anchor="middle">AI &amp; Data Science</text>
+      </g>
+      <!-- Inactive Chip 3 -->
+      <g transform="translate(402, 30)">
+        <rect width="140" height="36" rx="18" fill="#FFFFFF" stroke="#CBD5E1"/>
+        <text x="70" y="23" fill="#4B5563" font-size="13" text-anchor="middle">Product Manager</text>
+      </g>
+    </g>
+
+    <!-- Availability Status Chips -->
+    <g transform="translate(32, 310)">
+      <text x="0" y="16" fill="#111827" font-size="13" font-weight="700">TRẠNG THÁI MENTOR (PRESENCE INDICATOR)</text>
+      
+      <!-- Available -->
+      <g transform="translate(0, 30)">
+        <rect width="210" height="32" rx="16" fill="#F0FDF4" stroke="#BBF7D0"/>
+        <circle cx="16" cy="16" r="4" fill="#10B981"/>
+        <text x="28" y="21" fill="#15803D" font-size="12" font-weight="600">Sẵn sàng nhận Mentee</text>
+      </g>
+
+      <!-- Busy -->
+      <g transform="translate(230, 30)">
+        <rect width="190" height="32" rx="16" fill="#FEF2F2" stroke="#FECACA"/>
+        <circle cx="16" cy="16" r="4" fill="#EF4444"/>
+        <text x="28" y="21" fill="#B91C1C" font-size="12" font-weight="600">Hết slot tuần này</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- 06. COMPOSITE CARDS & SHEETS (RIGHT) -->
+  <g id="06-Composite-Components" transform="translate(820, 1260)">
+    <rect width="720" height="480" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">06. COMPOSITE CARDS (MENTOR &amp; JOB CARDS)</text>
+    <text x="32" y="68" fill="#6B7280" font-size="13">Card hoàn chỉnh tái sử dụng trên SCR_04, SCR_05, SCR_06</text>
+
+    <!-- MENTOR CARD COMPONENT (SCR_06) -->
+    <g transform="translate(32, 90)">
+      <rect width="310" height="230" rx="12" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+      <!-- Mentor Avatar -->
+      <circle cx="48" cy="48" r="24" fill="#1B365D"/>
+      <text x="48" y="55" fill="#FFFFFF" font-size="16" font-weight="bold" text-anchor="middle">NT</text>
+      <circle cx="66" cy="66" r="6" fill="#10B981" stroke="#FFFFFF" stroke-width="2"/>
+
+      <text x="86" y="42" fill="#111827" font-size="15" font-weight="700">Nguyễn Văn Tuấn</text>
+      <text x="86" y="60" fill="#6B7280" font-size="12">Solution Architect • FPT Software</text>
+
+      <rect x="20" y="90" width="105" height="22" rx="11" fill="#FFF3EB"/>
+      <text x="72" y="105" fill="#F27024" font-size="11" font-weight="600" text-anchor="middle">Alumni K12 FPT</text>
+
+      <rect x="135" y="90" width="115" height="22" rx="11" fill="#EFF6FF"/>
+      <text x="192" y="105" fill="#3B82F6" font-size="11" font-weight="600" text-anchor="middle">★ 5.0 (48 sessions)</text>
+
+      <line x1="20" y1="130" x2="290" y2="130" stroke="#F1F5F9"/>
+
+      <text x="20" y="152" fill="#4B5563" font-size="12">Chuyên môn: Flutter, Cloud Architecture</text>
+      
+      <!-- CTA Button -->
+      <rect x="20" y="172" width="270" height="40" rx="8" fill="#1B365D"/>
+      <text x="155" y="197" fill="#FFFFFF" font-size="13" font-weight="600" text-anchor="middle">Đặt lịch Mentoring 1-1</text>
+    </g>
+
+    <!-- JOB REFERRAL CARD COMPONENT (SCR_04) -->
+    <g transform="translate(378, 90)">
+      <rect width="310" height="230" rx="12" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+      <rect width="310" height="4" rx="2 2 0 0" fill="#10B981"/>
+
+      <!-- Company Logo Placeholder -->
+      <rect x="20" y="24" width="44" height="44" rx="8" fill="#EFF6FF" stroke="#DBEAFE"/>
+      <text x="42" y="52" fill="#1E40AF" font-size="14" font-weight="bold" text-anchor="middle">FPT</text>
+
+      <text x="76" y="40" fill="#111827" font-size="15" font-weight="700">Senior Flutter Engineer</text>
+      <text x="76" y="58" fill="#6B7280" font-size="12">FPT Software • Hybrid (HCM)</text>
+
+      <!-- Referral Guarantee Tag -->
+      <rect x="20" y="85" width="180" height="24" rx="12" fill="#E6F7F0"/>
+      <text x="110" y="101" fill="#047857" font-size="11" font-weight="700" text-anchor="middle">⚡ Direct Alumni Referral</text>
+
+      <text x="20" y="136" fill="#1B365D" font-size="14" font-weight="700">25 - 40 Triệu VNĐ</text>
+      <text x="20" y="156" fill="#9CA3AF" font-size="11">Người giới thiệu: Hoàng Nam (K11)</text>
+
+      <line x1="20" y1="168" x2="290" y2="168" stroke="#F1F5F9"/>
+
+      <!-- Action Button -->
+      <rect x="20" y="178" width="270" height="40" rx="8" fill="#F27024"/>
+      <text x="155" y="203" fill="#FFFFFF" font-size="13" font-weight="600" text-anchor="middle">Ứng tuyển Referral</text>
+    </g>
+
+    <!-- Bottom Nav Bar Component Preview -->
+    <g transform="translate(32, 345)">
+      <text x="0" y="16" fill="#111827" font-size="13" font-weight="700">PERSISTENT BOTTOM NAVIGATION BAR (SCR_02 - SCR_08)</text>
+      <g transform="translate(0, 30)">
+        <rect width="656" height="56" rx="12" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-nav)"/>
+        
+        <!-- Tab 1: Home -->
+        <g transform="translate(45, 12)">
+          <text x="20" y="18" fill="#F27024" font-size="16" text-anchor="middle">🏠</text>
+          <text x="20" y="34" fill="#F27024" font-size="11" font-weight="700" text-anchor="middle">Trang chủ</text>
+          <circle cx="20" cy="39" r="2" fill="#F27024"/>
+        </g>
+        <!-- Tab 2: Career -->
+        <g transform="translate(205, 12)">
+          <text x="20" y="18" fill="#6B7280" font-size="16" text-anchor="middle">💼</text>
+          <text x="20" y="34" fill="#6B7280" font-size="11" font-weight="500" text-anchor="middle">Việc làm</text>
+        </g>
+        <!-- Tab 3: Mentors -->
+        <g transform="translate(365, 12)">
+          <text x="20" y="18" fill="#6B7280" font-size="16" text-anchor="middle">👥</text>
+          <text x="20" y="34" fill="#6B7280" font-size="11" font-weight="500" text-anchor="middle">Mentors</text>
+        </g>
+        <!-- Tab 4: Profile -->
+        <g transform="translate(525, 12)">
+          <text x="20" y="18" fill="#6B7280" font-size="16" text-anchor="middle">👤</text>
+          <text x="20" y="34" fill="#6B7280" font-size="11" font-weight="500" text-anchor="middle">Hồ sơ</text>
+        </g>
+      </g>
+    </g>
+  </g>
+
+  <!-- ================= ROW 4: OVERLAY MODAL & DIALOG COMPONENTS ================= -->
+  <g id="07-Dialogs-and-Overlays" transform="translate(60, 1770)">
+    <rect width="1480" height="480" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">07. MODAL XÁC NHẬN &amp; XỬ LÝ XUNG ĐỘT (OVERLAYS &amp; BOTTOM SHEETS)</text>
+    <text x="32" y="68" fill="#6B7280" font-size="13">Các thành phần hộp thoại cảnh báo xung đột lịch và xác thực thành công</text>
+
+    <!-- Dialog 1: Conflict Alert Bottom Sheet (SCR_07) -->
+    <g transform="translate(60, 95)">
+      <rect width="420" height="340" rx="16" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5" filter="url(#shadow-modal)"/>
+      <rect width="420" height="6" rx="3 3 0 0" fill="#F59E0B"/>
+
+      <!-- Handle bar -->
+      <rect x="185" y="12" width="50" height="4" rx="2" fill="#E5E7EB"/>
+
+      <circle cx="210" cy="55" r="24" fill="#FEF3C7"/>
+      <text x="210" y="64" fill="#D97706" font-size="22" font-weight="bold" text-anchor="middle">⚠</text>
+
+      <text x="210" y="110" fill="#111827" font-size="17" font-weight="700" text-anchor="middle">Cảnh báo: Trùng lịch Mentoring!</text>
+      <text x="210" y="135" fill="#4B5563" font-size="13" text-anchor="middle">Bạn đã có một lịch hẹn khác vào khung giờ:</text>
+      
+      <!-- Time block -->
+      <rect x="40" y="155" width="340" height="50" rx="8" fill="#FFFBEB" stroke="#FDE68A"/>
+      <text x="210" y="185" fill="#92400E" font-size="14" font-weight="700" text-anchor="middle">Thứ Bảy, 24/10/2026 • 09:00 - 10:00</text>
+
+      <text x="210" y="230" fill="#6B7280" font-size="12" text-anchor="middle">Vui lòng chọn một slot khác để đảm bảo chất lượng buổi hẹn.</text>
+
+      <!-- Buttons -->
+      <rect x="40" y="255" width="340" height="44" rx="8" fill="#F27024"/>
+      <text x="210" y="282" fill="#FFFFFF" font-size="13" font-weight="600" text-anchor="middle">Chọn khung giờ khác</text>
+
+      <text x="210" y="322" fill="#6B7280" font-size="12" font-weight="500" text-anchor="middle">Hủy yêu cầu đặt lịch</text>
+    </g>
+
+    <!-- Dialog 2: Booking Confirmed Dialog (SCR_07 Success) -->
+    <g transform="translate(530, 95)">
+      <rect width="420" height="340" rx="16" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5" filter="url(#shadow-modal)"/>
+      <rect width="420" height="6" rx="3 3 0 0" fill="#10B981"/>
+
+      <circle cx="210" cy="55" r="24" fill="#D1FAE5"/>
+      <text x="210" y="64" fill="#059669" font-size="22" font-weight="bold" text-anchor="middle">✓</text>
+
+      <text x="210" y="110" fill="#111827" font-size="17" font-weight="700" text-anchor="middle">Đặt lịch Mentor Thành công!</text>
+      <text x="210" y="135" fill="#4B5563" font-size="13" text-anchor="middle">Mã Session Pass đã được tạo và lưu vào ví:</text>
+
+      <!-- Pass Card -->
+      <rect x="40" y="155" width="340" height="60" rx="8" fill="#F0FDF4" stroke="#A7F3D0"/>
+      <text x="60" y="180" fill="#065F46" font-size="12" font-weight="600">SESSION PASS ID:</text>
+      <text x="60" y="202" fill="#047857" font-size="15" font-weight="700">FPT-MT-2026-9812</text>
+      <rect x="270" y="168" width="90" height="34" rx="6" fill="#10B981"/>
+      <text x="315" y="190" fill="#FFFFFF" font-size="11" font-weight="700" text-anchor="middle">ĐÃ DUYỆT</text>
+
+      <!-- Buttons -->
+      <rect x="40" y="240" width="340" height="44" rx="8" fill="#1B365D"/>
+      <text x="210" y="267" fill="#FFFFFF" font-size="13" font-weight="600" text-anchor="middle">Thêm vào Google Calendar</text>
+
+      <rect x="40" y="295" width="340" height="40" rx="8" fill="#FFFFFF" stroke="#E5E7EB"/>
+      <text x="210" y="320" fill="#4B5563" font-size="13" font-weight="600" text-anchor="middle">Quay lại Trang chủ</text>
+    </g>
+
+    <!-- Guide / Spec Box (Right side) -->
+    <g transform="translate(1000, 95)">
+      <rect width="420" height="340" rx="16" fill="#F8FAFC" stroke="#CBD5E1" stroke-dasharray="4 4"/>
+      <text x="30" y="45" fill="#1B365D" font-size="16" font-weight="700">Quy tắc thiết kế Dialog &amp; Sheet:</text>
+      
+      <circle cx="40" cy="85" r="4" fill="#F27024"/>
+      <text x="55" y="90" fill="#374151" font-size="13">Scrim Overlay: rgba(0, 0, 0, 0.45)</text>
+
+      <circle cx="40" cy="125" r="4" fill="#F27024"/>
+      <text x="55" y="130" fill="#374151" font-size="13">Border Radius Top: 24px (rounded-xl)</text>
+
+      <circle cx="40" cy="165" r="4" fill="#F27024"/>
+      <text x="55" y="170" fill="#374151" font-size="13">Drag Handle: 40 x 4dp (#CBD5E1)</text>
+
+      <circle cx="40" cy="205" r="4" fill="#F27024"/>
+      <text x="55" y="210" fill="#374151" font-size="13">Dismissible: Tap outside or swipe down</text>
+
+      <circle cx="40" cy="245" r="4" fill="#F27024"/>
+      <text x="55" y="250" fill="#374151" font-size="13">Haptic Feedback: Heavy impact on conflict</text>
+
+      <!-- Badge -->
+      <rect x="30" y="280" width="360" height="40" rx="8" fill="#1B365D"/>
+      <text x="210" y="305" fill="#FFFFFF" font-size="13" font-weight="600" text-anchor="middle">Tuân thủ Material Design 3 Modal Guideline</text>
+    </g>
+  </g>
+
+  <!-- ================= FOOTER ================= -->
+  <g id="Footer" transform="translate(60, 2300)">
+    <line x1="0" y1="0" x2="1480" y2="0" stroke="#E5E7EB" stroke-width="1.5"/>
+    <text x="0" y="40" fill="#6B7280" font-size="13">PRM323 Mobile App Design — F-Alumni | Nhóm 4 | Nguyễn Phương Khải (MSSV: SE183590 - TV3)</text>
+    <text x="1480" y="40" fill="#9CA3AF" font-size="13" text-anchor="end">Figma File: PRM323 - Lab 2 - F-Alumni - Nhom 4 (Page 04 &amp; 05)</text>
+  </g>
+</svg>

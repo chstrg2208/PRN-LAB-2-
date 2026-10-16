@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 800" width="360" height="800" style="background:#FFFFFF; font-family:'Inter', sans-serif;">
+  <rect width="360" height="800" fill="#FFFFFF"/>
+  <!-- Top App Bar -->
+  <rect width="360" height="64" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="20" y="40" fill="#111827" font-size="18">←</text>
+  <text x="56" y="40" fill="#111827" font-size="15" font-weight="700">Chi tiết bài chia sẻ</text>
+
+  <!-- Author Header -->
+  <g transform="translate(16, 80)">
+    <circle cx="24" cy="24" r="22" fill="#1B365D"/>
+    <text x="24" y="30" fill="#FFFFFF" font-size="14" font-weight="bold" text-anchor="middle">NT</text>
+    <text x="56" y="22" fill="#111827" font-size="14" font-weight="700">Nguyễn Văn Tuấn</text>
+    <text x="56" y="38" fill="#6B7280" font-size="11">Solution Architect • FPT Software (K12)</text>
+  </g>
+
+  <!-- Content -->
+  <g transform="translate(16, 140)">
+    <text x="0" y="20" fill="#111827" font-size="16" font-weight="700">Roadmap phát triển Mobile Architect 2026</text>
+    <text x="0" y="46" fill="#374151" font-size="13">1. Nắm vững Native Interop (FFI, Method Channel)</text>
+    <text x="0" y="68" fill="#374151" font-size="13">2. State Management &amp; Dependency Injection</text>
+    <text x="0" y="90" fill="#374151" font-size="13">3. CI/CD Pipeline &amp; Automated Testing</text>
+    <text x="0" y="112" fill="#374151" font-size="13">4. Security &amp; Token Handling</text>
+
+    <!-- Attached Session Box -->
+    <rect y="140" width="328" height="90" rx="12" fill="#F0F4F8" stroke="#1B365D"/>
+    <text x="16" y="168" fill="#1B365D" font-size="13" font-weight="700">Phiên Mentoring 1-1 gắn liền bài viết</text>
+    <text x="16" y="188" fill="#4B5563" font-size="12">Thời lượng: 45 phút • Google Meet</text>
+    <text x="16" y="210" fill="#047857" font-size="12" font-weight="600">✓ Miễn phí cho SV Đại học FPT</text>
+  </g>
+
+  <!-- Comments Preview -->
+  <g transform="translate(16, 400)">
+    <text x="0" y="16" fill="#111827" font-size="14" font-weight="700">Bình luận (16)</text>
+    <rect y="30" width="328" height="60" rx="8" fill="#F9FAFB" stroke="#E5E7EB"/>
+    <text x="12" y="52" fill="#111827" font-size="12" font-weight="600">Trần Minh (K18):</text>
+    <text x="12" y="70" fill="#4B5563" font-size="12">Em đã đăng ký slot sáng thứ 7 rồi ạ, cảm ơn anh Tuấn!</text>
+  </g>
+
+  <!-- Sticky CTA Bottom -->
+  <g transform="translate(0, 720)">
+    <rect width="360" height="80" fill="#FFFFFF" stroke="#E5E7EB" filter="drop-shadow(0 -4px 12px rgba(27,54,93,0.08))"/>
+    <rect x="20" y="14" width="320" height="48" rx="8" fill="#F27024"/>
+    <text x="180" y="44" fill="#FFFFFF" font-size="14" font-weight="600" text-anchor="middle">Đặt lịch thảo luận với Mentor này</text>
+  </g>
+</svg>
