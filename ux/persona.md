@@ -6,7 +6,7 @@
 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2)  
 2. **Võ Quang Tâm** — MSSV: **SE192621** (TV1)  
 3. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV3)  
-4. **Đỗ Trọng Tín** — MSSV: Đang cập nhật (TV4)  
+4. **Đỗ Trọng Tín** — MSSV: **SE190218** (TV4)  
 
 ---
 
