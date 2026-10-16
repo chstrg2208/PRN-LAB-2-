@@ -1,38 +1,68 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 800" width="360" height="800">
-    <rect width="360" height="800" fill="#F8F9FA"/>
-    <!-- App Bar -->
-    <rect width="360" height="64" fill="#FFFFFF" stroke="#E0E0E0"/>
-    <text x="20" y="42" fill="#1A1A1A" font-family="Arial" font-size="18" font-weight="bold">← Xác nhận Đăng ký Vé</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 800" width="360" height="800" style="background:#F8F9FA; font-family:'Inter', sans-serif;">
+  <rect width="360" height="800" fill="#F8F9FA"/>
+  <!-- Header -->
+  <rect width="360" height="90" fill="#1B365D"/>
+  <text x="20" y="52" fill="#FFFFFF" font-size="18" font-weight="700">Cơ hội Việc làm &amp; Referral</text>
+
+  <!-- Filter Chips -->
+  <g transform="translate(16, 105)">
+    <rect width="70" height="32" rx="16" fill="#1B365D"/>
+    <text x="35" y="21" fill="#FFFFFF" font-size="12" font-weight="600" text-anchor="middle">Tất cả</text>
+
+    <rect x="78" y="0" width="105" height="32" rx="16" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="130" y="21" fill="#4B5563" font-size="12" text-anchor="middle">Flutter Dev</text>
+
+    <rect x="190" y="0" width="130" height="32" rx="16" fill="#FFFFFF" stroke="#CBD5E1"/>
+    <text x="255" y="21" fill="#4B5563" font-size="12" text-anchor="middle">Backend Java</text>
+  </g>
+
+  <!-- Job Card 1 -->
+  <g transform="translate(16, 155)">
+    <rect width="328" height="175" rx="12" fill="#FFFFFF" stroke="#E5E7EB" filter="drop-shadow(0 2px 6px rgba(27,54,93,0.04))"/>
+    <rect width="328" height="4" rx="2 2 0 0" fill="#10B981"/>
+    <text x="16" y="32" fill="#111827" font-size="15" font-weight="700">Senior Mobile Engineer (Flutter)</text>
+    <text x="16" y="52" fill="#6B7280" font-size="12">FPT Software • Hybrid (Q9, HCM)</text>
     
-    <!-- Mini Card -->
-    <rect x="16" y="80" width="328" height="60" rx="8" fill="#FFFFFF" stroke="#E0E0E0"/>
-    <text x="28" y="105" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">GenAI with Flutter &amp; Dart</text>
-    <text x="28" y="125" fill="#595959" font-family="Arial" font-size="12">15/10/2026 • 13:30 • Hội trường Alpha</text>
+    <rect x="16" y="68" width="170" height="22" rx="11" fill="#E6F7F0"/>
+    <text x="101" y="83" fill="#047857" font-size="11" font-weight="700" text-anchor="middle">⚡ Direct Alumni Referral</text>
 
-    <!-- Inputs -->
-    <text x="16" y="165" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">Họ và tên sinh viên</text>
-    <rect x="16" y="175" width="328" height="46" rx="8" fill="#EEEEEE"/>
-    <text x="30" y="203" fill="#555555" font-family="Arial" font-size="14">Nguyễn Minh Tú (Tự động)</text>
+    <text x="16" y="116" fill="#1B365D" font-size="14" font-weight="700">25 - 40 Triệu VNĐ</text>
+    <text x="16" y="136" fill="#9CA3AF" font-size="11">Người bảo chứng: Hoàng Nam (K11)</text>
 
-    <text x="16" y="245" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">Mã số sinh viên (MSSV)</text>
-    <rect x="16" y="255" width="328" height="46" rx="8" fill="#EEEEEE"/>
-    <text x="30" y="283" fill="#555555" font-family="Arial" font-size="14">SE193059 (Đã xác thực FPT Edu)</text>
+    <rect x="220" y="105" width="92" height="36" rx="6" fill="#F27024"/>
+    <text x="266" y="128" fill="#FFFFFF" font-size="12" font-weight="600" text-anchor="middle">Ứng tuyển</text>
+  </g>
 
-    <text x="16" y="325" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">Hình thức tham gia</text>
-    <circle cx="30" cy="355" r="8" fill="#F27024"/>
-    <text x="48" y="360" fill="#1A1A1A" font-family="Arial" font-size="14">Tham gia Trực tiếp tại Hội trường (Offline)</text>
-    <circle cx="30" cy="385" r="8" stroke="#8C8C8C" fill="none"/>
-    <text x="48" y="390" fill="#595959" font-family="Arial" font-size="14">Xem Livestream qua Google Meet (Online)</text>
+  <!-- Job Card 2 -->
+  <g transform="translate(16, 345)">
+    <rect width="328" height="175" rx="12" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <rect width="328" height="4" rx="2 2 0 0" fill="#10B981"/>
+    <text x="16" y="32" fill="#111827" font-size="15" font-weight="700">Junior AI Engineer</text>
+    <text x="16" y="52" fill="#6B7280" font-size="12">FPT Smart Cloud • Cầu Giấy, HN</text>
+    
+    <rect x="16" y="68" width="170" height="22" rx="11" fill="#E6F7F0"/>
+    <text x="101" y="83" fill="#047857" font-size="11" font-weight="700" text-anchor="middle">⚡ Direct Alumni Referral</text>
 
-    <text x="16" y="430" fill="#1A1A1A" font-family="Arial" font-size="14" font-weight="bold">Câu hỏi cho diễn giả (không bắt buộc)</text>
-    <rect x="16" y="440" width="328" height="70" rx="8" fill="#FFFFFF" stroke="#E0E0E0"/>
-    <text x="28" y="470" fill="#8C8C8C" font-family="Arial" font-size="13">Nhập nội dung thắc mắc của bạn...</text>
+    <text x="16" y="116" fill="#1B365D" font-size="14" font-weight="700">18 - 28 Triệu VNĐ</text>
+    <text x="16" y="136" fill="#9CA3AF" font-size="11">Người bảo chứng: Lê Anh Tuấn (K13)</text>
 
-    <rect x="16" y="530" width="20" height="20" rx="4" fill="#F27024"/>
-    <text x="21" y="545" fill="#FFFFFF" font-family="Arial" font-size="14">✓</text>
-    <text x="46" y="545" fill="#1A1A1A" font-family="Arial" font-size="13">Tôi cam kết tham gia đúng giờ để nhận điểm PDP</text>
+    <rect x="220" y="105" width="92" height="36" rx="6" fill="#F27024"/>
+    <text x="266" y="128" fill="#FFFFFF" font-size="12" font-weight="600" text-anchor="middle">Ứng tuyển</text>
+  </g>
 
-    <!-- Submit CTA -->
-    <rect x="16" y="710" width="328" height="50" rx="12" fill="#F27024"/>
-    <text x="95" y="741" fill="#FFFFFF" font-family="Arial" font-size="15" font-weight="bold">XÁC NHẬN ĐĂNG KÝ VÉ</text>
-  </svg>
+  <!-- Bottom Nav Bar -->
+  <g transform="translate(0, 728)">
+    <rect width="360" height="72" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="45" y="35" fill="#6B7280" font-size="16" text-anchor="middle">🏠</text>
+    <text x="45" y="50" fill="#6B7280" font-size="10" text-anchor="middle">Feed</text>
+    
+    <text x="135" y="35" fill="#F27024" font-size="16" text-anchor="middle">💼</text>
+    <text x="135" y="50" fill="#F27024" font-size="10" font-weight="700" text-anchor="middle">Việc làm</text>
+
+    <text x="225" y="35" fill="#6B7280" font-size="16" text-anchor="middle">👥</text>
+    <text x="225" y="50" fill="#6B7280" font-size="10" text-anchor="middle">Mentors</text>
+
+    <text x="315" y="35" fill="#6B7280" font-size="16" text-anchor="middle">👤</text>
+    <text x="315" y="50" fill="#6B7280" font-size="10" text-anchor="middle">Hồ sơ</text>
+  </g>
+</svg>

@@ -1,38 +1,64 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 800" width="360" height="800">
-    <rect width="360" height="800" fill="#F8F9FA"/>
-    <rect width="360" height="64" fill="#FFFFFF" stroke="#E0E0E0"/>
-    <text x="20" y="42" fill="#1A1A1A" font-family="Arial" font-size="18" font-weight="bold">Hồ sơ Sinh viên</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 800" width="360" height="800" style="background:#F8F9FA; font-family:'Inter', sans-serif;">
+  <rect width="360" height="800" fill="#F8F9FA"/>
+  <!-- Header -->
+  <rect width="360" height="160" fill="#1B365D"/>
+  <circle cx="60" cy="80" r="32" fill="#F27024"/>
+  <text x="60" y="87" fill="#FFFFFF" font-size="20" font-weight="bold" text-anchor="middle">PK</text>
+  <text x="108" y="72" fill="#FFFFFF" font-size="17" font-weight="700">Nguyễn Phương Khải</text>
+  <text x="108" y="92" fill="#93C5FD" font-size="12">Sinh viên K18 • SE183590</text>
+  <text x="108" y="112" fill="#E5E7EB" font-size="11">Chuyên ngành: Kỹ thuật phần mềm (SE)</text>
 
-    <!-- Profile card -->
-    <rect x="16" y="80" width="328" height="90" rx="12" fill="#FFFFFF" stroke="#E0E0E0"/>
-    <circle cx="55" cy="125" r="26" fill="#F27024"/>
-    <text x="43" y="132" fill="#FFFFFF" font-family="Arial" font-size="18" font-weight="bold">TÚ</text>
-    <text x="96" y="115" fill="#1A1A1A" font-family="Arial" font-size="16" font-weight="bold">Nguyễn Minh Tú</text>
-    <text x="96" y="135" fill="#595959" font-family="Arial" font-size="13">MSSV: SE193059 • Khóa K19</text>
-    <text x="96" y="152" fill="#1B365D" font-family="Arial" font-size="12">Kỹ thuật phần mềm (SE) - FPT HCM</text>
+  <!-- Stats Grid -->
+  <g transform="translate(16, 175)">
+    <rect width="328" height="80" rx="12" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <g transform="translate(30, 22)">
+      <text x="25" y="20" fill="#1B365D" font-size="18" font-weight="700" text-anchor="middle">04</text>
+      <text x="25" y="40" fill="#6B7280" font-size="11" text-anchor="middle">Lịch Mentor</text>
+    </g>
+    <line x1="110" y1="16" x2="110" y2="64" stroke="#F1F5F9"/>
+    <g transform="translate(135, 22)">
+      <text x="25" y="20" fill="#F27024" font-size="18" font-weight="700" text-anchor="middle">02</text>
+      <text x="25" y="40" fill="#6B7280" font-size="11" text-anchor="middle">Referral gửi</text>
+    </g>
+    <line x1="220" y1="16" x2="220" y2="64" stroke="#F1F5F9"/>
+    <g transform="translate(240, 22)">
+      <text x="25" y="20" fill="#10B981" font-size="18" font-weight="700" text-anchor="middle">120</text>
+      <text x="25" y="40" fill="#6B7280" font-size="11" text-anchor="middle">F-Points</text>
+    </g>
+  </g>
 
-    <!-- PDP Dashboard -->
-    <rect x="16" y="185" width="328" height="110" rx="12" fill="#1B365D"/>
-    <text x="32" y="215" fill="#FFFFFF" font-family="Arial" font-size="16" font-weight="bold">Điểm Rèn Luyện PDP</text>
-    <text x="32" y="255" fill="#F27024" font-family="Arial" font-size="32" font-weight="bold">85</text>
-    <text x="75" y="255" fill="#FFFFFF" font-family="Arial" font-size="18">/ 100 điểm</text>
-    <text x="32" y="278" fill="#E8EEF5" font-family="Arial" font-size="12">Đã tham gia 12 sự kiện • Đạt chuẩn tốt nghiệp</text>
+  <!-- Menu List -->
+  <g transform="translate(16, 275)">
+    <rect width="328" height="220" rx="12" fill="#FFFFFF" stroke="#E5E7EB"/>
+    
+    <text x="20" y="40" fill="#111827" font-size="13" font-weight="600">🎟 Ví Session Pass của tôi</text>
+    <text x="295" y="40" fill="#9CA3AF" font-size="14">→</text>
+    <line x1="20" y1="58" x2="308" y2="58" stroke="#F1F5F9"/>
 
-    <!-- Settings list -->
-    <rect x="16" y="315" width="328" height="200" rx="12" fill="#FFFFFF" stroke="#E0E0E0"/>
-    <text x="32" y="350" fill="#1A1A1A" font-family="Arial" font-size="14">🔔 Cài đặt Thông báo Nhắc hẹn</text>
-    <line x1="32" y1="368" x2="328" y2="368" stroke="#EEEEEE"/>
-    <text x="32" y="400" fill="#1A1A1A" font-family="Arial" font-size="14">🏷️ Chủ đề Sự kiện Quan tâm</text>
-    <line x1="32" y1="418" x2="328" y2="418" stroke="#EEEEEE"/>
-    <text x="32" y="450" fill="#1A1A1A" font-family="Arial" font-size="14">🛡️ Điều khoản &amp; Quyền riêng tư</text>
-    <line x1="32" y1="468" x2="328" y2="468" stroke="#EEEEEE"/>
-    <text x="32" y="495" fill="#D93025" font-family="Arial" font-size="14" font-weight="bold">🚪 Đăng xuất Tài khoản</text>
+    <text x="20" y="95" fill="#111827" font-size="13" font-weight="600">📑 Trạng thái hồ sơ Referral đã nộp</text>
+    <text x="295" y="95" fill="#9CA3AF" font-size="14">→</text>
+    <line x1="20" y1="113" x2="308" y2="113" stroke="#F1F5F9"/>
 
-    <!-- Bottom Nav -->
-    <rect y="736" width="360" height="64" fill="#FFFFFF" stroke="#E0E0E0"/>
-    <text x="32" y="764" fill="#595959" font-family="Arial" font-size="12">Khám phá</text>
-    <text x="115" y="764" fill="#595959" font-family="Arial" font-size="12">Lịch của tôi</text>
-    <text x="205" y="764" fill="#595959" font-family="Arial" font-size="12">Thông báo</text>
-    <rect x="285" y="744" width="60" height="32" rx="16" fill="#FFF0E6"/>
-    <text x="300" y="764" fill="#F27024" font-family="Arial" font-size="12" font-weight="bold">Hồ sơ</text>
-  </svg>
+    <text x="20" y="150" fill="#111827" font-size="13" font-weight="600">🔒 Tài khoản FPT &amp; Quyền riêng tư</text>
+    <text x="295" y="150" fill="#9CA3AF" font-size="14">→</text>
+    <line x1="20" y1="168" x2="308" y2="168" stroke="#F1F5F9"/>
+
+    <text x="20" y="200" fill="#DC2626" font-size="13" font-weight="600">🚪 Đăng xuất</text>
+  </g>
+
+  <!-- Bottom Nav Bar -->
+  <g transform="translate(0, 728)">
+    <rect width="360" height="72" fill="#FFFFFF" stroke="#E5E7EB"/>
+    <text x="45" y="35" fill="#6B7280" font-size="16" text-anchor="middle">🏠</text>
+    <text x="45" y="50" fill="#6B7280" font-size="10" text-anchor="middle">Feed</text>
+    
+    <text x="135" y="35" fill="#6B7280" font-size="16" text-anchor="middle">💼</text>
+    <text x="135" y="50" fill="#6B7280" font-size="10" text-anchor="middle">Việc làm</text>
+
+    <text x="225" y="35" fill="#6B7280" font-size="16" text-anchor="middle">👥</text>
+    <text x="225" y="50" fill="#6B7280" font-size="10" text-anchor="middle">Mentors</text>
+
+    <text x="315" y="35" fill="#F27024" font-size="16" text-anchor="middle">👤</text>
+    <text x="315" y="50" fill="#F27024" font-size="10" font-weight="700" text-anchor="middle">Hồ sơ</text>
+  </g>
+</svg>

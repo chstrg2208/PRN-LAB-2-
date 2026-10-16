@@ -1,34 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 800" width="360" height="800">
-    <rect width="360" height="800" fill="#1B365D"/>
-    <text x="20" y="45" fill="#FFFFFF" font-family="Arial" font-size="18" font-weight="bold">← Vé Tham Dự Sự Kiện</text>
-    
-    <!-- Ticket Card Shape -->
-    <rect x="20" y="75" width="320" height="530" rx="16" fill="#FFFFFF"/>
-    <!-- Top banner on ticket -->
-    <rect x="20" y="75" width="320" height="110" rx="16" fill="#F27024"/>
-    <text x="36" y="115" fill="#FFFFFF" font-family="Arial" font-size="18" font-weight="bold">GenAI with Flutter &amp; Dart</text>
-    <text x="36" y="140" fill="#FFF0E6" font-family="Arial" font-size="13">15/10/2026 • 13:30 • Hội trường Alpha</text>
-    
-    <rect x="36" y="155" width="110" height="24" rx="12" fill="#FFFFFF"/>
-    <text x="48" y="171" fill="#1E8E3E" font-family="Arial" font-size="11" font-weight="bold">● VÉ HỢP LỆ</text>
-    <text x="260" y="171" fill="#FFFFFF" font-family="Arial" font-size="12" font-weight="bold">Ghế: A-24</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 800" width="360" height="800" style="background:#FFFFFF; font-family:'Inter', sans-serif;">
+  <rect width="360" height="800" fill="#FFFFFF"/>
+  <!-- Top App Bar -->
+  <rect width="360" height="64" fill="#FFFFFF" stroke="#E5E7EB"/>
+  <text x="20" y="40" fill="#111827" font-size="18">←</text>
+  <text x="56" y="40" fill="#111827" font-size="15" font-weight="700">Chi tiết việc làm &amp; Referral</text>
 
-    <!-- QR Code -->
-    <rect x="70" y="215" width="220" height="220" rx="12" fill="#F8F9FA" stroke="#E0E0E0"/>
-    <rect x="90" y="235" width="60" height="60" fill="#1A1A1A"/>
-    <rect x="210" y="235" width="60" height="60" fill="#1A1A1A"/>
-    <rect x="90" y="355" width="60" height="60" fill="#1A1A1A"/>
-    <rect x="170" y="315" width="25" height="25" fill="#F27024"/>
-    <text x="75" y="465" fill="#595959" font-family="Arial" font-size="12">Xuất trình mã này cho BTC tại cửa</text>
+  <g transform="translate(16, 80)">
+    <text x="0" y="24" fill="#111827" font-size="18" font-weight="700">Senior Mobile Engineer (Flutter)</text>
+    <text x="0" y="46" fill="#6B7280" font-size="13">FPT Software • F-Town 3, Quận 9, TP.HCM</text>
 
-    <!-- Info breakdown -->
-    <text x="36" y="510" fill="#8C8C8C" font-family="Arial" font-size="12">Họ tên: Nguyễn Minh Tú • MSSV: SE193059</text>
-    <text x="36" y="530" fill="#8C8C8C" font-family="Arial" font-size="12">Mã vé: FEV-2026-SE193059-001</text>
-    <text x="36" y="550" fill="#1E8E3E" font-family="Arial" font-size="12" font-weight="bold">Quyền lợi: +5 Điểm rèn luyện PDP</text>
+    <!-- Referral Benefit Box -->
+    <rect y="65" width="328" height="85" rx="10" fill="#E6F7F0" stroke="#10B981"/>
+    <text x="16" y="92" fill="#047857" font-size="13" font-weight="700">Quyền lợi Ứng tuyển qua Alumni Referral:</text>
+    <text x="16" y="112" fill="#065F46" font-size="12">• CV được chuyển thẳng đến Hiring Manager</text>
+    <text x="16" y="130" fill="#065F46" font-size="12">• Phản hồi kết quả hồ sơ trong vòng 48h</text>
 
-    <!-- Buttons -->
-    <rect x="20" y="630" width="320" height="48" rx="10" fill="#FFFFFF" stroke="#F27024"/>
-    <text x="85" y="660" fill="#F27024" font-family="Arial" font-size="14" font-weight="bold">📥 LƯU VÉ VÀO THƯ VIỆN ẢNH</text>
+    <!-- Job Description -->
+    <text x="0" y="185" fill="#111827" font-size="14" font-weight="700">Mô tả công việc</text>
+    <text x="0" y="210" fill="#374151" font-size="13">• Phát triển ứng dụng Flutter quy mô Enterprise</text>
+    <text x="0" y="232" fill="#374151" font-size="13">• Tối ưu hóa hiệu năng, Native Interop FFI</text>
+    <text x="0" y="254" fill="#374151" font-size="13">• Mentor cho các bạn Junior &amp; Fresher</text>
 
-    <text x="140" y="720" fill="#FFC107" font-family="Arial" font-size="13">Hủy đăng ký vé</text>
-  </svg>
+    <!-- Form Input CV -->
+    <text x="0" y="300" fill="#111827" font-size="13" font-weight="700">Link CV của bạn (Google Drive công khai)</text>
+    <rect y="312" width="328" height="46" rx="8" fill="#F8FAFC" stroke="#CBD5E1"/>
+    <text x="14" y="340" fill="#9CA3AF" font-size="12">https://drive.google.com/file/d/...</text>
+  </g>
+
+  <!-- Sticky CTA -->
+  <g transform="translate(0, 720)">
+    <rect width="360" height="80" fill="#FFFFFF" stroke="#E5E7EB" filter="drop-shadow(0 -4px 12px rgba(27,54,93,0.08))"/>
+    <rect x="20" y="14" width="320" height="48" rx="8" fill="#F27024"/>
+    <text x="180" y="44" fill="#FFFFFF" font-size="14" font-weight="600" text-anchor="middle">Gửi hồ sơ xin Referral</text>
+  </g>
+</svg>

@@ -8,10 +8,13 @@
 > 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2: AI & Google Stitch Lead)  
 > 2. **Võ Quang Tâm** — MSSV: **SE192621** (TV1: UX Research, Persona & User Flow Lead)  
 > 3. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV3: UI Design System & Screen Spec Lead)  
-> 4. **Đỗ Trọng Tín** — MSSV: *(Đang cập nhật)* (TV4: Flutter Handoff & Architecture Lead)  
+> 4. **Đỗ Trọng Tín** — MSSV: **SE190218** (TV4: Flutter Handoff & Architecture Lead)  
 > 
 > 🌐 **Không gian Google Stitch nguồn:** [https://stitch.withgoogle.com/projects/1771935993966075517](https://stitch.withgoogle.com/projects/1771935993966075517) *(F-Alumni Mentorship App Design — Public Project)*  
-> 🎨 **Figma Design File:** [Figma: PRM323 - Lab 2 - F-Alumni - Nhom 4 (Pages 04 & 05)](https://www.figma.com/design/PRM323-F-Alumni)  
+> 🎨 **Figma Design System (Page 04 & 05):** [Figma: 04 Design System & 05 Components (node-id=1-2)](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4?node-id=1-2&p=f&t=U1sXeVU5M6L3IEag-0)  
+> 📱 **Figma Final UI & Prototype (Page 03 & 06):** [Figma: 03 Final UI & 06 Prototype (node-id=1-3)](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4?node-id=1-3&t=00FzbJIZRL89FvX4-1)  
+> 📦 **Vector Asset đính kèm:** [`assets/figma/04_design_system_and_components.svg`](../assets/figma/04_design_system_and_components.svg) *(File vector chuẩn toàn bộ Design System & 9 nhóm Components)*  
+
 
 ---
 
@@ -149,3 +152,28 @@ Tất cả 9 nhóm components được xây dựng **100% bằng Auto Layout** t
    * Minh họa vector thân thiện (Folder rỗng hoặc kính lúp) + Tiêu đề *"Chưa tìm thấy cơ hội phù hợp"* + Mô tả ngắn hướng dẫn người dùng + Nút hành động chính *"↻ Xóa bộ lọc"* hoặc *"Khám phá bài viết chung"*.
 9. **Error State (Trạng thái lỗi & Phục hồi):**
    * Banner cảnh báo màu đỏ nhạt `#FDF3F2` có icon cảnh báo + Thông báo ngôn ngữ tự nhiên: *"Mất kết nối Internet. Toàn bộ file CV và thư ngỏ của bạn đã được bảo lưu an toàn"* + Nút *"Thử lại (Retry)"*.
+
+---
+
+## 4. Cấu trúc Canvas Trang Figma `04 Design System & 05 Components`
+
+Toàn bộ hệ thống Design System và Components đã được đóng gói thành Master Artboard chuẩn kích thước **1600 × 2400 dp** tại file [`assets/figma/04_design_system_and_components.svg`](../assets/figma/04_design_system_and_components.svg), bố trí mạch lạc thành 4 hàng khối (Rows):
+
+- **Master Header Banner:** Tiêu đề dự án F-Alumni, phiên bản Material Design 3, chuẩn WCAG 2.1 AA, tên người phụ trách TV3 - Nguyễn Phương Khải (SE183590).
+- **Hàng 1 (Row 1):**
+  - `01-Color-Tokens`: Thẻ màu Primary `#1B365D`, Secondary `#F27024`, Tertiary `#10B981`, cùng hệ Neutrals và Semantic Alerts.
+  - `02-Typography-Tokens`: Thang đo kiểu chữ `Headline-LG/MD/SM`, `Body-LG/MD`, `Label-LG/SM` (font Hanken Grotesk & Inter).
+- **Hàng 2 (Row 2):**
+  - `03-Button-Components`: Đầy đủ các biến thể nút Primary Orange, Secondary Navy, Outline, Ghost với các trạng thái Default, Hover, Pressed, Disabled (Touch target tối thiểu 48×48dp).
+  - `04-Form-Inputs`: Các ô TextField Default, Active Focused (kèm viền sáng xanh 3px), Error State (kèm thông báo hỗ trợ), Campus Picker và Radio/Checkbox controls.
+- **Hàng 3 (Row 3):**
+  - `05-Badges-and-Chips`: Huy hiệu `Alumni K14 FPT`, `Direct Alumni Referral`, `Top 1% Mentor`, bộ Filter Chips theo ngành nghề và chỉ báo trạng thái sẵn sàng nhận Mentee.
+  - `06-Composite-Components`: Thẻ Mentor Card (`SCR_06`), Thẻ Job Referral Card (`SCR_04`), thanh Persistent Bottom Navigation Bar 4 tabs.
+- **Hàng 4 (Row 4):**
+  - `07-Dialogs-and-Overlays`: Bottom Sheet Cảnh báo trùng lịch hẹn (`Conflict Alert`) và Hộp thoại Xác nhận đặt lịch thành công (`Session Pass ID: FPT-MT-2026-9812`).
+
+> 💡 **Hướng dẫn đồng bộ lên Figma Canvas:**  
+> 1. Mở trang **`04 Design System & 05 Components`** trên Figma Web.  
+> 2. Kéo thả trực tiếp file [`assets/figma/04_design_system_and_components.svg`](../assets/figma/04_design_system_and_components.svg) vào vùng Canvas trống (hoặc dán bằng tổ hợp phím **Ctrl + V** từ Clipboard hệ thống đã nạp sẵn).  
+> 3. Figma sẽ tự động chuyển hóa thành các Frame, Vector và Text layer hoàn chỉnh.
+
