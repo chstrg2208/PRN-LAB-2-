@@ -38,12 +38,9 @@ Dự án được phân chia thành 4 nhánh Git độc lập tương ứng vớ
 | Hạng mục | Đường dẫn Liên kết Trực tiếp | Trạng thái Quyền Truy cập |
 | :--- | :--- | :---: |
 | **GitHub Repository Chính thức** | [https://github.com/chstrg2208/PRN-LAB-2-.git](https://github.com/chstrg2208/PRN-LAB-2-.git) | 🌐 **Public** |
-| **Figma: 04 Design System & 05 Components** | [Figma: 04 Design System (node-id=1-2)](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4?node-id=1-2&p=f&t=U1sXeVU5M6L3IEag-0) | 🌐 **Public View** *(Anyone with link)* |
-| **Figma: 03 Final UI & 06 Prototype** | [Figma: 03 Final UI & Prototype (node-id=1-3)](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4?node-id=1-3&t=00FzbJIZRL89FvX4-1) | 🌐 **Public View** *(Anyone with link)* |
-| **Google Stitch (Cốt lõi 8 màn hình)** | [https://stitch.withgoogle.com/projects/1771935993966075517](https://stitch.withgoogle.com/projects/1771935993966075517) | 🌐 **Public Project** *(F-Alumni Mentorship App)* |
-| **Google Stitch (Bản mở rộng)** | [https://stitch.withgoogle.com/projects/160742887452340129](https://stitch.withgoogle.com/projects/160742887452340129) | 🌐 **Public Project** *(Alumni Connect)* |
-| **Design System Vector Asset** | [`assets/figma/04_design_system_and_components.svg`](assets/figma/04_design_system_and_components.svg) | 📦 **Master SVG Asset (1600x2400)** |
-
+| **Figma Design & Prototype** | [Figma File: PRM323 - Lab 2 - F-Alumni - Nhom 4](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4?node-id=1-3&t=00FzbJIZRL89FvX4-1) | 🌐 **Public View** *(Anyone with the link can view)* |
+| **Google Stitch (Cốt lõi 8 màn hình)** | [https://stitch.withgoogle.com/projects/1771935993966075517](https://stitch.withgoogle.com/projects/1771935993966075517) | 🌐 **Public Project** *(F-Alumni Mentorship App Design)* |
+| **Google Stitch (Bản mở rộng)** | [https://stitch.withgoogle.com/projects/160742887452340129](https://stitch.withgoogle.com/projects/160742887452340129) | 🌐 **Public Project** *(Alumni Connect - FPT University)* |
 
 ---
 
