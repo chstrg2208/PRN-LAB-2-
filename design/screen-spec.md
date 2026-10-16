@@ -6,7 +6,7 @@
 > **Người biên soạn chính (Lead Author):** **Nguyễn Phương Khải** — MSSV: **SE183590** (Vai trò: **TV3 — UI Design System & Screen Specifications Lead**)  
 > 
 > 🌐 **Dự án Google Stitch liên kết:** [https://stitch.withgoogle.com/projects/1771935993966075517](https://stitch.withgoogle.com/projects/1771935993966075517)  
-> 🎨 **Vị trí thiết kế trong Figma:** [Figma Pages: 02 Wireframe & 03 Final UI](https://www.figma.com/design/PRM323-F-Alumni)  
+> 🎨 **Vị trí thiết kế trong Figma:** [Figma Pages: 02 Wireframe & 03 Final UI](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4?node-id=1-3&t=00FzbJIZRL89FvX4-1)  
 
 ---
 

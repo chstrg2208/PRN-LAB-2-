@@ -8,10 +8,10 @@
 > 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2: AI & Google Stitch Lead)  
 > 2. **Võ Quang Tâm** — MSSV: **SE192621** (TV1: UX Research, Persona & User Flow Lead)  
 > 3. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV3: UI Design System & Screen Spec Lead)  
-> 4. **Đỗ Trọng Tín** — MSSV: *(Đang cập nhật)* (TV4: Flutter Handoff & Architecture Lead)  
+> 4. **Đỗ Trọng Tín** — MSSV: **SE190218** (TV4: Flutter Handoff & Architecture Lead)  
 > 
 > 🌐 **Không gian Google Stitch nguồn:** [https://stitch.withgoogle.com/projects/1771935993966075517](https://stitch.withgoogle.com/projects/1771935993966075517) *(F-Alumni Mentorship App Design — Public Project)*  
-> 🎨 **Figma Design File:** [Figma: PRM323 - Lab 2 - F-Alumni - Nhom 4 (Pages 04 & 05)](https://www.figma.com/design/PRM323-F-Alumni)  
+> 🎨 **Figma Design File:** [Figma: PRM323 - Lab 2 - F-Alumni - Nhom 4 (Pages 04 & 05)](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4?node-id=1-3&t=00FzbJIZRL89FvX4-1)  
 
 ---
 
