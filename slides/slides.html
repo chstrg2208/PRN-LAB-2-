@@ -371,6 +371,45 @@
             width: 8.33%;
             transition: width 0.3s ease;
         }
+
+        /* Print & PDF Export Styles */
+        @media print {
+            @page {
+                size: 16in 9in;
+                margin: 0;
+            }
+            body {
+                background: #0F172A !important;
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                overflow: visible !important;
+                height: auto !important;
+                width: auto !important;
+            }
+            .progress-bar-container, .controls-bar, .speaker-notes-drawer {
+                display: none !important;
+            }
+            .deck {
+                position: static !important;
+                height: auto !important;
+                width: 100% !important;
+            }
+            .slide {
+                position: relative !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                page-break-after: always !important;
+                break-after: page !important;
+                width: 16in !important;
+                height: 9in !important;
+                min-height: 9in !important;
+                max-height: 9in !important;
+                box-sizing: border-box !important;
+                padding: 40px 60px !important;
+                background: radial-gradient(circle at 10% 20%, #1a2744 0%, #0a0f1d 90%) !important;
+            }
+        }
     </style>
 </head>
 <body>
