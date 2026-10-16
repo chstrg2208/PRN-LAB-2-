@@ -7,7 +7,7 @@
 > 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2: Google Stitch & AI Lead) → Branch: [`tv2`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv2)  
 > 2. **Võ Quang Tâm** — MSSV: **SE192621** (TV1: UX Research, Persona & User Flow Lead) → Branch: [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1)  
 > 3. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV3: UI Design System & Screen Specifications Lead) → Branch: [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3)  
-> 4. **Đỗ Trọng Tín** — MSSV: **SE190218** (TV4: Flutter Handoff & Architecture Lead) → Branch: [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4)  
+> 4. **Đỗ Trọng Tín** — MSSV: **SE190218** (TV4: Figma UI/UX Implementation & Flutter Handoff Lead) → Branch: [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4)  
 
 ---
 
@@ -20,7 +20,7 @@ Dự án được phân chia thành 4 nhánh Git độc lập tương ứng vớ
 | **Trương Chí Trung** | **SE193059** | **Trưởng nhóm / TV2** | [`tv2`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv2) | **AI & Prompting:** Thực thi Google Stitch, lưu trữ nguyên văn Prompts, 3 vòng lặp Before/After, phản biện 10 Heuristics & bảng lập luận. |
 | **Võ Quang Tâm** | **SE192621** | **TV1** | [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1) | **UX & User Flow:** Persona, Problem Statement, Information Architecture 8 màn hình, 3 sơ đồ User Flow Mermaid (có luồng phục hồi lỗi). |
 | **Nguyễn Phương Khải** | **SE183590** | **TV3** | [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3) | **Design System & Specs:** Design Tokens (Colors, Typography, 8dp Spacing), đặc tả chi tiết 8 màn hình, Top 10 quyết định thiết kế & Checklist A11y. |
-| **Đỗ Trọng Tín** | **SE190218** | **TV4** | [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4) | **Developer Handoff:** Đặc tả Flutter Handoff 6 mục cho 8 màn hình, 2 bảng mapping dữ liệu/widget, định hướng Lab 3 Firebase. |
+| **Đỗ Trọng Tín** | **SE190218** | **TV4** | [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4) | **Figma UI/UX & Developer Handoff:** Thiết kế Wireframe (Page 02), hoàn thiện Final UI High-Fidelity (Page 03), dựng Interactive Prototype 4 flows & Overlay Dialogs (Page 06), xuất bộ ảnh 12 màn hình assets/figma/, và soạn thảo toàn diện đặc tả Flutter Handoff 6 mục cho 8 màn hình + 2 bảng mapping dữ liệu/widget. |
 
 ---
 
@@ -86,9 +86,9 @@ PRN-LAB-2-/
 | **6. Ba vòng lặp có ý nghĩa (Before / After)** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 3) | TV2: Trương Chí Trung | **5 điểm** |
 | **7. Bản phản biện AI theo 10 Usability Heuristics** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 4) | TV2: Trương Chí Trung | **5 điểm** |
 | **8. Bảng lập luận và quyết định của sinh viên (Có Reject AI)** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 5) | TV2 & TV3 | **5 điểm** |
-| **9. Thiết kế UI/UX cuối cùng & Đặc tả màn hình** | [Figma Page 03](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4), [`assets/figma/`](assets/figma/) & [`design/screen-spec.md`](design/screen-spec.md) | **TV3: Nguyễn Phương Khải** | **20 điểm** |
+| **9. Thiết kế UI/UX cuối cùng & Đặc tả màn hình** | [Figma Page 03](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4), [`assets/figma/`](assets/figma/) & [`design/screen-spec.md`](design/screen-spec.md) | **TV4: Đỗ Trọng Tín** *(Thiết kế Figma Page 02 & 03)* & **TV3: Nguyễn Phương Khải** *(screen-spec.md)* | **20 điểm** |
 | **10. Design System Tokens & 9 Components đủ variants** | [Figma Page 04 & 05](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4) & [`design/DESIGN.md`](design/DESIGN.md) | **TV3: Nguyễn Phương Khải** | **15 điểm** |
-| **11. Interactive Prototype (3 flows, dialog overlay)** | [Figma Page 06](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4) | **Cả nhóm** | **10 điểm** |
+| **11. Interactive Prototype (3 flows, dialog overlay)** | [Figma Page 06](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4) | **TV4: Đỗ Trọng Tín** *(Lead triển khai Prototype)* & Cả nhóm | **10 điểm** |
 | **12. Đặc tả Flutter Handoff & 2 bảng ánh xạ** | [`handoff/flutter-handoff.md`](handoff/flutter-handoff.md) | **TV4: Đỗ Trọng Tín (SE190218)** | **10 điểm** |
 | **13. Tính hoàn chỉnh của Tài liệu & Git Repository** | Toàn bộ Repository & [`README.md`](README.md) | **Cả nhóm** | **5 điểm** |
 
@@ -98,12 +98,12 @@ PRN-LAB-2-/
 
 File Figma được thiết lập theo đúng thứ tự 6 trang theo yêu cầu của Đề bài:
 
-- **Page 01: User Flow:** Sơ đồ luồng trực quan 3 flows (Đọc bài & Đặt lịch tư vấn, Nộp CV xin Referral, Xử lý lỗi trùng lịch/mất mạng), có liên kết trực tiếp tới các khung màn hình.
-- **Page 02: Wireframe:** Bản vẽ bố cục Low-Fidelity (thang xám) của toàn bộ 8 màn hình chuẩn kích thước 360 × 800 dp.
-- **Page 03: Final UI:** Toàn bộ 8 màn hình High-Fidelity 360 × 800 dp, đặt cạnh các biến thể trạng thái (Loading Shimmer, Empty State, Error State, Confirmation Dialog).
-- **Page 04: Design System:** Khai báo toàn bộ Design Tokens bằng Figma Variables (Color, Typography, Spacing, Radius, Elevation). Tuyệt đối không gán cứng mã màu.
-- **Page 05: Components:** Thư viện 9 components tái sử dụng dựng bằng Auto Layout 100% và Variants đầy đủ trạng thái.
-- **Page 06: Prototype:** Kết nối tương tác hoàn chỉnh cho 3 flows, thiết lập Flow Starting Point, Overlay Modal Dialog và chuyển cảnh mượt mà.
+- **Page 01: User Flow:** Sơ đồ luồng trực quan 3 flows (Đọc bài & Đặt lịch tư vấn, Nộp CV xin Referral, Xử lý lỗi trùng lịch/mất mạng), có liên kết trực tiếp tới các khung màn hình *(TV1: Võ Quang Tâm phụ trách)*.
+- **Page 02: Wireframe:** Bản vẽ bố cục Low-Fidelity (thang xám) của toàn bộ 8 màn hình chuẩn kích thước 360 × 800 dp *(TV4: Đỗ Trọng Tín trực tiếp thiết kế)*.
+- **Page 03: Final UI:** Toàn bộ 8 màn hình High-Fidelity 360 × 800 dp, đặt cạnh các biến thể trạng thái (Loading Shimmer, Empty State, Error State, Confirmation Dialog) *(TV4: Đỗ Trọng Tín trực tiếp thiết kế & export)*.
+- **Page 04: Design System:** Khai báo toàn bộ Design Tokens bằng Figma Variables (Color, Typography, Spacing, Radius, Elevation). Tuyệt đối không gán cứng mã màu *(TV3: Nguyễn Phương Khải phụ trách)*.
+- **Page 05: Components:** Thư viện 9 components tái sử dụng dựng bằng Auto Layout 100% và Variants đầy đủ trạng thái *(TV3: Nguyễn Phương Khải phụ trách)*.
+- **Page 06: Prototype:** Kết nối tương tác hoàn chỉnh cho 3 flows chính + luồng hủy lịch, thiết lập Flow Starting Point, Overlay Modal Dialog và chuyển cảnh mượt mà *(TV4: Đỗ Trọng Tín trực tiếp thiết lập)*.
 
 ---
 
