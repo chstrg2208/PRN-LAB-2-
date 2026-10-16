@@ -1,16 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 2400" width="1600" height="2400" style="background-color: #F8F9FA; font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
   <defs>
     <!-- Gradients & Shadows -->
-    <filter id="shadow-card" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1B365D" flood-opacity="0.06"/>
-      <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#1B365D" flood-opacity="0.04"/>
-    </filter>
-    <filter id="shadow-modal" x="-10%" y="-10%" width="120%" height="125%" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#1B365D" flood-opacity="0.12"/>
-    </filter>
-    <filter id="shadow-nav" x="0" y="-10%" width="100%" height="120%" filterUnits="userSpaceOnUse">
-      <feDropShadow dx="0" dy="-4" stdDeviation="8" flood-color="#1B365D" flood-opacity="0.08"/>
-    </filter>
+    
+    
+    
     <linearGradient id="primary-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#1B365D"/>
       <stop offset="100%" stop-color="#0A1C36"/>
@@ -46,7 +39,7 @@
   
   <!-- 01. COLOR TOKENS (LEFT) -->
   <g id="01-Color-Tokens" transform="translate(60, 190)">
-    <rect width="720" height="490" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <rect width="720" height="490" rx="16" fill="#FFFFFF" stroke="#E5E7EB" />
     <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">01. BẢNG MÀU THƯƠNG HIỆU (COLOR TOKENS)</text>
     <text x="32" y="68" fill="#6B7280" font-size="13">Bản sắc Đại học FPT: Navy uy tín doanh nghiệp kết hợp Orange tăng tỉ lệ chuyển đổi</text>
 
@@ -138,7 +131,7 @@
 
   <!-- 02. TYPOGRAPHY SYSTEM (RIGHT) -->
   <g id="02-Typography-Tokens" transform="translate(820, 190)">
-    <rect width="720" height="490" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <rect width="720" height="490" rx="16" fill="#FFFFFF" stroke="#E5E7EB" />
     <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">02. HỆ THỐNG KIỂU CHỮ (TYPOGRAPHY TOKENS)</text>
     <text x="32" y="68" fill="#6B7280" font-size="13">Display font Hanken Grotesk kết hợp Body Inter tối ưu hiển thị Mobile</text>
 
@@ -185,7 +178,7 @@
   
   <!-- 03. BUTTON COMPONENTS (LEFT) -->
   <g id="03-Button-Components" transform="translate(60, 710)">
-    <rect width="720" height="520" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <rect width="720" height="520" rx="16" fill="#FFFFFF" stroke="#E5E7EB" />
     <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">03. NÚT BẤM &amp; TRẠNG THÁI (BUTTON VARIANTS &amp; STATES)</text>
     <text x="32" y="68" fill="#6B7280" font-size="13">Tuân thủ nghiêm ngặt kích thước chạm tối thiểu 48x48dp (WCAG Target Area)</text>
 
@@ -279,7 +272,7 @@
 
   <!-- 04. FORM INPUTS & SELECTION CONTROLS (RIGHT) -->
   <g id="04-Form-Inputs" transform="translate(820, 710)">
-    <rect width="720" height="520" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <rect width="720" height="520" rx="16" fill="#FFFFFF" stroke="#E5E7EB" />
     <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">04. Ô NHẬP LIỆU &amp; FORM CONTROLS (INPUT SPECIFICATIONS)</text>
     <text x="32" y="68" fill="#6B7280" font-size="13">Rõ ràng trạng thái Focus Ring, Error Label và Dropdown Selectors</text>
 
@@ -348,7 +341,7 @@
   
   <!-- 05. BADGES, CHIPS & STATUS (LEFT) -->
   <g id="05-Badges-and-Chips" transform="translate(60, 1260)">
-    <rect width="720" height="480" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <rect width="720" height="480" rx="16" fill="#FFFFFF" stroke="#E5E7EB" />
     <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">05. HUY HIỆU &amp; NHÃN LỌC (BADGES &amp; FILTER CHIPS)</text>
     <text x="32" y="68" fill="#6B7280" font-size="13">Hệ thống phân cấp nhãn chứng thực cựu SV và trạng thái tuyển dụng</text>
 
@@ -426,13 +419,13 @@
 
   <!-- 06. COMPOSITE CARDS & SHEETS (RIGHT) -->
   <g id="06-Composite-Components" transform="translate(820, 1260)">
-    <rect width="720" height="480" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <rect width="720" height="480" rx="16" fill="#FFFFFF" stroke="#E5E7EB" />
     <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">06. COMPOSITE CARDS (MENTOR &amp; JOB CARDS)</text>
     <text x="32" y="68" fill="#6B7280" font-size="13">Card hoàn chỉnh tái sử dụng trên SCR_04, SCR_05, SCR_06</text>
 
     <!-- MENTOR CARD COMPONENT (SCR_06) -->
     <g transform="translate(32, 90)">
-      <rect width="310" height="230" rx="12" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+      <rect width="310" height="230" rx="12" fill="#FFFFFF" stroke="#E5E7EB" />
       <!-- Mentor Avatar -->
       <circle cx="48" cy="48" r="24" fill="#1B365D"/>
       <text x="48" y="55" fill="#FFFFFF" font-size="16" font-weight="bold" text-anchor="middle">NT</text>
@@ -458,7 +451,7 @@
 
     <!-- JOB REFERRAL CARD COMPONENT (SCR_04) -->
     <g transform="translate(378, 90)">
-      <rect width="310" height="230" rx="12" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+      <rect width="310" height="230" rx="12" fill="#FFFFFF" stroke="#E5E7EB" />
       <rect width="310" height="4" rx="2 2 0 0" fill="#10B981"/>
 
       <!-- Company Logo Placeholder -->
@@ -486,7 +479,7 @@
     <g transform="translate(32, 345)">
       <text x="0" y="16" fill="#111827" font-size="13" font-weight="700">PERSISTENT BOTTOM NAVIGATION BAR (SCR_02 - SCR_08)</text>
       <g transform="translate(0, 30)">
-        <rect width="656" height="56" rx="12" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-nav)"/>
+        <rect width="656" height="56" rx="12" fill="#FFFFFF" stroke="#E5E7EB" />
         
         <!-- Tab 1: Home -->
         <g transform="translate(45, 12)">
@@ -515,13 +508,13 @@
 
   <!-- ================= ROW 4: OVERLAY MODAL & DIALOG COMPONENTS ================= -->
   <g id="07-Dialogs-and-Overlays" transform="translate(60, 1770)">
-    <rect width="1480" height="480" rx="16" fill="#FFFFFF" stroke="#E5E7EB" filter="url(#shadow-card)"/>
+    <rect width="1480" height="480" rx="16" fill="#FFFFFF" stroke="#E5E7EB" />
     <text x="32" y="44" fill="#1B365D" font-size="18" font-weight="700">07. MODAL XÁC NHẬN &amp; XỬ LÝ XUNG ĐỘT (OVERLAYS &amp; BOTTOM SHEETS)</text>
     <text x="32" y="68" fill="#6B7280" font-size="13">Các thành phần hộp thoại cảnh báo xung đột lịch và xác thực thành công</text>
 
     <!-- Dialog 1: Conflict Alert Bottom Sheet (SCR_07) -->
     <g transform="translate(60, 95)">
-      <rect width="420" height="340" rx="16" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5" filter="url(#shadow-modal)"/>
+      <rect width="420" height="340" rx="16" fill="#FFFFFF" stroke="#F59E0B" stroke-width="1.5" />
       <rect width="420" height="6" rx="3 3 0 0" fill="#F59E0B"/>
 
       <!-- Handle bar -->
@@ -548,7 +541,7 @@
 
     <!-- Dialog 2: Booking Confirmed Dialog (SCR_07 Success) -->
     <g transform="translate(530, 95)">
-      <rect width="420" height="340" rx="16" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5" filter="url(#shadow-modal)"/>
+      <rect width="420" height="340" rx="16" fill="#FFFFFF" stroke="#10B981" stroke-width="1.5" />
       <rect width="420" height="6" rx="3 3 0 0" fill="#10B981"/>
 
       <circle cx="210" cy="55" r="24" fill="#D1FAE5"/>
