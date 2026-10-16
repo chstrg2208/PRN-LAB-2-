@@ -7,7 +7,7 @@
 > 1. **Trương Chí Trung** — MSSV: **SE193059** (Trưởng nhóm / TV2: Google Stitch & AI Lead) → Branch: [`tv2`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv2)  
 > 2. **Võ Quang Tâm** — MSSV: **SE192621** (TV1: UX Research, Persona & User Flow Lead) → Branch: [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1)  
 > 3. **Nguyễn Phương Khải** — MSSV: **SE183590** (TV3: UI Design System & Screen Specifications Lead) → Branch: [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3)  
-> 4. **Đỗ Trọng Tín** — MSSV: *(Đang cập nhật)* (TV4: Flutter Handoff & Architecture Lead) → Branch: [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4)  
+> 4. **Đỗ Trọng Tín** — MSSV: **SE190218** (TV4: Flutter Handoff & Architecture Lead) → Branch: [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4)  
 
 ---
 
@@ -20,7 +20,7 @@ Dự án được phân chia thành 4 nhánh Git độc lập tương ứng vớ
 | **Trương Chí Trung** | **SE193059** | **Trưởng nhóm / TV2** | [`tv2`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv2) | **AI & Prompting:** Thực thi Google Stitch, lưu trữ nguyên văn Prompts, 3 vòng lặp Before/After, phản biện 10 Heuristics & bảng lập luận. |
 | **Võ Quang Tâm** | **SE192621** | **TV1** | [`tv1`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv1) | **UX & User Flow:** Persona, Problem Statement, Information Architecture 8 màn hình, 3 sơ đồ User Flow Mermaid (có luồng phục hồi lỗi). |
 | **Nguyễn Phương Khải** | **SE183590** | **TV3** | [`tv3`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv3) | **Design System & Specs:** Design Tokens (Colors, Typography, 8dp Spacing), đặc tả chi tiết 8 màn hình, Top 10 quyết định thiết kế & Checklist A11y. |
-| **Đỗ Trọng Tín** | *(Chờ cập nhật)* | **TV4** | [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4) | **Developer Handoff:** Đặc tả Flutter Handoff 6 mục cho 8 màn hình, 2 bảng mapping dữ liệu/widget, định hướng Lab 3 Firebase. |
+| **Đỗ Trọng Tín** | **SE190218** | **TV4** | [`tv4`](https://github.com/chstrg2208/PRN-LAB-2-/tree/tv4) | **Developer Handoff:** Đặc tả Flutter Handoff 6 mục cho 8 màn hình, 2 bảng mapping dữ liệu/widget, định hướng Lab 3 Firebase. |
 
 ---
 
@@ -38,7 +38,7 @@ Dự án được phân chia thành 4 nhánh Git độc lập tương ứng vớ
 | Hạng mục | Đường dẫn Liên kết Trực tiếp | Trạng thái Quyền Truy cập |
 | :--- | :--- | :---: |
 | **GitHub Repository Chính thức** | [https://github.com/chstrg2208/PRN-LAB-2-.git](https://github.com/chstrg2208/PRN-LAB-2-.git) | 🌐 **Public** |
-| **Figma Design & Prototype** | [Figma File: PRM323 - Lab 2 - F-Alumni - Nhom 4](https://www.figma.com/files/team/1552602956705614495/recents-and-sharing/recently-viewed?fuid=1552602953945079261) | 🌐 **Public View** *(Anyone with the link can view)* |
+| **Figma Design & Prototype** | [Figma File: PRM323 - Lab 2 - F-Alumni - Nhom 4](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4) | 🌐 **Public View** *(Anyone with the link can view)* |
 | **Google Stitch Workspace Thực tế** | [https://stitch.withgoogle.com/projects/1771935993966075517](https://stitch.withgoogle.com/projects/1771935993966075517) | 🌐 **Public Project** *(F-Alumni Mentorship App Design)* |
 
 ---
@@ -86,11 +86,11 @@ PRN-LAB-2-/
 | **6. Ba vòng lặp có ý nghĩa (Before / After)** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 3) | TV2: Trương Chí Trung | **5 điểm** |
 | **7. Bản phản biện AI theo 10 Usability Heuristics** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 4) | TV2: Trương Chí Trung | **5 điểm** |
 | **8. Bảng lập luận và quyết định của sinh viên (Có Reject AI)** | [`ai/ai-design-log.md`](ai/ai-design-log.md) (Mục 5) | TV2 & TV3 | **5 điểm** |
-| **9. Thiết kế UI/UX cuối cùng & Đặc tả màn hình** | [Figma Page 03] & [`design/screen-spec.md`](design/screen-spec.md) | **TV3: Nguyễn Phương Khải** | **20 điểm** |
-| **10. Design System Tokens & 9 Components đủ variants** | [Figma Page 04 & 05] & [`design/DESIGN.md`](design/DESIGN.md) | **TV3: Nguyễn Phương Khải** | **15 điểm** |
-| **11. Interactive Prototype (3 flows, dialog overlay)** | [Figma Page 06] | Cả nhóm | **10 điểm** |
-| **12. Đặc tả Flutter Handoff & 2 bảng ánh xạ** | [`handoff/flutter-handoff.md`](handoff/flutter-handoff.md) | TV4: Đỗ Trọng Tín | **10 điểm** |
-| **13. Tính hoàn chỉnh của Tài liệu & Git Repository** | Toàn bộ Repository & [`README.md`](README.md) | Cả nhóm | **5 điểm** |
+| **9. Thiết kế UI/UX cuối cùng & Đặc tả màn hình** | [Figma Page 03](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4), [`assets/figma/`](assets/figma/) & [`design/screen-spec.md`](design/screen-spec.md) | **TV3: Nguyễn Phương Khải** | **20 điểm** |
+| **10. Design System Tokens & 9 Components đủ variants** | [Figma Page 04 & 05](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4) & [`design/DESIGN.md`](design/DESIGN.md) | **TV3: Nguyễn Phương Khải** | **15 điểm** |
+| **11. Interactive Prototype (3 flows, dialog overlay)** | [Figma Page 06](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4) | **Cả nhóm** | **10 điểm** |
+| **12. Đặc tả Flutter Handoff & 2 bảng ánh xạ** | [`handoff/flutter-handoff.md`](handoff/flutter-handoff.md) | **TV4: Đỗ Trọng Tín (SE190218)** | **10 điểm** |
+| **13. Tính hoàn chỉnh của Tài liệu & Git Repository** | Toàn bộ Repository & [`README.md`](README.md) | **Cả nhóm** | **5 điểm** |
 
 ---
 
