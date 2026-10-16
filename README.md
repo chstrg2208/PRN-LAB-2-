@@ -72,8 +72,11 @@ PRN-LAB-2-/
 ├── assets/
 │   ├── stitch/                    ← Ảnh chụp bằng chứng kết quả Google Stitch và Before/After 3 vòng lặp
 │   └── figma/                     ← Ảnh export kết quả 8 màn hình hoàn thiện từ Figma
-└── handoff/
-    └── flutter-handoff.md         ← Đặc tả 6 mục cho 8 màn hình + 2 bảng mapping + Định hướng Lab 3 Firebase
+├── handoff/
+│   └── flutter-handoff.md         ← Đặc tả 6 mục cho 8 màn hình + 2 bảng mapping + Định hướng Lab 3 Firebase
+└── slides/
+    ├── SLIDES.md                  ← Toàn văn 12 slides thuyết trình, lời thoại chi tiết & 7 câu hỏi phản biện Q&A
+    └── slides.html                ← Bộ trình chiếu Slide tương tác trực tiếp trên trình duyệt (Fullscreen, phím mũi tên)
 ```
 
 | Sản phẩm Yêu cầu trong Đề bài | Vị trí File Tương ứng trong Repository | Người phụ trách chính | Điểm Trọng số Rubric |
@@ -91,6 +94,7 @@ PRN-LAB-2-/
 | **11. Interactive Prototype (3 flows, dialog overlay)** | [Figma Page 06](https://www.figma.com/design/PPdvsVA0O63HEHTQkxBQX0/PRM323---Lab-2---F-Alumni---Nhom-4) | **TV4: Đỗ Trọng Tín** *(Lead triển khai Prototype)* & Cả nhóm | **10 điểm** |
 | **12. Đặc tả Flutter Handoff & 2 bảng ánh xạ** | [`handoff/flutter-handoff.md`](handoff/flutter-handoff.md) | **TV4: Đỗ Trọng Tín (SE190218)** | **10 điểm** |
 | **13. Tính hoàn chỉnh của Tài liệu & Git Repository** | Toàn bộ Repository & [`README.md`](README.md) | **Cả nhóm** | **5 điểm** |
+| **14. Bộ Slide Báo cáo & Lời thoại 12 Trang** | [`slides/SLIDES.md`](slides/SLIDES.md) & [`slides/slides.html`](slides/slides.html) | Cả nhóm (4 TV) | **Khung đánh giá 10 phút** |
 
 ---
 
